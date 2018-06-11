@@ -1,0 +1,9 @@
+[Network Configuration]
+Network: ResNet-50
+Batch Size: 64
+Data: Cifar-10
+
+[GPU Configuration]
+GPU: Titan X Pascal
+
+
