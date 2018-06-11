@@ -1,0 +1,981 @@
+appName,coreF,memF,kernel,count,aver_time,std_time,coeff. of var.
+caffe,1700,3500,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00370248039216,3.11789648774e-05,0.008421
+caffe,1700,3500,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00667830784314,2.63567667625e-05,0.003947
+caffe,1700,3500,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.16233815689e-06,2.34718005619e-07,0.201936
+caffe,1700,3500,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00648834901961,1.36544307619e-05,0.002104
+caffe,1700,3500,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.50843137255e-06,1.87676845219e-07,0.022058
+caffe,1700,3500,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0235104313725,4.48226373575e-05,0.001906
+caffe,1700,3500,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00460951568627,6.16038490486e-06,0.001336
+caffe,1700,3500,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,9.12082352941e-06,2.04442014971e-07,0.022415
+caffe,1700,3500,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.0106214539216,0.00269755341559,0.253972
+caffe,1700,3500,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00325614705882,7.02359756265e-06,0.002157
+caffe,1700,3500,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00324939117647,5.27623422864e-06,0.001624
+caffe,1700,3500,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.07666862745e-05,2.16908265619e-07,0.020146
+caffe,1700,3500,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00239338823529,2.53761096995e-06,0.001060
+caffe,1700,3500,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.55892941176e-05,3.62242920017e-07,0.023237
+caffe,1700,3500,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0113951614379,0.0028085030409,0.246465
+caffe,1700,3500,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00164273986928,5.96464901662e-06,0.003631
+caffe,1700,3500,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00163309215686,1.22373505688e-05,0.007493
+caffe,1700,3500,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,3.03574803922e-05,9.56183546766e-07,0.031497
+caffe,1700,3500,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00126829411765,4.54783622201e-07,0.000359
+caffe,1700,3500,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,5.86329411765e-05,6.39052313418e-07,0.010899
+caffe,1700,3500,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00700758823529,1.66705640195e-05,0.002379
+caffe,1700,3500,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000538377058824,0.00032452684994,0.602787
+caffe,1700,3500,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000818590653595,2.2651510715e-06,0.002767
+caffe,1700,3500,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,2.29869607843e-06,9.18420200741e-08,0.039954
+caffe,1700,3500,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0216412156863,0.000129713608176,0.005994
+caffe,1700,3500,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00064320627451,3.28466196573e-07,0.000511
+caffe,1700,3500,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,2.25990849673e-06,7.97396383727e-08,0.035284
+caffe,1700,3500,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00542373071895,2.25550402496e-05,0.004159
+caffe,1700,3500,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000207561176471,1.00735526454e-06,0.004853
+caffe,1700,3500,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000167335490196,2.30228477528e-07,0.001376
+caffe,1700,3500,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00263126382353,0.0021402253003,0.813383
+caffe,1700,3500,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,6.318e-06,4.00188925972e-07,0.063341
+caffe,1700,3500,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,5.43005882353e-06,9.9509859944e-08,0.018326
+caffe,1700,3500,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.00262,0.0,0.000000
+caffe,1700,3500,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,6.13912745098e-06,2.08237264355e-07,0.033920
+caffe,1700,3500,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.96805882353e-06,4.22623060707e-07,0.106506
+caffe,1700,3500,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000291647843137,6.05657423189e-06,0.020767
+caffe,1700,3500,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.93762745098e-06,3.48790407227e-08,0.018001
+caffe,1700,3500,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,4.24237254902e-06,8.87607404789e-08,0.020922
+caffe,1700,3500,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.44458823529e-06,2.50205889844e-07,0.102351
+caffe,1700,3500,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.74939215686e-06,3.50298700463e-07,0.200240
+caffe,1700,3500,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,3.20131372549e-06,8.04198517576e-08,0.025121
+caffe,1700,3500,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.631e-06,6.1008838961e-08,0.023188
+caffe,1700,3500,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.73623529412e-06,1.52785743038e-08,0.008800
+caffe,1700,3500,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.80335294118e-06,3.28005401255e-08,0.018189
+caffe,1700,3500,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.8838627451e-06,9.11052009036e-08,0.031591
+caffe,1700,3500,[CUDA memcpy HtoD],412,0.0011230781432,0.00396332616746,3.528985
+caffe,1700,3500,[CUDA memcpy DtoH],261,0.00124554221073,0.00243602072009,1.955791
+caffe,1700,3500,[CUDA memset],43,1.08046511628e-06,7.25775764068e-08,0.067173
+caffe,1700,4000,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00329940980392,4.14235712708e-05,0.012555
+caffe,1700,4000,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00567820196078,2.30414459496e-05,0.004058
+caffe,1700,4000,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.18437014471e-06,5.26068556855e-07,0.444176
+caffe,1700,4000,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00552551176471,9.08529618063e-06,0.001644
+caffe,1700,4000,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.24364705882e-06,1.77418727434e-07,0.021522
+caffe,1700,4000,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0203280196078,4.85299544434e-05,0.002387
+caffe,1700,4000,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.0039695254902,3.94043110696e-06,0.000993
+caffe,1700,4000,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.71045098039e-06,2.52939992397e-07,0.029039
+caffe,1700,4000,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.00996227941176,0.00268438922576,0.269455
+caffe,1700,4000,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00277007352941,6.6607855403e-06,0.002405
+caffe,1700,4000,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00276714803922,3.63597845051e-06,0.001314
+caffe,1700,4000,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.01412156863e-05,2.65294753851e-07,0.026160
+caffe,1700,4000,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00205725686275,1.4638459822e-06,0.000712
+caffe,1700,4000,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.39623333333e-05,3.21648978483e-07,0.023037
+caffe,1700,4000,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0111080163399,0.00287268895781,0.258614
+caffe,1700,4000,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.0014064124183,1.17312125995e-05,0.008341
+caffe,1700,4000,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00139285686275,1.14180327776e-05,0.008198
+caffe,1700,4000,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.74952647059e-05,5.40286034021e-07,0.019650
+caffe,1700,4000,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00109931960784,8.70924727411e-06,0.007922
+caffe,1700,4000,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,5.05737254902e-05,1.17691152946e-06,0.023271
+caffe,1700,4000,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00670677647059,8.88420355997e-05,0.013247
+caffe,1700,4000,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000458062320261,0.000274876275113,0.600085
+caffe,1700,4000,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00069729503268,1.87198336824e-06,0.002685
+caffe,1700,4000,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,2.02232352941e-06,1.17600450326e-07,0.058151
+caffe,1700,4000,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0216039607843,0.00016888555828,0.007817
+caffe,1700,4000,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000553192941176,2.69016320794e-07,0.000486
+caffe,1700,4000,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.95791503268e-06,4.86083383622e-08,0.024827
+caffe,1700,4000,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00541388823529,3.70558207104e-05,0.006845
+caffe,1700,4000,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000177077843137,8.16254751001e-07,0.004610
+caffe,1700,4000,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000144509803922,2.28614670211e-07,0.001582
+caffe,1700,4000,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00230999656863,0.00182626443376,0.790592
+caffe,1700,4000,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.93460784314e-06,3.16919676743e-07,0.053402
+caffe,1700,4000,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,5.12892156863e-06,5.73854675657e-08,0.011189
+caffe,1700,4000,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0025889,0.0,0.000000
+caffe,1700,4000,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.98068627451e-06,1.45032719797e-07,0.024250
+caffe,1700,4000,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,4.13060784314e-06,3.47157707194e-07,0.084045
+caffe,1700,4000,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000284944901961,5.37319467997e-06,0.018857
+caffe,1700,4000,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.93950980392e-06,4.06338854773e-08,0.020951
+caffe,1700,4000,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,4.41233333333e-06,6.13404727303e-08,0.013902
+caffe,1700,4000,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.41949019608e-06,3.17253555585e-07,0.131124
+caffe,1700,4000,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.62390196078e-06,3.89635589172e-07,0.239938
+caffe,1700,4000,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,3.15619607843e-06,1.04313633348e-07,0.033050
+caffe,1700,4000,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.66739215686e-06,9.5571978507e-08,0.035830
+caffe,1700,4000,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.74496078431e-06,1.59913711834e-08,0.009164
+caffe,1700,4000,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.76880392157e-06,3.17490278424e-08,0.017949
+caffe,1700,4000,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.5927254902e-06,1.06854689389e-07,0.041213
+caffe,1700,4000,[CUDA memcpy HtoD],412,0.00111079525728,0.00394653630131,3.552893
+caffe,1700,4000,[CUDA memcpy DtoH],261,0.00124509255172,0.00243516369232,1.955809
+caffe,1700,4000,[CUDA memset],43,1.09827906977e-06,6.09907829794e-08,0.055533
+caffe,1700,4500,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00304931960784,5.29960006616e-05,0.017380
+caffe,1700,4500,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00492928137255,1.92598216879e-05,0.003907
+caffe,1700,4500,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.17491012947e-06,4.56759773602e-07,0.388761
+caffe,1700,4500,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00480893235294,5.63962107204e-06,0.001173
+caffe,1700,4500,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.70650980392e-06,1.38324337891e-07,0.017949
+caffe,1700,4500,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0180599803922,3.5061565011e-05,0.001941
+caffe,1700,4500,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00347629019608,3.84219376174e-06,0.001105
+caffe,1700,4500,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.09998039216e-06,1.76805807974e-07,0.021828
+caffe,1700,4500,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.00972809215686,0.00260741513767,0.268029
+caffe,1700,4500,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00240876470588,4.68662358204e-06,0.001946
+caffe,1700,4500,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00240856862745,2.40277537208e-06,0.000998
+caffe,1700,4500,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,9.47088235294e-06,2.02958862543e-07,0.021430
+caffe,1700,4500,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00180167058824,1.48855689e-06,0.000826
+caffe,1700,4500,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.25160196078e-05,2.53597371963e-07,0.020262
+caffe,1700,4500,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0111250928105,0.00297049304083,0.267008
+caffe,1700,4500,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00121613921569,3.51337752129e-06,0.002889
+caffe,1700,4500,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00120782156863,2.2803491642e-06,0.001888
+caffe,1700,4500,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.43720098039e-05,4.54879783625e-07,0.018664
+caffe,1700,4500,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000960128823529,3.33034629717e-06,0.003469
+caffe,1700,4500,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,4.4996254902e-05,1.12520340371e-06,0.025007
+caffe,1700,4500,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00672923333333,4.50632438658e-05,0.006697
+caffe,1700,4500,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000400089738562,0.000239917595913,0.599659
+caffe,1700,4500,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000608035098039,3.41390584155e-06,0.005615
+caffe,1700,4500,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,2.36869607843e-06,7.28880027101e-07,0.307714
+caffe,1700,4500,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0216931764706,8.8928966119e-05,0.004099
+caffe,1700,4500,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000484547647059,2.17522486873e-07,0.000449
+caffe,1700,4500,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,2.05182352941e-06,6.85359614251e-08,0.033402
+caffe,1700,4500,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00543627843137,1.92516799748e-05,0.003541
+caffe,1700,4500,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000154508888889,7.61310836826e-07,0.004927
+caffe,1700,4500,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000127123529412,1.57987633289e-07,0.001243
+caffe,1700,4500,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.0020744977451,0.00160056143597,0.771542
+caffe,1700,4500,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.56501960784e-06,2.39556574856e-07,0.043047
+caffe,1700,4500,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,5.27033333333e-06,7.87516988094e-08,0.014942
+caffe,1700,4500,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0026473,0.0,0.000000
+caffe,1700,4500,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.77116666667e-06,1.41617690496e-07,0.024539
+caffe,1700,4500,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,4.114e-06,2.82193995295e-07,0.068594
+caffe,1700,4500,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000281376078431,4.67510263217e-06,0.016615
+caffe,1700,4500,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.94515686275e-06,2.22282037317e-08,0.011427
+caffe,1700,4500,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,3.9272745098e-06,5.27264782354e-08,0.013426
+caffe,1700,4500,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.44207843137e-06,3.63396765994e-07,0.148806
+caffe,1700,4500,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.61321568627e-06,2.80915821159e-07,0.174134
+caffe,1700,4500,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,3.15176470588e-06,1.13297904768e-07,0.035947
+caffe,1700,4500,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.37996078431e-06,9.5758061307e-08,0.040235
+caffe,1700,4500,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.84294117647e-06,8.81866140224e-08,0.047851
+caffe,1700,4500,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.73684313725e-06,2.90768909988e-08,0.016741
+caffe,1700,4500,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.78090196078e-06,7.69161129252e-08,0.027659
+caffe,1700,4500,[CUDA memcpy HtoD],412,0.00112102196359,0.00396024800256,3.532712
+caffe,1700,4500,[CUDA memcpy DtoH],261,0.00124520308429,0.00243538241468,1.955811
+caffe,1700,4500,[CUDA memset],43,1.08418604651e-06,7.28267315521e-08,0.067172
+caffe,1700,5000,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.0028980745098,5.99296772309e-05,0.020679
+caffe,1700,5000,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00436065392157,1.62935490156e-05,0.003736
+caffe,1700,5000,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.17153769992e-06,3.54660723476e-07,0.302731
+caffe,1700,5000,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00426426372549,5.20393495942e-06,0.001220
+caffe,1700,5000,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.51078431373e-06,2.13482727751e-07,0.028423
+caffe,1700,5000,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0162611764706,0.000106963197974,0.006578
+caffe,1700,5000,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00310794901961,2.82526226782e-06,0.000909
+caffe,1700,5000,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.85021568627e-06,1.7801688769e-07,0.022677
+caffe,1700,5000,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.0095883127451,0.0026011881647,0.271287
+caffe,1700,5000,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00213325784314,3.69831536303e-06,0.001734
+caffe,1700,5000,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00213607254902,2.27411507731e-06,0.001065
+caffe,1700,5000,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.937e-06,2.19090812938e-07,0.024515
+caffe,1700,5000,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00160646078431,1.10508245303e-06,0.000688
+caffe,1700,5000,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.19231372549e-05,2.97788780231e-07,0.024976
+caffe,1700,5000,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0111057686275,0.00301136900369,0.271154
+caffe,1700,5000,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00107739869281,2.69952760157e-06,0.002506
+caffe,1700,5000,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00107120588235,1.61156909266e-06,0.001504
+caffe,1700,5000,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.21442352941e-05,4.28876717431e-07,0.019367
+caffe,1700,5000,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000854783921569,1.96189968277e-07,0.000230
+caffe,1700,5000,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,4.08242156863e-05,3.567918223e-07,0.008740
+caffe,1700,5000,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00669760980392,4.28149930442e-05,0.006393
+caffe,1700,5000,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.00035454624183,0.00021158990226,0.596791
+caffe,1700,5000,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000539555359477,2.95676692054e-06,0.005480
+caffe,1700,5000,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,2.6513627451e-06,1.00432190361e-06,0.378795
+caffe,1700,5000,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0216080980392,2.9018759924e-05,0.001343
+caffe,1700,5000,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000431515882353,1.90882126348e-07,0.000442
+caffe,1700,5000,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.99410457516e-06,6.76911636715e-08,0.033946
+caffe,1700,5000,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00541559084967,8.68615726523e-06,0.001604
+caffe,1700,5000,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000137453921569,6.99747139478e-07,0.005091
+caffe,1700,5000,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00011364745098,2.09011146501e-07,0.001839
+caffe,1700,5000,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00189402284314,0.00143141928031,0.755756
+caffe,1700,5000,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.36140196078e-06,2.3617820041e-07,0.044052
+caffe,1700,5000,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.98930392157e-06,5.09709238945e-08,0.010216
+caffe,1700,5000,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0026426,0.0,0.000000
+caffe,1700,5000,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.48879411765e-06,1.23955110331e-07,0.022583
+caffe,1700,5000,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,4.08385294118e-06,2.36818098352e-07,0.057989
+caffe,1700,5000,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000276089803922,3.91767412501e-06,0.014190
+caffe,1700,5000,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.9582745098e-06,2.37272726603e-08,0.012116
+caffe,1700,5000,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,4.23790196078e-06,6.65102837108e-08,0.015694
+caffe,1700,5000,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.5387254902e-06,2.64840912546e-07,0.104320
+caffe,1700,5000,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.52661764706e-06,2.61579817389e-07,0.171346
+caffe,1700,5000,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,2.87005882353e-06,6.44330970137e-08,0.022450
+caffe,1700,5000,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.58264705882e-06,1.86776454779e-07,0.072320
+caffe,1700,5000,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.75750980392e-06,4.09927648083e-08,0.023324
+caffe,1700,5000,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.72807843137e-06,2.76687996843e-08,0.016011
+caffe,1700,5000,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.73888235294e-06,8.07177719476e-08,0.029471
+caffe,1700,5000,[CUDA memcpy HtoD],412,0.00112272376456,0.00396296999222,3.529782
+caffe,1700,5000,[CUDA memcpy DtoH],261,0.00124619371264,0.00243739890709,1.955875
+caffe,1700,5000,[CUDA memset],43,1.10423255814e-06,6.34298136963e-08,0.057442
+caffe,1600,3500,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00373725294118,2.79229005245e-05,0.007472
+caffe,1600,3500,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00665269019608,2.23842798033e-05,0.003365
+caffe,1600,3500,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.20657044935e-06,3.62000256396e-07,0.300024
+caffe,1600,3500,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00647103921569,1.0356679732e-05,0.001600
+caffe,1600,3500,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.90498039216e-06,1.85598817841e-07,0.020842
+caffe,1600,3500,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0234959019608,5.01297355699e-05,0.002134
+caffe,1600,3500,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00460967647059,3.96205473704e-06,0.000860
+caffe,1600,3500,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,9.39129411765e-06,2.22845175668e-07,0.023729
+caffe,1600,3500,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.0107626705882,0.00285148520725,0.264942
+caffe,1600,3500,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00324482156863,5.0618261343e-06,0.001560
+caffe,1600,3500,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00324129117647,3.0277832097e-06,0.000934
+caffe,1600,3500,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.09360196078e-05,2.65937961968e-07,0.024318
+caffe,1600,3500,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00238786470588,1.77949359721e-06,0.000745
+caffe,1600,3500,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.57216862745e-05,2.63463394801e-07,0.016758
+caffe,1600,3500,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0118255901961,0.00296818291757,0.250997
+caffe,1600,3500,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00164258104575,1.4685588292e-05,0.008941
+caffe,1600,3500,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.0016259379085,7.41371284238e-06,0.004560
+caffe,1600,3500,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,3.16050686275e-05,7.22644222118e-07,0.022865
+caffe,1600,3500,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.001266,3.53137200466e-07,0.000279
+caffe,1600,3500,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,5.98826470588e-05,5.98952314824e-07,0.010002
+caffe,1600,3500,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00720908235294,1.99793393861e-05,0.002771
+caffe,1600,3500,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000536377026144,0.000322775140808,0.601769
+caffe,1600,3500,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000816367124183,2.09669508793e-06,0.002568
+caffe,1600,3500,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,2.19894117647e-06,1.0315273499e-07,0.046910
+caffe,1600,3500,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0227255490196,0.000143981250648,0.006336
+caffe,1600,3500,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000641724313725,2.26501568206e-07,0.000353
+caffe,1600,3500,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,2.1028496732e-06,6.16630917079e-08,0.029324
+caffe,1600,3500,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00568994901961,1.58911333754e-05,0.002793
+caffe,1600,3500,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000206931111111,9.57383113264e-07,0.004627
+caffe,1600,3500,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000167235686275,2.0392477373e-07,0.001219
+caffe,1600,3500,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00263546421569,0.00213558583531,0.810326
+caffe,1600,3500,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,6.45480392157e-06,4.12925717082e-07,0.063972
+caffe,1600,3500,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,5.58879411765e-06,8.92531471665e-08,0.015970
+caffe,1600,3500,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.002758,0.0,0.000000
+caffe,1600,3500,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,6.30479411765e-06,1.98913536159e-07,0.031550
+caffe,1600,3500,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,4.12491176471e-06,4.0953871954e-07,0.099284
+caffe,1600,3500,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000305308235294,5.73119797417e-06,0.018772
+caffe,1600,3500,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,2.07249019608e-06,3.44744136716e-08,0.016634
+caffe,1600,3500,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,4.64262745098e-06,1.05262875564e-07,0.022673
+caffe,1600,3500,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.81037254902e-06,2.27650313263e-07,0.081004
+caffe,1600,3500,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.69385294118e-06,3.69955360239e-07,0.218411
+caffe,1600,3500,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,3.51441176471e-06,1.34404303221e-07,0.038244
+caffe,1600,3500,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.51488235294e-06,5.67780843729e-08,0.022577
+caffe,1600,3500,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.82717647059e-06,9.50480968516e-09,0.005202
+caffe,1600,3500,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.91815686275e-06,3.93408297355e-08,0.020510
+caffe,1600,3500,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.78594117647e-06,1.30529151092e-07,0.046853
+caffe,1600,3500,[CUDA memcpy HtoD],412,0.00112127795631,0.0039607709164,3.532372
+caffe,1600,3500,[CUDA memcpy DtoH],261,0.0012451307433,0.00243526113772,1.955828
+caffe,1600,3500,[CUDA memset],43,1.08118604651e-06,7.19390102841e-08,0.066537
+caffe,1600,4000,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00335979411765,3.7137314947e-05,0.011053
+caffe,1600,4000,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.0056441745098,2.03845851327e-05,0.003612
+caffe,1600,4000,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.17939451637e-06,4.93214514413e-07,0.418193
+caffe,1600,4000,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00550928921569,7.81262059499e-06,0.001418
+caffe,1600,4000,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.10998039216e-06,1.7231213017e-07,0.021247
+caffe,1600,4000,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0203638627451,4.50529186049e-05,0.002212
+caffe,1600,4000,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.0039687254902,5.35624404316e-06,0.001350
+caffe,1600,4000,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.63262745098e-06,2.31034668546e-07,0.026763
+caffe,1600,4000,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.0103500372549,0.00276949653434,0.267583
+caffe,1600,4000,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00275649803922,5.14328003211e-06,0.001866
+caffe,1600,4000,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00275943823529,2.99211526325e-06,0.001084
+caffe,1600,4000,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.01499803922e-05,2.46555604848e-07,0.024291
+caffe,1600,4000,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00205705294118,1.40116939133e-06,0.000681
+caffe,1600,4000,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.44648823529e-05,2.81456341967e-07,0.019458
+caffe,1600,4000,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0116977281046,0.00307275483836,0.262680
+caffe,1600,4000,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00139955947712,1.09843408322e-05,0.007848
+caffe,1600,4000,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00138581633987,8.73186978843e-06,0.006301
+caffe,1600,4000,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.73684901961e-05,5.53334078876e-07,0.020218
+caffe,1600,4000,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00109638627451,8.28984778611e-06,0.007561
+caffe,1600,4000,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,5.10398823529e-05,1.38071018451e-06,0.027052
+caffe,1600,4000,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00705466470588,3.29081062993e-05,0.004665
+caffe,1600,4000,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000456192745098,0.000273171192159,0.598807
+caffe,1600,4000,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000695349281046,1.79725538922e-06,0.002585
+caffe,1600,4000,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,2.15185294118e-06,1.10895764259e-07,0.051535
+caffe,1600,4000,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0228155098039,6.78014322681e-05,0.002972
+caffe,1600,4000,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000552870392157,2.56995924163e-07,0.000465
+caffe,1600,4000,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,2.15636601307e-06,8.72732731388e-08,0.040472
+caffe,1600,4000,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00571716078431,6.53509615368e-06,0.001143
+caffe,1600,4000,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000176802745098,8.16526386747e-07,0.004618
+caffe,1600,4000,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000144869411765,2.46046478669e-07,0.001698
+caffe,1600,4000,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00232032176471,0.00182393394256,0.786069
+caffe,1600,4000,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.99895098039e-06,2.93895085237e-07,0.048991
+caffe,1600,4000,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,5.54643137255e-06,6.07699793345e-08,0.010957
+caffe,1600,4000,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0028055,0.0,0.000000
+caffe,1600,4000,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,6.09180392157e-06,1.41079871636e-07,0.023159
+caffe,1600,4000,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,4.17108823529e-06,3.26525833075e-07,0.078283
+caffe,1600,4000,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000299853333333,5.08385590371e-06,0.016954
+caffe,1600,4000,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,2.12584313725e-06,3.05212060956e-08,0.014357
+caffe,1600,4000,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,4.56925490196e-06,9.01266740645e-08,0.019725
+caffe,1600,4000,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.6347254902e-06,1.54933012524e-07,0.058804
+caffe,1600,4000,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.65400980392e-06,3.43977213538e-07,0.207966
+caffe,1600,4000,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,3.20190196078e-06,8.46205497922e-08,0.026428
+caffe,1600,4000,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.53621568627e-06,6.96366800251e-08,0.027457
+caffe,1600,4000,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.84915686275e-06,4.12012623779e-08,0.022281
+caffe,1600,4000,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.8622745098e-06,4.34529623672e-08,0.023333
+caffe,1600,4000,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.95980392157e-06,1.39754689789e-07,0.047218
+caffe,1600,4000,[CUDA memcpy HtoD],412,0.00111360943447,0.00394663073529,3.543999
+caffe,1600,4000,[CUDA memcpy DtoH],261,0.00124522177395,0.00243538488463,1.955784
+caffe,1600,4000,[CUDA memset],43,1.10053488372e-06,6.11545312312e-08,0.055568
+caffe,1600,4500,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00313605294118,4.14341923449e-05,0.013212
+caffe,1600,4500,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00489911764706,1.63626751958e-05,0.003340
+caffe,1600,4500,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.19321553694e-06,4.60462140783e-07,0.385900
+caffe,1600,4500,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00479503235294,5.33582347072e-06,0.001113
+caffe,1600,4500,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.96311764706e-06,1.30668814567e-07,0.016409
+caffe,1600,4500,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0181173529412,2.44747356968e-05,0.001351
+caffe,1600,4500,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00348075294118,3.582766646e-06,0.001029
+caffe,1600,4500,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.26125490196e-06,1.19240380569e-07,0.014434
+caffe,1600,4500,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.0102034333333,0.00274999452739,0.269517
+caffe,1600,4500,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00239450392157,3.29157932082e-06,0.001375
+caffe,1600,4500,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00240203627451,1.70321433234e-06,0.000709
+caffe,1600,4500,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,9.70949019608e-06,1.85173514024e-07,0.019071
+caffe,1600,4500,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00180384313725,1.44497166021e-06,0.000801
+caffe,1600,4500,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.28329215686e-05,2.8235326525e-07,0.022002
+caffe,1600,4500,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0117294666667,0.00314899577546,0.268469
+caffe,1600,4500,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00121367320261,7.34549799017e-06,0.006052
+caffe,1600,4500,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00120912287582,9.1470735113e-06,0.007565
+caffe,1600,4500,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.46530980392e-05,4.93869842935e-07,0.020033
+caffe,1600,4500,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00097201627451,5.22189844555e-06,0.005372
+caffe,1600,4500,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,4.37851568627e-05,1.05993502155e-06,0.024208
+caffe,1600,4500,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00708412745098,5.30200224053e-05,0.007484
+caffe,1600,4500,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000397309019608,0.000237153731337,0.596900
+caffe,1600,4500,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000605883267974,1.64697854872e-06,0.002718
+caffe,1600,4500,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,2.10825490196e-06,1.40579590622e-07,0.066681
+caffe,1600,4500,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0228987156863,8.77341547563e-05,0.003831
+caffe,1600,4500,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000484802941176,2.18670619145e-07,0.000451
+caffe,1600,4500,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,2.09722222222e-06,7.90667147953e-08,0.037701
+caffe,1600,4500,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.0057396620915,2.29336838965e-05,0.003996
+caffe,1600,4500,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00015424627451,7.29443231453e-07,0.004729
+caffe,1600,4500,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00012722,2.01776424515e-07,0.001586
+caffe,1600,4500,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00209222196078,0.00159788982144,0.763729
+caffe,1600,4500,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.68862745098e-06,3.12922339597e-07,0.055008
+caffe,1600,4500,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,5.49347058824e-06,8.34868436133e-08,0.015197
+caffe,1600,4500,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0027741,0.0,0.000000
+caffe,1600,4500,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.91193137255e-06,1.31318222964e-07,0.022212
+caffe,1600,4500,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,4.32420588235e-06,2.64728656428e-07,0.061220
+caffe,1600,4500,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000295293921569,4.6661614902e-06,0.015802
+caffe,1600,4500,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,2.08192156863e-06,2.93423625613e-08,0.014094
+caffe,1600,4500,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,4.08919607843e-06,4.91647967506e-08,0.012023
+caffe,1600,4500,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.6297254902e-06,2.50121074872e-07,0.095113
+caffe,1600,4500,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.65679411765e-06,3.73700318706e-07,0.225556
+caffe,1600,4500,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,3.13607843137e-06,1.09782287785e-07,0.035006
+caffe,1600,4500,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.69054901961e-06,2.17778743064e-07,0.080942
+caffe,1600,4500,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.85231372549e-06,2.73305762809e-08,0.014755
+caffe,1600,4500,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.88364705882e-06,6.43805547093e-08,0.034179
+caffe,1600,4500,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.892e-06,6.48987144499e-08,0.022441
+caffe,1600,4500,[CUDA memcpy HtoD],412,0.00111086889078,0.00395291726722,3.558401
+caffe,1600,4500,[CUDA memcpy DtoH],261,0.00124522234483,0.00243540384362,1.955798
+caffe,1600,4500,[CUDA memset],43,1.09676744186e-06,8.20810255414e-08,0.074839
+caffe,1600,5000,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00301666666667,4.44539491471e-05,0.014736
+caffe,1600,5000,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.0043361872549,1.38215920281e-05,0.003187
+caffe,1600,5000,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.197770754e-06,5.33444114222e-07,0.445364
+caffe,1600,5000,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00425023333333,4.15615143748e-06,0.000978
+caffe,1600,5000,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.3677254902e-06,1.52706700603e-07,0.020726
+caffe,1600,5000,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0162582745098,0.000118751689925,0.007304
+caffe,1600,5000,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00311188039216,5.14720634709e-06,0.001654
+caffe,1600,5000,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.70966666667e-06,1.63156326657e-07,0.021163
+caffe,1600,5000,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.0101456294118,0.00276599307584,0.272629
+caffe,1600,5000,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00212341176471,3.34163556636e-06,0.001574
+caffe,1600,5000,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00212926862745,1.81669708873e-06,0.000853
+caffe,1600,5000,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.932e-06,2.19805082994e-07,0.024609
+caffe,1600,5000,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00160717058824,8.53893991135e-07,0.000531
+caffe,1600,5000,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.16589411765e-05,2.06798415794e-07,0.017737
+caffe,1600,5000,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0117447666667,0.00318684063138,0.271341
+caffe,1600,5000,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.0010716254902,2.93211938811e-06,0.002736
+caffe,1600,5000,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00106772156863,2.11598155275e-06,0.001982
+caffe,1600,5000,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.22477254902e-05,3.70875967768e-07,0.016670
+caffe,1600,5000,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000856289019608,1.71321421906e-06,0.002001
+caffe,1600,5000,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,4.08932156863e-05,4.98782333513e-07,0.012197
+caffe,1600,5000,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.0070845,4.1978089523e-05,0.005925
+caffe,1600,5000,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000353360653595,0.000210499518627,0.595707
+caffe,1600,5000,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000538320261438,3.23835065494e-06,0.006016
+caffe,1600,5000,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,2.51488235294e-06,9.40986833836e-07,0.374167
+caffe,1600,5000,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0229532156863,2.91492533288e-05,0.001270
+caffe,1600,5000,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000431867254902,2.58995634995e-07,0.000600
+caffe,1600,5000,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.89201960784e-06,3.96084546643e-08,0.020934
+caffe,1600,5000,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00575235555556,6.63654852505e-06,0.001154
+caffe,1600,5000,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000137072810458,7.09676772155e-07,0.005177
+caffe,1600,5000,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000114042745098,2.56729646702e-07,0.002251
+caffe,1600,5000,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00191918960784,0.00142954379316,0.744868
+caffe,1600,5000,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.31812745098e-06,2.19215610202e-07,0.041220
+caffe,1600,5000,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,5.43352941176e-06,8.17474237625e-08,0.015045
+caffe,1600,5000,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0028003,0.0,0.000000
+caffe,1600,5000,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.74384313725e-06,1.20146866425e-07,0.020918
+caffe,1600,5000,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,4.16729411765e-06,2.0468907977e-07,0.049118
+caffe,1600,5000,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000291579215686,3.98481029791e-06,0.013666
+caffe,1600,5000,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,2.03364705882e-06,2.70459474906e-08,0.013299
+caffe,1600,5000,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,4.37152941176e-06,5.29966158524e-08,0.012123
+caffe,1600,5000,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.61533333333e-06,2.71113294216e-07,0.103663
+caffe,1600,5000,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.61858823529e-06,3.90610139948e-07,0.241328
+caffe,1600,5000,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,2.92966666667e-06,6.58970280108e-08,0.022493
+caffe,1600,5000,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.48850980392e-06,7.90557937873e-08,0.031768
+caffe,1600,5000,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.90435294118e-06,6.83605847706e-08,0.035897
+caffe,1600,5000,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.58688235294e-06,4.3051108277e-08,0.027129
+caffe,1600,5000,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.63221568627e-06,6.66910681986e-08,0.025336
+caffe,1600,5000,[CUDA memcpy HtoD],412,0.00111978695874,0.00395940158245,3.535853
+caffe,1600,5000,[CUDA memcpy DtoH],261,0.00124527501149,0.00243553372926,1.955820
+caffe,1600,5000,[CUDA memset],43,1.10574418605e-06,9.39200781029e-08,0.084938
+caffe,1800,3500,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.0036768372549,3.08930981618e-05,0.008402
+caffe,1800,3500,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00672225294118,2.73175003374e-05,0.004064
+caffe,1800,3500,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.16214166032e-06,2.69491905287e-07,0.231892
+caffe,1800,3500,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00651198823529,1.54040820546e-05,0.002365
+caffe,1800,3500,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.40992156863e-06,2.3478441034e-07,0.027918
+caffe,1800,3500,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0235078235294,4.5138873244e-05,0.001920
+caffe,1800,3500,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00461550196078,7.98912226635e-06,0.001731
+caffe,1800,3500,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,9.05564705882e-06,2.30224768563e-07,0.025423
+caffe,1800,3500,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.0105078098039,0.00254872908885,0.242556
+caffe,1800,3500,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00327614019608,7.20253577084e-06,0.002198
+caffe,1800,3500,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00326119901961,4.86624014579e-06,0.001492
+caffe,1800,3500,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.08094509804e-05,2.51649562883e-07,0.023281
+caffe,1800,3500,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00239970392157,2.68940993487e-06,0.001121
+caffe,1800,3500,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.55938039216e-05,3.42009231592e-07,0.021932
+caffe,1800,3500,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0109815437908,0.00266842827149,0.242992
+caffe,1800,3500,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.0016522751634,8.66692519257e-06,0.005245
+caffe,1800,3500,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00163963202614,1.32289327083e-05,0.008068
+caffe,1800,3500,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.99248137255e-05,1.16377674338e-06,0.038890
+caffe,1800,3500,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00127227647059,5.46858491677e-07,0.000430
+caffe,1800,3500,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,5.83668823529e-05,5.58982536718e-07,0.009577
+caffe,1800,3500,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00682855098039,2.33984863977e-05,0.003427
+caffe,1800,3500,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000540612908497,0.000326315713747,0.603603
+caffe,1800,3500,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000821366797386,2.25470913261e-06,0.002745
+caffe,1800,3500,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,1.9156372549e-06,6.09504442255e-08,0.031817
+caffe,1800,3500,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0205501764706,0.000173368722543,0.008436
+caffe,1800,3500,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000644877647059,3.13622654715e-07,0.000486
+caffe,1800,3500,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.8671372549e-06,6.08560992935e-08,0.032593
+caffe,1800,3500,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00514770653595,3.12996411957e-05,0.006080
+caffe,1800,3500,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00020799745098,9.38898345832e-07,0.004514
+caffe,1800,3500,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000167550784314,2.09554552187e-07,0.001251
+caffe,1800,3500,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00261966901961,0.00214205932655,0.817683
+caffe,1800,3500,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,6.11300980392e-06,3.75516154455e-07,0.061429
+caffe,1800,3500,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.91589215686e-06,6.04794417936e-08,0.012303
+caffe,1800,3500,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0025071,0.0,0.000000
+caffe,1800,3500,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.93080392157e-06,2.31030005657e-07,0.038954
+caffe,1800,3500,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,4.00511764706e-06,4.67230414966e-07,0.116658
+caffe,1800,3500,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000277635490196,5.7524948769e-06,0.020720
+caffe,1800,3500,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.85603921569e-06,1.89787918625e-08,0.010225
+caffe,1800,3500,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,4.46441176471e-06,9.83084733887e-08,0.022020
+caffe,1800,3500,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.577e-06,2.19668913077e-07,0.085242
+caffe,1800,3500,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.57526470588e-06,4.51780246043e-07,0.286796
+caffe,1800,3500,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,3.08084313725e-06,9.14594890603e-08,0.029687
+caffe,1800,3500,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.53243137255e-06,5.34122901705e-08,0.021091
+caffe,1800,3500,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.65094117647e-06,2.99164927723e-08,0.018121
+caffe,1800,3500,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.49905882353e-06,2.93106497173e-08,0.019553
+caffe,1800,3500,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.58705882353e-06,1.24509297513e-07,0.048128
+caffe,1800,3500,[CUDA memcpy HtoD],412,0.00112204369903,0.00395870386818,3.528119
+caffe,1800,3500,[CUDA memcpy DtoH],261,0.001245399659,0.00243574727685,1.955796
+caffe,1800,3500,[CUDA memset],43,1.07751162791e-06,9.7173154512e-08,0.090183
+caffe,1800,4000,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00325340784314,4.49756659397e-05,0.013824
+caffe,1800,4000,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00570517843137,2.5934644962e-05,0.004546
+caffe,1800,4000,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.15110129474e-06,3.50099138965e-07,0.304143
+caffe,1800,4000,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00554479019608,1.16309215136e-05,0.002098
+caffe,1800,4000,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.47137254902e-06,2.35246884148e-07,0.031486
+caffe,1800,4000,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0203134117647,4.71061281849e-05,0.002319
+caffe,1800,4000,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00396511372549,4.06269588887e-06,0.001025
+caffe,1800,4000,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.1238627451e-06,2.72358617369e-07,0.033526
+caffe,1800,4000,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.00957653431373,0.00259982850002,0.271479
+caffe,1800,4000,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00278434411765,6.63956609629e-06,0.002385
+caffe,1800,4000,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00277684509804,3.42189110228e-06,0.001232
+caffe,1800,4000,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,9.42011764706e-06,2.65710785354e-07,0.028207
+caffe,1800,4000,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00205551960784,1.7556652957e-06,0.000854
+caffe,1800,4000,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.3719627451e-05,4.15809107823e-07,0.030308
+caffe,1800,4000,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.010579672549,0.00269894655613,0.255107
+caffe,1800,4000,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00140651372549,9.48090656998e-06,0.006741
+caffe,1800,4000,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00139549934641,9.22820694904e-06,0.006613
+caffe,1800,4000,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.64954019608e-05,1.034905009e-06,0.039060
+caffe,1800,4000,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00109367843137,2.62203128479e-07,0.000240
+caffe,1800,4000,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,5.14515294118e-05,6.27062662314e-07,0.012187
+caffe,1800,4000,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00639897843137,4.40531555645e-05,0.006884
+caffe,1800,4000,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000459777777778,0.000276293963792,0.600929
+caffe,1800,4000,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000699860849673,1.91994449393e-06,0.002743
+caffe,1800,4000,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,1.85632352941e-06,6.06880745085e-08,0.032693
+caffe,1800,4000,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0204710980392,0.000138441005331,0.006763
+caffe,1800,4000,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000553352941176,2.75448255826e-07,0.000498
+caffe,1800,4000,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.82031372549e-06,6.16011279275e-08,0.033841
+caffe,1800,4000,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00513242222222,3.21051239415e-05,0.006255
+caffe,1800,4000,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000177539411765,7.88761116197e-07,0.004443
+caffe,1800,4000,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000144791176471,2.62869885497e-07,0.001816
+caffe,1800,4000,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.0022918022549,0.00183023905224,0.798603
+caffe,1800,4000,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.80654901961e-06,2.33642370731e-07,0.040238
+caffe,1800,4000,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,5.00842156863e-06,7.89952140862e-08,0.015772
+caffe,1800,4000,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0024888,0.0,0.000000
+caffe,1800,4000,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.68269607843e-06,1.63136343146e-07,0.028708
+caffe,1800,4000,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.93700980392e-06,3.46800713953e-07,0.088087
+caffe,1800,4000,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000270897843137,4.87037837791e-06,0.017979
+caffe,1800,4000,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.85541176471e-06,2.24256300067e-08,0.012087
+caffe,1800,4000,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,4.11680392157e-06,7.16697271415e-08,0.017409
+caffe,1800,4000,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.39625490196e-06,2.07243992144e-07,0.086487
+caffe,1800,4000,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.51783333333e-06,3.70442927343e-07,0.244060
+caffe,1800,4000,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,2.91331372549e-06,8.76189365771e-08,0.030075
+caffe,1800,4000,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.28525490196e-06,1.02389077837e-07,0.044804
+caffe,1800,4000,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.65780392157e-06,5.26322869699e-08,0.031748
+caffe,1800,4000,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.50401960784e-06,3.35883325892e-08,0.022332
+caffe,1800,4000,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.48850980392e-06,9.45400366582e-08,0.037991
+caffe,1800,4000,[CUDA memcpy HtoD],412,0.00111878984466,0.00395431123207,3.534454
+caffe,1800,4000,[CUDA memcpy DtoH],261,0.00124564283142,0.00243628581625,1.955846
+caffe,1800,4000,[CUDA memset],43,1.08786046512e-06,7.7813605971e-08,0.071529
+caffe,1800,4500,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00298044705882,6.33498142218e-05,0.021255
+caffe,1800,4500,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00494946176471,2.0935095986e-05,0.004230
+caffe,1800,4500,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.15500380807e-06,4.34543499016e-07,0.376227
+caffe,1800,4500,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00483121372549,8.76977920459e-06,0.001815
+caffe,1800,4500,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.64252941176e-06,1.83293758967e-07,0.023983
+caffe,1800,4500,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0179784705882,3.81675115624e-05,0.002123
+caffe,1800,4500,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00347568235294,4.70013374371e-06,0.001352
+caffe,1800,4500,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.12829411765e-06,1.75089141903e-07,0.021541
+caffe,1800,4500,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.00927058921569,0.00248026866745,0.267542
+caffe,1800,4500,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00242188823529,6.00047864296e-06,0.002478
+caffe,1800,4500,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00241961372549,3.42001144407e-06,0.001413
+caffe,1800,4500,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,9.46790196078e-06,1.77698936285e-07,0.018769
+caffe,1800,4500,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00180006862745,1.40538044477e-06,0.000781
+caffe,1800,4500,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.27431568627e-05,2.57771777198e-07,0.020228
+caffe,1800,4500,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0105118084967,0.00277632797376,0.264115
+caffe,1800,4500,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00122635882353,8.55604002084e-06,0.006977
+caffe,1800,4500,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00121550522876,7.63646045074e-06,0.006283
+caffe,1800,4500,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.43359705882e-05,4.061885599e-07,0.016691
+caffe,1800,4500,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000958785686275,3.81786525656e-06,0.003982
+caffe,1800,4500,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,4.51781764706e-05,6.73019730092e-07,0.014897
+caffe,1800,4500,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00635605882353,5.76085307424e-05,0.009064
+caffe,1800,4500,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000400254215686,0.000239726892927,0.598937
+caffe,1800,4500,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000609715816993,1.6430871686e-06,0.002695
+caffe,1800,4500,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,1.93226470588e-06,1.05652958207e-07,0.054678
+caffe,1800,4500,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0204954901961,0.000131141201038,0.006399
+caffe,1800,4500,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000484259803922,2.20964820162e-07,0.000456
+caffe,1800,4500,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.93659477124e-06,7.37530270041e-08,0.038084
+caffe,1800,4500,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.0051389254902,3.31844902929e-05,0.006457
+caffe,1800,4500,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000154981503268,7.82245612133e-07,0.005047
+caffe,1800,4500,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00012727254902,1.75553389871e-07,0.001379
+caffe,1800,4500,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.0020570545098,0.00160169021793,0.778633
+caffe,1800,4500,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.47999019608e-06,2.26086201463e-07,0.041257
+caffe,1800,4500,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.81991176471e-06,5.82265862969e-08,0.012080
+caffe,1800,4500,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0024941,0.0,0.000000
+caffe,1800,4500,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.70767647059e-06,1.37436057272e-07,0.024079
+caffe,1800,4500,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.90132352941e-06,2.82354045647e-07,0.072374
+caffe,1800,4500,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000266765490196,4.40350364682e-06,0.016507
+caffe,1800,4500,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.85415686275e-06,2.32382144272e-08,0.012533
+caffe,1800,4500,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,3.74411764706e-06,6.05344326125e-08,0.016168
+caffe,1800,4500,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.40198039216e-06,1.39029477788e-07,0.057881
+caffe,1800,4500,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.47014705882e-06,3.17830464027e-07,0.216190
+caffe,1800,4500,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,2.95537254902e-06,1.11184700736e-07,0.037621
+caffe,1800,4500,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.26260784314e-06,7.94705713028e-08,0.035123
+caffe,1800,4500,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.68796078431e-06,1.58378420097e-07,0.093828
+caffe,1800,4500,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.45568627451e-06,4.49755882352e-08,0.030896
+caffe,1800,4500,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.64288235294e-06,8.31378838304e-08,0.031457
+caffe,1800,4500,[CUDA memcpy HtoD],412,0.00111794267718,0.00395300533681,3.535964
+caffe,1800,4500,[CUDA memcpy DtoH],261,0.0012459779387,0.00243694248915,1.955847
+caffe,1800,4500,[CUDA memset],43,1.08490697674e-06,7.40860009227e-08,0.068288
+caffe,1800,5000,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00280840784314,7.18011820405e-05,0.025567
+caffe,1800,5000,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00437037352941,1.72542289586e-05,0.003948
+caffe,1800,5000,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.12628179741e-06,4.15598893179e-07,0.369001
+caffe,1800,5000,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00428269019608,7.28582440198e-06,0.001701
+caffe,1800,5000,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,6.99562745098e-06,1.65395895909e-07,0.023643
+caffe,1800,5000,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0162508627451,0.000105135583724,0.006470
+caffe,1800,5000,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00310691960784,2.79446368686e-06,0.000899
+caffe,1800,5000,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.36509803922e-06,1.70400595472e-07,0.023136
+caffe,1800,5000,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.00914944803922,0.00246688989349,0.269622
+caffe,1800,5000,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00214066764706,4.16425408816e-06,0.001945
+caffe,1800,5000,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00214519607843,3.13553077624e-06,0.001462
+caffe,1800,5000,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.3177254902e-06,2.25516059898e-07,0.027113
+caffe,1800,5000,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00160674509804,9.4605760416e-07,0.000589
+caffe,1800,5000,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.14599803922e-05,2.46738210891e-07,0.021530
+caffe,1800,5000,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0104939934641,0.00281012563961,0.267784
+caffe,1800,5000,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.0010842124183,5.9970179982e-06,0.005531
+caffe,1800,5000,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00107947058824,7.23456556192e-06,0.006702
+caffe,1800,5000,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.18082352941e-05,4.20938847416e-07,0.019302
+caffe,1800,5000,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000864194901961,4.54860692854e-06,0.005263
+caffe,1800,5000,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,3.90359411765e-05,9.87118691073e-07,0.025287
+caffe,1800,5000,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.0063631627451,5.77823942275e-05,0.009081
+caffe,1800,5000,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000354763660131,0.000211796196334,0.597006
+caffe,1800,5000,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000541044509804,1.38446135968e-06,0.002559
+caffe,1800,5000,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,1.92792156863e-06,1.05232859093e-07,0.054584
+caffe,1800,5000,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0204971568627,0.000121336329291,0.005920
+caffe,1800,5000,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000431443333333,1.38148352579e-07,0.000320
+caffe,1800,5000,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.92130718954e-06,6.80301049321e-08,0.035408
+caffe,1800,5000,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00513834836601,2.66603916749e-05,0.005189
+caffe,1800,5000,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000137860065359,5.96079234032e-07,0.004324
+caffe,1800,5000,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000113369215686,1.74151648332e-07,0.001536
+caffe,1800,5000,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00187417421569,0.00142579168137,0.760757
+caffe,1800,5000,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.03602941176e-06,1.92640346388e-07,0.038252
+caffe,1800,5000,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.96540196078e-06,5.94595363818e-08,0.011975
+caffe,1800,5000,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0024963,0.0,0.000000
+caffe,1800,5000,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.314e-06,1.20949997771e-07,0.022761
+caffe,1800,5000,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.86046078431e-06,2.35981914876e-07,0.061128
+caffe,1800,5000,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000263055882353,4.0844694745e-06,0.015527
+caffe,1800,5000,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.79017647059e-06,1.83865955888e-08,0.010271
+caffe,1800,5000,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,3.714e-06,4.50868443053e-08,0.012140
+caffe,1800,5000,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.51054901961e-06,3.24280035948e-07,0.129167
+caffe,1800,5000,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.47514705882e-06,3.20434245711e-07,0.217222
+caffe,1800,5000,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,2.74950980392e-06,8.84769544713e-08,0.032179
+caffe,1800,5000,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.353e-06,3.66049391289e-08,0.015557
+caffe,1800,5000,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.66784313725e-06,3.73270508802e-08,0.022380
+caffe,1800,5000,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.49588235294e-06,3.22250949945e-08,0.021543
+caffe,1800,5000,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.62468627451e-06,1.09465276112e-07,0.041706
+caffe,1800,5000,[CUDA memcpy HtoD],412,0.00111345437136,0.00395921056719,3.555791
+caffe,1800,5000,[CUDA memcpy DtoH],261,0.00124569271648,0.0024364470157,1.955897
+caffe,1800,5000,[CUDA memset],43,1.07153488372e-06,8.75337406939e-08,0.081690
+caffe,1900,3500,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00365881176471,2.9179368531e-05,0.007975
+caffe,1900,3500,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00676407156863,2.92692315777e-05,0.004327
+caffe,1900,3500,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.1505727342e-06,2.67676122777e-07,0.232646
+caffe,1900,3500,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00654079313725,1.79576203706e-05,0.002745
+caffe,1900,3500,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.40360784314e-06,2.5339545769e-07,0.030153
+caffe,1900,3500,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0235169019608,5.21901707003e-05,0.002219
+caffe,1900,3500,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00462633921569,5.77802050476e-06,0.001249
+caffe,1900,3500,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,9.09015686275e-06,3.26215156508e-07,0.035887
+caffe,1900,3500,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.0104058039216,0.00248244110686,0.238563
+caffe,1900,3500,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00329651960784,9.62000610672e-06,0.002918
+caffe,1900,3500,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00327599019608,6.73366592758e-06,0.002055
+caffe,1900,3500,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.05815882353e-05,2.97296193262e-07,0.028096
+caffe,1900,3500,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00240072352941,2.6052426958e-06,0.001085
+caffe,1900,3500,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.51922156863e-05,3.91849526628e-07,0.025793
+caffe,1900,3500,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0106641568627,0.00257017275719,0.241010
+caffe,1900,3500,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00166664052288,1.3927188991e-05,0.008356
+caffe,1900,3500,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00164131045752,3.90438271252e-06,0.002379
+caffe,1900,3500,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,3.10333333333e-05,4.65917970844e-07,0.015013
+caffe,1900,3500,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00127573137255,1.38910186756e-06,0.001089
+caffe,1900,3500,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,5.8597254902e-05,5.78413206096e-07,0.009871
+caffe,1900,3500,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00670737254902,6.69953293029e-05,0.009988
+caffe,1900,3500,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000543574215686,0.000328552153952,0.604429
+caffe,1900,3500,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000824915947712,2.34495549184e-06,0.002843
+caffe,1900,3500,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,1.96618627451e-06,7.49059188206e-08,0.038097
+caffe,1900,3500,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0197118235294,0.00020380148991,0.010339
+caffe,1900,3500,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000645633921569,4.04033964945e-07,0.000626
+caffe,1900,3500,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.90375163399e-06,6.94027067192e-08,0.036456
+caffe,1900,3500,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00493544575163,3.57326931222e-05,0.007240
+caffe,1900,3500,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000208818235294,9.19816064056e-07,0.004405
+caffe,1900,3500,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000167954313725,1.76282470539e-07,0.001050
+caffe,1900,3500,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00261655137255,0.00215227987777,0.822564
+caffe,1900,3500,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.96531372549e-06,4.15326542458e-07,0.069624
+caffe,1900,3500,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.73297058824e-06,6.80417195957e-08,0.014376
+caffe,1900,3500,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0023997,0.0,0.000000
+caffe,1900,3500,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.9812745098e-06,1.90749715743e-07,0.031891
+caffe,1900,3500,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.62549019608e-06,4.34008826717e-07,0.119710
+caffe,1900,3500,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000266465882353,5.80639916646e-06,0.021790
+caffe,1900,3500,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.77515686275e-06,3.37187749812e-08,0.018995
+caffe,1900,3500,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,3.94676470588e-06,9.93010057085e-08,0.025160
+caffe,1900,3500,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.60709803922e-06,2.58335870062e-07,0.099089
+caffe,1900,3500,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.56490196078e-06,4.00820152076e-07,0.256131
+caffe,1900,3500,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,3.21831372549e-06,1.20822425232e-07,0.037542
+caffe,1900,3500,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.43837254902e-06,6.34754733502e-08,0.026032
+caffe,1900,3500,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.58621568627e-06,6.46981873024e-08,0.040788
+caffe,1900,3500,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.51341176471e-06,4.40379410707e-08,0.029098
+caffe,1900,3500,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.45084313725e-06,2.54924392678e-07,0.104015
+caffe,1900,3500,[CUDA memcpy HtoD],412,0.00112477475,0.00397819402833,3.536881
+caffe,1900,3500,[CUDA memcpy DtoH],261,0.00124630900766,0.00243760630533,1.955860
+caffe,1900,3500,[CUDA memset],43,1.08637209302e-06,8.28371962446e-08,0.076251
+caffe,1900,4000,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00322474705882,5.05941961832e-05,0.015689
+caffe,1900,4000,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00573005882353,2.82506822855e-05,0.004930
+caffe,1900,4000,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.1178804265e-06,2.95762803816e-07,0.264575
+caffe,1900,4000,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00556706372549,1.41498963428e-05,0.002542
+caffe,1900,4000,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.79811764706e-06,2.12202793042e-07,0.027212
+caffe,1900,4000,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0203286666667,4.33683116747e-05,0.002133
+caffe,1900,4000,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00395888431373,5.27994253344e-06,0.001334
+caffe,1900,4000,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.34458823529e-06,2.14286062833e-07,0.025680
+caffe,1900,4000,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.00937284313725,0.00250062603234,0.266795
+caffe,1900,4000,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00279611960784,8.565102923e-06,0.003063
+caffe,1900,4000,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.0027881372549,5.07003735084e-06,0.001818
+caffe,1900,4000,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,9.68243137255e-06,2.46183038464e-07,0.025426
+caffe,1900,4000,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00204880392157,1.83484366854e-06,0.000896
+caffe,1900,4000,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.39774117647e-05,4.05282238933e-07,0.028996
+caffe,1900,4000,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0101764313725,0.00255640991646,0.251209
+caffe,1900,4000,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00141038300654,6.08570371063e-06,0.004315
+caffe,1900,4000,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00140077124183,9.20379058883e-06,0.006571
+caffe,1900,4000,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.65502941176e-05,1.07887578187e-06,0.040635
+caffe,1900,4000,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00109186470588,5.19359911253e-07,0.000476
+caffe,1900,4000,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,5.05481176471e-05,5.11856584045e-07,0.010126
+caffe,1900,4000,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00618765882353,6.99252687264e-05,0.011301
+caffe,1900,4000,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000461227156863,0.00027749706767,0.601649
+caffe,1900,4000,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000702329607843,1.87387853428e-06,0.002668
+caffe,1900,4000,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,1.86607843137e-06,5.50517913503e-08,0.029501
+caffe,1900,4000,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0195750686275,0.000275313734044,0.014065
+caffe,1900,4000,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000552108235294,3.22591867945e-07,0.000584
+caffe,1900,4000,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.82402614379e-06,5.63279319504e-08,0.030881
+caffe,1900,4000,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00490507058824,6.56714031161e-05,0.013388
+caffe,1900,4000,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000178093137255,8.38105918235e-07,0.004706
+caffe,1900,4000,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000144460784314,2.39949693561e-07,0.001661
+caffe,1900,4000,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00227966313725,0.00183251569754,0.803854
+caffe,1900,4000,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.62747058824e-06,2.83234632378e-07,0.050331
+caffe,1900,4000,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.86506862745e-06,8.51347559039e-08,0.017499
+caffe,1900,4000,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0023764,0.0,0.000000
+caffe,1900,4000,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.44764705882e-06,1.498401532e-07,0.027505
+caffe,1900,4000,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.8262745098e-06,3.48016569272e-07,0.090954
+caffe,1900,4000,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000258312745098,4.89915001769e-06,0.018966
+caffe,1900,4000,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.75309803922e-06,2.22369193997e-08,0.012684
+caffe,1900,4000,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,3.74533333333e-06,5.52288169548e-08,0.014746
+caffe,1900,4000,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.42137254902e-06,2.24179284064e-07,0.092584
+caffe,1900,4000,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.50720588235e-06,3.8054798822e-07,0.252486
+caffe,1900,4000,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,3.01241176471e-06,1.1444669561e-07,0.037992
+caffe,1900,4000,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.35050980392e-06,9.69967398985e-08,0.041266
+caffe,1900,4000,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.58182352941e-06,3.76191992505e-08,0.023782
+caffe,1900,4000,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.54733333333e-06,3.02600925745e-08,0.019556
+caffe,1900,4000,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.44084313725e-06,1.74232588806e-07,0.071382
+caffe,1900,4000,[CUDA memcpy HtoD],412,0.00112152471117,0.00396162112367,3.532353
+caffe,1900,4000,[CUDA memcpy DtoH],261,0.00124577981226,0.00243661887662,1.955899
+caffe,1900,4000,[CUDA memset],43,1.07969767442e-06,7.47176187571e-08,0.069202
+caffe,1900,4500,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00293466862745,6.11759484015e-05,0.020846
+caffe,1900,4500,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00497378823529,2.19556384027e-05,0.004414
+caffe,1900,4500,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.16853236862e-06,5.04904632225e-07,0.432084
+caffe,1900,4500,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00485139411765,1.10309886454e-05,0.002274
+caffe,1900,4500,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.1988627451e-06,1.89589651783e-07,0.026336
+caffe,1900,4500,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0179685882353,4.22509665607e-05,0.002351
+caffe,1900,4500,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00347741372549,4.63232544862e-06,0.001332
+caffe,1900,4500,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.63309803922e-06,2.77207733736e-07,0.036317
+caffe,1900,4500,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.00891306078431,0.00238359030255,0.267427
+caffe,1900,4500,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00243144313725,7.11301637298e-06,0.002925
+caffe,1900,4500,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00242965784314,4.91696615122e-06,0.002024
+caffe,1900,4500,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.84107843137e-06,2.03475859062e-07,0.023015
+caffe,1900,4500,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00179892941176,1.30568802652e-06,0.000726
+caffe,1900,4500,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.23171764706e-05,3.12791147879e-07,0.025395
+caffe,1900,4500,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0100428601307,0.00263402993232,0.262279
+caffe,1900,4500,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00123363856209,8.47360472393e-06,0.006869
+caffe,1900,4500,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00122188823529,9.40013865269e-06,0.007693
+caffe,1900,4500,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.40972941176e-05,4.32134614744e-07,0.017933
+caffe,1900,4500,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000964664705882,7.6784425384e-06,0.007960
+caffe,1900,4500,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,4.37231372549e-05,1.3862356139e-06,0.031705
+caffe,1900,4500,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00606868235294,8.51663970048e-05,0.014034
+caffe,1900,4500,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000401341862745,0.000240439698156,0.599090
+caffe,1900,4500,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000612136732026,1.81869767025e-06,0.002971
+caffe,1900,4500,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,1.68568627451e-06,6.60245023431e-08,0.039168
+caffe,1900,4500,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0195542647059,0.000264832833936,0.013543
+caffe,1900,4500,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000484107843137,2.99609639662e-07,0.000619
+caffe,1900,4500,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.64166666667e-06,5.12483380888e-08,0.031217
+caffe,1900,4500,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00490094771242,6.51931941243e-05,0.013302
+caffe,1900,4500,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000155579346405,7.57320416559e-07,0.004868
+caffe,1900,4500,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000127065490196,2.38149020124e-07,0.001874
+caffe,1900,4500,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00203981588235,0.00160048925307,0.784624
+caffe,1900,4500,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.26783333333e-06,2.12931273241e-07,0.040421
+caffe,1900,4500,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.54660784314e-06,4.98299376237e-08,0.010960
+caffe,1900,4500,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0023792,0.0,0.000000
+caffe,1900,4500,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.2917254902e-06,1.35498654712e-07,0.025606
+caffe,1900,4500,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.7657745098e-06,3.05614453605e-07,0.081156
+caffe,1900,4500,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000253641960784,3.9855459535e-06,0.015713
+caffe,1900,4500,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.74058823529e-06,2.11587616586e-08,0.012156
+caffe,1900,4500,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,3.85456862745e-06,5.03973446632e-08,0.013075
+caffe,1900,4500,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.29525490196e-06,1.81355554053e-07,0.079013
+caffe,1900,4500,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.40396078431e-06,3.11081665136e-07,0.221574
+caffe,1900,4500,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,2.85307843137e-06,9.40887864247e-08,0.032978
+caffe,1900,4500,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.3178627451e-06,7.00646814912e-08,0.030228
+caffe,1900,4500,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.59564705882e-06,8.06478239691e-08,0.050542
+caffe,1900,4500,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.403e-06,2.78954631212e-08,0.019883
+caffe,1900,4500,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.36621568627e-06,1.49341208702e-07,0.063114
+caffe,1900,4500,[CUDA memcpy HtoD],412,0.00110974982524,0.00394206081505,3.552207
+caffe,1900,4500,[CUDA memcpy DtoH],261,0.00124552993103,0.00243613162496,1.955900
+caffe,1900,4500,[CUDA memset],43,1.08265116279e-06,7.3046300615e-08,0.067470
+caffe,1900,5000,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00275060588235,7.88562788273e-05,0.028669
+caffe,1900,5000,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00438673431373,1.87897995643e-05,0.004283
+caffe,1900,5000,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.11476313785e-06,4.51962399052e-07,0.405434
+caffe,1900,5000,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.0042963127451,9.0364259763e-06,0.002103
+caffe,1900,5000,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.08976470588e-06,2.16518403713e-07,0.030540
+caffe,1900,5000,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0162118431373,0.000101203032689,0.006243
+caffe,1900,5000,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00310624117647,5.14580264783e-06,0.001657
+caffe,1900,5000,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.38166666667e-06,2.04155041686e-07,0.027657
+caffe,1900,5000,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.00881953235294,0.00238809499918,0.270773
+caffe,1900,5000,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00214652941176,5.98315590269e-06,0.002787
+caffe,1900,5000,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00215175,4.69584192372e-06,0.002182
+caffe,1900,5000,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.57882352941e-06,2.50273944488e-07,0.029173
+caffe,1900,5000,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00160673333333,1.14303803424e-06,0.000711
+caffe,1900,5000,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.1605e-05,2.53056143503e-07,0.021806
+caffe,1900,5000,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0100680078431,0.00270564679708,0.268737
+caffe,1900,5000,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00108583856209,4.36978819999e-06,0.004024
+caffe,1900,5000,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00108079477124,6.15233406848e-06,0.005692
+caffe,1900,5000,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.19118529412e-05,4.14229438106e-07,0.018904
+caffe,1900,5000,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00085984254902,6.08730142186e-06,0.007080
+caffe,1900,5000,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,3.94807843137e-05,1.37397126313e-06,0.034801
+caffe,1900,5000,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.0061169627451,0.0001615194931,0.026405
+caffe,1900,5000,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.00035622503268,0.00021312122797,0.598277
+caffe,1900,5000,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000542649411765,1.99881214244e-06,0.003683
+caffe,1900,5000,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,1.8381372549e-06,3.34104364322e-07,0.181762
+caffe,1900,5000,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0196310686275,0.000418402757925,0.021313
+caffe,1900,5000,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00043155745098,1.74421656522e-07,0.000404
+caffe,1900,5000,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.73014379085e-06,4.13479446503e-08,0.023899
+caffe,1900,5000,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00491689215686,6.27735014756e-05,0.012767
+caffe,1900,5000,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000137811503268,6.60623364998e-07,0.004794
+caffe,1900,5000,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000113204509804,2.15473156742e-07,0.001903
+caffe,1900,5000,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00185874960784,0.00142478819633,0.766530
+caffe,1900,5000,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.0752745098e-06,2.54987126044e-07,0.050241
+caffe,1900,5000,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.56765686275e-06,7.32709844262e-08,0.016041
+caffe,1900,5000,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0025904,0.0,0.000000
+caffe,1900,5000,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.34447058824e-06,1.4014647141e-07,0.026223
+caffe,1900,5000,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.58789215686e-06,2.59449866965e-07,0.072313
+caffe,1900,5000,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.00025337372549,1.07060906394e-06,0.004225
+caffe,1900,5000,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.77576470588e-06,2.56190708953e-08,0.014427
+caffe,1900,5000,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,3.54768627451e-06,6.11342111456e-08,0.017232
+caffe,1900,5000,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.30337254902e-06,2.08878044988e-07,0.090684
+caffe,1900,5000,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.46481372549e-06,2.29667437763e-07,0.156790
+caffe,1900,5000,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,2.60464705882e-06,8.89969868469e-08,0.034169
+caffe,1900,5000,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.26201960784e-06,3.77179887369e-08,0.016674
+caffe,1900,5000,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.7757254902e-06,1.52909441152e-07,0.086111
+caffe,1900,5000,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.72996078431e-06,3.71704926111e-08,0.021486
+caffe,1900,5000,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.33162745098e-06,1.21081557473e-07,0.051930
+caffe,1900,5000,[CUDA memcpy HtoD],412,0.00111472967718,0.00394883575528,3.542416
+caffe,1900,5000,[CUDA memcpy DtoH],261,0.00124535267433,0.00243579244704,1.955906
+caffe,1900,5000,[CUDA memset],43,1.10053488372e-06,8.35013852655e-08,0.075873
+caffe,2000,3500,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00364282745098,4.11507371503e-05,0.011296
+caffe,2000,3500,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00681009509804,3.68523747537e-05,0.005411
+caffe,2000,3500,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.14783625286e-06,4.18212343433e-07,0.364348
+caffe,2000,3500,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00657890980392,2.2092188797e-05,0.003358
+caffe,2000,3500,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.05290196078e-06,1.86966732377e-07,0.023217
+caffe,2000,3500,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0235889215686,4.24679085932e-05,0.001800
+caffe,2000,3500,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00463170784314,4.40658344989e-06,0.000951
+caffe,2000,3500,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.70743137255e-06,2.62622315473e-07,0.030161
+caffe,2000,3500,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.0102760107843,0.00238264054392,0.231864
+caffe,2000,3500,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00331690882353,1.25012399616e-05,0.003769
+caffe,2000,3500,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00329495,8.7060915118e-06,0.002642
+caffe,2000,3500,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.02376470588e-05,2.22982881918e-07,0.021781
+caffe,2000,3500,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00238539019608,2.43924248141e-06,0.001023
+caffe,2000,3500,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.51306862745e-05,3.78817587133e-07,0.025036
+caffe,2000,3500,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.0103161679739,0.00245593113952,0.238066
+caffe,2000,3500,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00168200392157,1.90792460983e-05,0.011343
+caffe,2000,3500,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00165398235294,1.07664700865e-05,0.006509
+caffe,2000,3500,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,3.02965588235e-05,8.97813603232e-07,0.029634
+caffe,2000,3500,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00127372745098,1.05683182319e-06,0.000830
+caffe,2000,3500,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,5.86693921569e-05,6.13659932601e-07,0.010460
+caffe,2000,3500,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00657712745098,6.56924088444e-05,0.009988
+caffe,2000,3500,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000546789019608,0.000331035749394,0.605418
+caffe,2000,3500,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000829641176471,2.42989683236e-06,0.002929
+caffe,2000,3500,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,1.93447058824e-06,1.13522797735e-07,0.058684
+caffe,2000,3500,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0187789803922,0.000307759104304,0.016388
+caffe,2000,3500,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000644458823529,4.87782686501e-07,0.000757
+caffe,2000,3500,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.89535294118e-06,7.40558410214e-08,0.039072
+caffe,2000,3500,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00469769019608,4.63799874646e-05,0.009873
+caffe,2000,3500,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000210061176471,9.48650187376e-07,0.004516
+caffe,2000,3500,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00016780745098,1.88011713624e-07,0.001120
+caffe,2000,3500,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00260991343137,0.00215967660022,0.827490
+caffe,2000,3500,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.87619607843e-06,4.26826778457e-07,0.072637
+caffe,2000,3500,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.74017647059e-06,9.6291572307e-08,0.020314
+caffe,2000,3500,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0022626,0.0,0.000000
+caffe,2000,3500,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.77008823529e-06,2.39700307285e-07,0.041542
+caffe,2000,3500,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.45705882353e-06,4.37387180378e-07,0.126520
+caffe,2000,3500,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000255576666667,5.49671333765e-06,0.021507
+caffe,2000,3500,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.67215686275e-06,2.96167497317e-08,0.017712
+caffe,2000,3500,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,4.30819607843e-06,1.02352336412e-07,0.023758
+caffe,2000,3500,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.16541176471e-06,2.24083245777e-07,0.103483
+caffe,2000,3500,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.47862745098e-06,4.42046619881e-07,0.298957
+caffe,2000,3500,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,3.00617647059e-06,1.09681304086e-07,0.036485
+caffe,2000,3500,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.31217647059e-06,7.10856169458e-08,0.030744
+caffe,2000,3500,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.52094117647e-06,7.84740276167e-08,0.051596
+caffe,2000,3500,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.53978431373e-06,2.16236197342e-08,0.014043
+caffe,2000,3500,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.42078431373e-06,1.13832748609e-07,0.047023
+caffe,2000,3500,[CUDA memcpy HtoD],412,0.00111718630825,0.00396340895936,3.547671
+caffe,2000,3500,[CUDA memcpy DtoH],261,0.00124536099617,0.00243573342027,1.955845
+caffe,2000,3500,[CUDA memset],43,1.08706976744e-06,5.8454671506e-08,0.053773
+caffe,2000,4000,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00319420980392,4.38498921451e-05,0.013728
+caffe,2000,4000,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00575943921569,3.19276361844e-05,0.005544
+caffe,2000,4000,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.07223533892e-06,1.52218217012e-07,0.141963
+caffe,2000,4000,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00559032843137,1.72838095919e-05,0.003092
+caffe,2000,4000,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.14801960784e-06,2.56235070551e-07,0.035847
+caffe,2000,4000,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0203545294118,3.4741822534e-05,0.001707
+caffe,2000,4000,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00394960392157,6.99529143556e-06,0.001771
+caffe,2000,4000,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.82135294118e-06,2.46520716508e-07,0.031519
+caffe,2000,4000,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.00922238823529,0.00235053168355,0.254872
+caffe,2000,4000,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00280848137255,9.60137582453e-06,0.003419
+caffe,2000,4000,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00279990588235,6.66609541959e-06,0.002381
+caffe,2000,4000,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,9.08249019608e-06,2.45267470849e-07,0.027004
+caffe,2000,4000,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00204320196078,2.14425728227e-06,0.001049
+caffe,2000,4000,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.36585294118e-05,2.80940252733e-07,0.020569
+caffe,2000,4000,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.00979619150327,0.00242121306808,0.247159
+caffe,2000,4000,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00141778300654,7.39052379342e-06,0.005213
+caffe,2000,4000,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.0014030124183,3.29331508016e-06,0.002347
+caffe,2000,4000,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.70501764706e-05,5.55255627613e-07,0.020527
+caffe,2000,4000,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00108777058824,1.01504256989e-06,0.000933
+caffe,2000,4000,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,5.07670784314e-05,4.65600048983e-07,0.009171
+caffe,2000,4000,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00600946470588,9.12506133711e-05,0.015184
+caffe,2000,4000,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000463753823529,0.000279415921274,0.602509
+caffe,2000,4000,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000705252418301,2.1194061402e-06,0.003005
+caffe,2000,4000,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,1.92789215686e-06,7.84269245062e-08,0.040680
+caffe,2000,4000,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0186943039216,0.000382092350741,0.020439
+caffe,2000,4000,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000551997058824,3.23014563611e-07,0.000585
+caffe,2000,4000,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.88595424837e-06,7.12938629915e-08,0.037803
+caffe,2000,4000,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00467772287582,8.11900501782e-05,0.017357
+caffe,2000,4000,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000178804183007,8.47599157929e-07,0.004740
+caffe,2000,4000,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000144357843137,2.86474949974e-07,0.001984
+caffe,2000,4000,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00226817421569,0.00183786706489,0.810285
+caffe,2000,4000,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.3447745098e-06,2.84407085584e-07,0.053212
+caffe,2000,4000,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.64956862745e-06,8.16547622141e-08,0.017562
+caffe,2000,4000,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0023747,0.0,0.000000
+caffe,2000,4000,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.30614705882e-06,1.65250279408e-07,0.031143
+caffe,2000,4000,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.60194117647e-06,3.68898381872e-07,0.102417
+caffe,2000,4000,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000253816666667,4.17126851758e-06,0.016434
+caffe,2000,4000,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.6258627451e-06,3.40904331401e-08,0.020968
+caffe,2000,4000,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,3.8168627451e-06,6.52569640511e-08,0.017097
+caffe,2000,4000,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.28770588235e-06,2.52083886918e-07,0.110191
+caffe,2000,4000,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.43659803922e-06,3.58998723571e-07,0.249895
+caffe,2000,4000,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,2.75078431373e-06,9.0098707032e-08,0.032754
+caffe,2000,4000,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.2407254902e-06,4.89405715775e-08,0.021841
+caffe,2000,4000,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.56803921569e-06,1.74111183858e-07,0.111038
+caffe,2000,4000,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.44943137255e-06,3.54446571664e-08,0.024454
+caffe,2000,4000,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.48662745098e-06,1.64554891108e-07,0.066176
+caffe,2000,4000,[CUDA memcpy HtoD],412,0.00112503175243,0.00396504255042,3.524383
+caffe,2000,4000,[CUDA memcpy DtoH],261,0.00124543959387,0.00243601312618,1.955946
+caffe,2000,4000,[CUDA memset],43,1.08413953488e-06,7.46310557577e-08,0.068839
+caffe,2000,4500,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00289704313725,7.33896003075e-05,0.025333
+caffe,2000,4500,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00499501960784,2.50031058432e-05,0.005006
+caffe,2000,4500,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.11273343488e-06,4.18882749203e-07,0.376445
+caffe,2000,4500,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.0048683245098,1.29842848926e-05,0.002667
+caffe,2000,4500,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,6.90074509804e-06,2.64014471019e-07,0.038259
+caffe,2000,4500,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.017940745098,4.03624962486e-05,0.002250
+caffe,2000,4500,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00347419803922,4.74860104047e-06,0.001367
+caffe,2000,4500,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.36588235294e-06,2.23959699374e-07,0.030405
+caffe,2000,4500,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.00861694901961,0.00232581223062,0.269911
+caffe,2000,4500,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00243829313725,8.34736379431e-06,0.003423
+caffe,2000,4500,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00243788137255,5.87953797025e-06,0.002412
+caffe,2000,4500,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,8.57054901961e-06,2.55623445005e-07,0.029826
+caffe,2000,4500,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00179895098039,1.41009978079e-06,0.000784
+caffe,2000,4500,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.20386078431e-05,3.43085828079e-07,0.028499
+caffe,2000,4500,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.00954594640523,0.00243728591115,0.255322
+caffe,2000,4500,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00123338496732,6.64972131945e-06,0.005391
+caffe,2000,4500,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00122570457516,8.9668987496e-06,0.007316
+caffe,2000,4500,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.35152058824e-05,3.84566762562e-07,0.016354
+caffe,2000,4500,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000968156666667,5.65742533649e-06,0.005844
+caffe,2000,4500,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,4.24016862745e-05,1.06184991167e-06,0.025043
+caffe,2000,4500,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00578805098039,0.000117171395111,0.020244
+caffe,2000,4500,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.00040306254902,0.000242048592513,0.600524
+caffe,2000,4500,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000614518104575,2.11819220975e-06,0.003447
+caffe,2000,4500,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,1.69198039216e-06,3.24063748884e-07,0.191529
+caffe,2000,4500,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.0186730588235,0.000382013238235,0.020458
+caffe,2000,4500,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000484109803922,1.84406734981e-07,0.000381
+caffe,2000,4500,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.59858169935e-06,6.50608176392e-08,0.040699
+caffe,2000,4500,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00467028431373,3.63064194573e-05,0.007774
+caffe,2000,4500,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000155952810458,7.61593150883e-07,0.004883
+caffe,2000,4500,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000126570392157,1.80586851456e-07,0.001427
+caffe,2000,4500,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00202738852941,0.00160517869561,0.791747
+caffe,2000,4500,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,5.21832352941e-06,2.57157431058e-07,0.049280
+caffe,2000,4500,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.40296078431e-06,5.28601413218e-08,0.012006
+caffe,2000,4500,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0023643,0.0,0.000000
+caffe,2000,4500,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,5.3212745098e-06,1.60376405094e-07,0.030139
+caffe,2000,4500,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.60574509804e-06,3.24385200887e-07,0.089963
+caffe,2000,4500,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000253894705882,3.9762472962e-06,0.015661
+caffe,2000,4500,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.74123529412e-06,2.47073762387e-08,0.014190
+caffe,2000,4500,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,3.53196078431e-06,6.49056512191e-08,0.018377
+caffe,2000,4500,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.2011372549e-06,2.40058817924e-07,0.109061
+caffe,2000,4500,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.42561764706e-06,3.34199102454e-07,0.234424
+caffe,2000,4500,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,2.67556862745e-06,9.67872651852e-08,0.036174
+caffe,2000,4500,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.19868627451e-06,4.02026680395e-08,0.018285
+caffe,2000,4500,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.56615686275e-06,1.15878633695e-07,0.073989
+caffe,2000,4500,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.42309803922e-06,2.94127189388e-08,0.020668
+caffe,2000,4500,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.25258823529e-06,1.50505576272e-07,0.066815
+caffe,2000,4500,[CUDA memcpy HtoD],412,0.00111166182767,0.00394756655501,3.551050
+caffe,2000,4500,[CUDA memcpy DtoH],261,0.00124519700383,0.00243554095963,1.955948
+caffe,2000,4500,[CUDA memset],43,1.08562790698e-06,9.95954662403e-08,0.091740
+caffe,2000,5000,(25088 1 1).*(128 1 1).*maxwell_scudnn_128x64_relu_small_nn,51,0.00268424509804,8.48384931912e-05,0.031606
+caffe,2000,5000,"(64 64 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00441245294118,2.30400618952e-05,0.005222
+caffe,2000,5000,(1 1 1).*(1 1 1).*caffe::sync_conv_groups(void),1313,1.12740594059e-06,5.19605835607e-07,0.460886
+caffe,2000,5000,"(65536 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00431004019608,1.11178558009e-05,0.002580
+caffe,2000,5000,"(2 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,6.38503921569e-06,2.19354396818e-07,0.034354
+caffe,2000,5000,(128 28 14).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,51,0.0161302941176,0.000127157505252,0.007883
+caffe,2000,5000,"(100352 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00310783137255,5.43472820527e-06,0.001749
+caffe,2000,5000,"(4 16 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,6.91778431373e-06,2.17347856521e-07,0.031419
+caffe,2000,5000,(256 14 7).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,102,0.0084138745098,0.00225840383499,0.268414
+caffe,2000,5000,"(64 128 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",102,0.00215666176471,6.16019868723e-06,0.002856
+caffe,2000,5000,"(32768 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,0.00215925196078,4.9069724381e-06,0.002273
+caffe,2000,5000,"(4 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,7.95501960784e-06,2.07731018594e-07,0.026113
+caffe,2000,5000,"(50176 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00160766862745,1.07930445941e-06,0.000671
+caffe,2000,5000,"(8 32 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,1.10240196078e-05,3.14814386035e-07,0.028557
+caffe,2000,5000,(512 7 4).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile148n_nt,153,0.00952927777778,0.00253181839768,0.265688
+caffe,2000,5000,"(64 256 1).*(128 1 1).*void add_tensor_kernel_v3<int=2,",153,0.00108935620915,4.06068074504e-06,0.003728
+caffe,2000,5000,"(16384 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.00108221960784,2.38500377012e-06,0.002204
+caffe,2000,5000,"(8 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",102,2.15839019608e-05,3.8762247931e-07,0.017959
+caffe,2000,5000,"(25088 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000853700196078,3.15094073697e-07,0.000369
+caffe,2000,5000,"(16 64 1).*(32 4 1).*void cudnn::winograd::generateWinogradTilesKernel<int=0,",51,4.09817254902e-05,4.36171178774e-07,0.010643
+caffe,2000,5000,(512 7 2).*(256 1 1).*maxwell_scudnn_winograd_128x128_ldg1_ldg4_tile228n_nt,51,0.00579832745098,0.000124751418835,0.021515
+caffe,2000,5000,"(16 512 1).*(32 1 4).*void add_tensor_kernel_v3<int=2,",306,0.000357996764706,0.000214769959969,0.599922
+caffe,2000,5000,"(8192 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000545671960784,3.63569037754e-06,0.006663
+caffe,2000,5000,(7 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),102,2.69246078431e-06,1.18449178869e-06,0.439929
+caffe,2000,5000,(392 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,102,0.018695372549,0.000376600712295,0.020144
+caffe,2000,5000,"(12544 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.000431922156863,1.86519343743e-07,0.000432
+caffe,2000,5000,(2 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),153,1.66737254902e-06,4.68617605935e-08,0.028105
+caffe,2000,5000,(98 4 1).*(256 1 1).*maxwell_scudnn_128x128_relu_small_nn,153,0.00468074313725,9.3352264722e-05,0.019944
+caffe,2000,5000,"(2048 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",153,0.000138359150327,6.3970371789e-07,0.004624
+caffe,2000,5000,"(3136 1 1).*(512 1 1).*void caffe::MaxPoolForward<float>(int,",51,0.00011321254902,1.75977306216e-07,0.001554
+caffe,2000,5000,"(64 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",102,0.00184056205882,0.00142595375824,0.774738
+caffe,2000,5000,"(128 2 1).*(256 1 1).*void gemmk1_kernel<float,",102,4.80729411765e-06,2.10435709908e-07,0.043774
+caffe,2000,5000,"(64 1 1).*(128 1 1).*void cudnn::detail::activation_fw_4d_kernel<float,",102,4.55354901961e-06,5.81702416089e-08,0.012775
+caffe,2000,5000,(64 1 1).*(64 1 1).*generate_seed_pseudo(unsigned,1,0.0024035,0.0,0.000000
+caffe,2000,5000,"(64 1 1).*(64 1 1).*void gen_sequenced<curandStateXORWOW,",102,4.96424509804e-06,1.3800720614e-07,0.027800
+caffe,2000,5000,"(512 1 1).*(512 1 1).*void caffe::DropoutForward<float>(int,",102,3.40152941176e-06,2.49580617094e-07,0.073373
+caffe,2000,5000,"(1 1 1).*(8 16 1).*void magma_lds128_sgemm_kernel<bool=1,",51,0.000251881176471,4.19885355364e-06,0.016670
+caffe,2000,5000,"(1 2 1).*(256 1 1).*void gemmk1_kernel<float,",51,1.62137254902e-06,1.9724535119e-08,0.012165
+caffe,2000,5000,"(1 1 64).*(256 1 1).*void cudnn::detail::softmax_fw_kernel<int=2,",51,3.42223529412e-06,6.57659510914e-08,0.019217
+caffe,2000,5000,"(5 1 1).*(128 1 1).*void dot_kernel<float,",51,2.04423529412e-06,1.06725704538e-07,0.052208
+caffe,2000,5000,"(1 1 1).*(128 1 1).*void reduce_1Block_kernel<float,",102,1.36599019608e-06,3.44642682115e-07,0.252302
+caffe,2000,5000,"(1 1 1).*(512 1 1).*void caffe::SoftmaxLossForwardGPU<float>(int,",51,2.53680392157e-06,1.03159503304e-07,0.040665
+caffe,2000,5000,"(64 1 1).*(256 1 1).*void asum_kernel<float,",51,2.05998039216e-06,3.46667553898e-08,0.016829
+caffe,2000,5000,"(1 1 1).*(256 1 1).*void asum_kernel<float,",51,1.55552941176e-06,6.43727968795e-08,0.041383
+caffe,2000,5000,"(1 1 1).*(128 1 1).*void dot_kernel<float,",51,1.41745098039e-06,2.31714104824e-08,0.016347
+caffe,2000,5000,(393 1 1).*(128 1 1).*cudnn::maxwell::gemm::computeOffsetsKernel(cudnn::maxwell::gemm::ComputeOffsetsParams),51,2.2307254902e-06,1.67440955754e-07,0.075061
+caffe,2000,5000,[CUDA memcpy HtoD],412,0.00111620813835,0.00395139382618,3.540015
+caffe,2000,5000,[CUDA memcpy DtoH],261,0.00124590951724,0.00243693211585,1.955946
+caffe,2000,5000,[CUDA memset],43,1.09086046512e-06,5.88982494293e-08,0.053992

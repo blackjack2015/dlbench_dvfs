@@ -1,0 +1,17 @@
+appName,coreF,memF,arg,time/s,power/W,energy/J
+caffe,1607,3500,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.424068016,137.2611005,58.20804259
+caffe,1607,4000,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.391734828,148.9259483,58.33948069
+caffe,1607,4500,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.376474833,154.5496747,58.18406298
+caffe,1607,5000,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.358202552,162.3236695,58.14475274
+caffe,1708,3500,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.422110513,142.4367885,60.12406582
+caffe,1708,4000,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.391485823,150.5861658,58.95234901
+caffe,1708,4500,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.372493365,157.0845027,58.51293495
+caffe,1708,5000,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.356718036,163.4869091,58.31872909
+caffe,1809,3500,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.41785808,144.473322,60.369345
+caffe,1809,4000,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.390233006,151.6396805,59.17480841
+caffe,1809,4500,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.370362904,158.8091753,58.81702736
+caffe,1809,5000,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.353585395,166.0946943,58.7286581
+caffe,1898,3500,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.417036553,146.3186837,61.02023951
+caffe,1898,4000,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.387410755,153.2227337,59.36013491
+caffe,1898,4500,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.364456077,162.9944958,59.40433447
+caffe,1898,5000,train --solver=resnet-b64-solver-GPU.prototxt -gpu=0,0.351640095,167.5831441,58.92895274

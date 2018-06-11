@@ -1,0 +1,17 @@
+appName,coreF,memF,arg,time/s,power/W,Energy/J
+caffe,1607,3500,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.369949798,209.7308149,77.58987255
+caffe,1708,3500,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.365808635,214.3822865,78.42289162
+caffe,1809,3500,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.360199336,221.9107208,79.93209437
+caffe,1898,3500,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.355366274,222.3718563,79.02345795
+caffe,1607,4000,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.345867518,222.6638309,77.01218657
+caffe,1708,4000,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.339181215,228.4035848,77.47020536
+caffe,1809,4000,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.332682693,232.2721331,77.2729187
+caffe,1898,4000,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.327553717,237.8288025,77.90170817
+caffe,1607,4500,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.327402402,228.8138872,74.91421635
+caffe,1708,4500,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.320118164,240.9812862,77.14248685
+caffe,1809,4500,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.31103403,245.4849901,76.35418571
+caffe,1898,4500,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.307467797,246.9851873,75.93999154
+caffe,1607,5000,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.314998119,245.2406993,77.25035895
+caffe,1708,5000,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.307901369,247.7571104,76.28475349
+caffe,1809,5000,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.299346404,255.0013862,76.33374801
+caffe,1898,5000,train --solver=googlenetimagenet-b128-GPU-solver.prototxt -gpu=1,0.293385889,251.7449613,73.8584192

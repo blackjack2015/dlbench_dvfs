@@ -1,0 +1,10 @@
+appName,coreF,memF,arg,time/s,power/W
+caffe,600,600,time --model=resnet-b1024.prototxt -gpu=0 -iterations=100,0.731065636,36.09120531
+caffe,600,800,time --model=resnet-b1024.prototxt -gpu=0 -iterations=100,0.643162909,36.65204601
+caffe,600,1000,time --model=resnet-b1024.prototxt -gpu=0 -iterations=100,0.593263394,37.23055751
+caffe,800,600,time --model=resnet-b1024.prototxt -gpu=0 -iterations=100,0.713756303,37.54521997
+caffe,800,800,time --model=resnet-b1024.prototxt -gpu=0 -iterations=100,0.618460424,38.10351602
+caffe,800,1000,time --model=resnet-b1024.prototxt -gpu=0 -iterations=100,0.566619576,38.66416227
+caffe,1000,600,time --model=resnet-b1024.prototxt -gpu=0 -iterations=100,0.702678606,40.63482838
+caffe,1000,800,time --model=resnet-b1024.prototxt -gpu=0 -iterations=100,0.602115606,41.32512047
+caffe,1000,1000,time --model=resnet-b1024.prototxt -gpu=0 -iterations=100,0.552267606,41.81315529

@@ -1,0 +1,21 @@
+appName,coreF,memF,arg,time/s,power/W
+caffe,1600,3500,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.249777,182.8669819
+caffe,1700,3500,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.245814303,192.8101484
+caffe,1800,3500,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.241397091,199.3026953
+caffe,1900,3500,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.237557636,201.9597247
+caffe,2000,3500,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.233774152,205.8924276
+caffe,1600,4000,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.235251636,198.645366
+caffe,1700,4000,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.229420697,204.6380313
+caffe,1800,4000,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.22331203,214.5439463
+caffe,1900,4000,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.219279394,212.3980322
+caffe,2000,4000,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.215143152,218.1757601
+caffe,1600,4500,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.225091939,210.715576
+caffe,1700,4500,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.219210152,214.0222632
+caffe,1800,4500,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.212304818,219.9221208
+caffe,1900,4500,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.207002,227.6286132
+caffe,2000,4500,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.202401091,231.8156
+caffe,1600,5000,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.217773182,221.25278
+caffe,1700,5000,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.210713879,228.0512327
+caffe,1800,5000,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.204415667,228.3623622
+caffe,1900,5000,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.199395394,236.3003298
+caffe,2000,5000,time -model vgg.train_val.prototxt.txt -gpu 1 -iterations 50,0.194322758,242.0616785

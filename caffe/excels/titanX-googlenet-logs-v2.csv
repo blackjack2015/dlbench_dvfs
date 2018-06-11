@@ -1,0 +1,21 @@
+appName,coreF,memF,arg,time/s,power/W
+caffe,1700,3500,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.45179164705882352,193.86630892143808
+caffe,1700,4000,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.42762841176470584,203.41285553997196
+caffe,1700,4500,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.40843482352941174,211.32726715328465
+caffe,1700,5000,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.39976964705882356,216.29880654761905
+caffe,1600,3500,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.45338482352941178,180.97101464713717
+caffe,1600,4000,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.43176929411764708,195.41374166666668
+caffe,1600,4500,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.41452488235294116,206.82721037463978
+caffe,1600,5000,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.40655905882352938,212.07367397660815
+caffe,1800,3500,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.44677564705882356,195.92085849056605
+caffe,1800,4000,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.42117894117647064,202.25236079545456
+caffe,1800,4500,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.40519729411764704,213.32069513991161
+caffe,1800,5000,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.39330570588235292,217.89165805471126
+caffe,1900,3500,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.44481864705882357,199.20925741239893
+caffe,1900,4000,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.41696188235294113,208.48774458874465
+caffe,1900,4500,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.40161723529411764,214.80294485842029
+caffe,1900,5000,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.38776117647058822,218.85202153846157
+caffe,2000,3500,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.43911864705882353,202.77706995884773
+caffe,2000,4000,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.41367294117647058,211.4282590448625
+caffe,2000,4500,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.39766005882352939,216.8742012012012
+caffe,2000,5000,time -model googlenetimagenet-b128.prototxt -gpu 1 -iterations 50,0.37695735294117644,222.15640314960629
