@@ -10,7 +10,7 @@ layer {
   }
   data_param {
     source: "/home/amax/blackjack/fake_train"
-    batch_size: 32
+    batch_size: 128
     backend: LMDB
   }
 }

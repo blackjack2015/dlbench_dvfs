@@ -24,7 +24,7 @@ memory_frequencies = json.loads(cf_bs.get("dvfs_control", "memF"))
 
 # Read GPU application settings
 cf_ks = ConfigParser.SafeConfigParser()
-cf_ks.read("configs/kernels_settings.cfg")
+cf_ks.read("configs/dl_settings.cfg")
 benchmark_programs = cf_ks.sections()
 
 print benchmark_programs
