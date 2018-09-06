@@ -9,14 +9,14 @@ layer {
   }
   transform_param {
     mirror: true
-    crop_size: 224
+    crop_size: 224 
     mean_value: 104
     mean_value: 117
     mean_value: 123
   }
   data_param {
-    source: "c:/data/caffe/fake_image_net.lmdb"
-    batch_size: 128
+    source: "/home/amax/blackjack/fake_train"
+    batch_size: 16
     backend: LMDB
   }
 }
@@ -36,8 +36,8 @@ layer {
     mean_value: 123
   }
   data_param {
-    source: "c:/data/caffe/fake_image_net.lmdb"
-    batch_size: 50
+    source: "/home/amax/blackjack/fake_train"
+    batch_size: 32
     backend: LMDB
   }
 }
