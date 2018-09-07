@@ -6,6 +6,7 @@
 *.xlsx
 *.xls
 *.log
+*.txt
 *.zip
 null
 ./logs
