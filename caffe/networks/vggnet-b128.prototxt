@@ -6,8 +6,8 @@ layer {
     phase: TRAIN
   }
   data_param: {
-    batch_size: 64
-    source: "/home/amax/blackjack/fake_train"
+    batch_size: 128
+    source: "$TRAIN_PATH"
     backend: LMDB
   }
 

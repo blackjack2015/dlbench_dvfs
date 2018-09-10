@@ -15,8 +15,8 @@ layer {
     mean_value: 123
   }
   data_param {
-    source: "/home/amax/blackjack/fake_train"
-    batch_size: 32
+    source: "$TRAIN_PATH"
+    batch_size: 128
     backend: LMDB
   }
 }
@@ -36,7 +36,7 @@ layer {
     mean_value: 123
   }
   data_param {
-    source: "/home/amax/blackjack/fake_train"
+    source: "$TEST_PATH"
     batch_size: 32
     backend: LMDB
   }
