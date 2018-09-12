@@ -8,7 +8,7 @@ layer {
     phase: TRAIN
   }
   data_param {
-    source: "/home/hpcl/blackjack/fake_train"
+    source: "c:/fake_train"
     batch_size: 256
     backend: LMDB
   }

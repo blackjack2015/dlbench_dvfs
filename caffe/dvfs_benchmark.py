@@ -5,12 +5,15 @@ import re
 import ConfigParser
 import json
 
+benchmark_cfg = "configs/gtx980_benchmark.cfg"
+dl_cfg = "configs/gtx980_dl.cfg"
+
 APP_ROOT = 'applications'
 LOG_ROOT = 'logs'
 
 # Reading benchmark settings
 cf_bs = ConfigParser.SafeConfigParser()
-cf_bs.read("configs/benchmark_settings.cfg")
+cf_bs.read(benchmark_cfg)
 
 running_iters = cf_bs.getint("profile_control", "iters")
 #running_time = cf_bs.getint("profile_control", "secs")
@@ -21,10 +24,15 @@ rest_int = cf_bs.getint("profile_control", "rest_time")
 #metrics = json.loads(cf_bs.get("profile_control", "metrics"))
 core_frequencies = json.loads(cf_bs.get("dvfs_control", "coreF"))
 memory_frequencies = json.loads(cf_bs.get("dvfs_control", "memF"))
+powerState = cf_bs.getint("dvfs_control", "powerState")
+if powerState == 5:
+    freqState = 1
+else:
+    freqState = powerState
 
 # Read GPU application settings
 cf_ks = ConfigParser.SafeConfigParser()
-cf_ks.read("configs/dl_settings.cfg")
+cf_ks.read(dl_cfg)
 benchmark_programs = cf_ks.sections()
 
 print benchmark_programs
@@ -37,10 +45,15 @@ if 'linux' in sys.platform:
     app_exec_cmd = './%s/%s %s 1>>%s/%s 2>&1'
     dvfs_cmd = 'gpu=%d fcore=%s fmem=%s ./adjustClock.sh' % (nvIns_dev_id, '%s', '%s')
     kill_pw_cmd = 'killall nvml_samples'
-elif 'window' in sys.platform:
-    pw_sampling_cmd = 'start /B nvml_samples.exe -device=%d -output=%s/%s > nul'
-    app_exec_cmd = '%s\\%s %s -device=%d -secs=%d >> %s/%s'
-    dvfs_cmd = 'nvidiaInspector.exe -forcepstate:%s,%s -setMemoryClock:%s,1,%s -setGpuClock:%s,1,%s'
+elif 'win' in sys.platform:
+    pw_sampling_cmd = 'start /B nvml_samples.exe -device=%d -si=%d -output=%s/%s > nul'
+    #app_exec_cmd = '%s\\%s %s -device=%d -secs=%d >> %s/%s'
+    app_exec_cmd = '%s %s >> %s/%s 2>&1' # for win caffe
+    #dvfs_cmd = 'nvidiaInspector.exe -forcepstate:%s,%s -setMemoryClock:%s,1,%s -setGpuClock:%s,1,%s'
+    if powerState !=0:
+        dvfs_cmd = 'nvidiaInspector.exe -forcepstate:%s,%d -setGpuClock:%s,%d,%s -setMemoryClock:%s,%d,%s' % (nvIns_dev_id, powerState, nvIns_dev_id, freqState, '%s', nvIns_dev_id, freqState, '%s')
+    else:
+        dvfs_cmd = 'nvidiaInspector.exe -setBaseClockOffset:%s,%d,%s -setMemoryClockOffset:%s,%d,%s' % (nvIns_dev_id, freqState, '%s', nvIns_dev_id, freqState, '%s')
     kill_pw_cmd = 'tasklist|findstr "nvml_samples.exe" && taskkill /F /IM nvml_samples.exe'
 
 for core_f in core_frequencies:
@@ -102,7 +115,8 @@ for core_f in core_frequencies:
                 exec_arg = "time -model tmp/%s.prototxt -gpu %d -iterations %d" % (arg, cuda_dev_id, running_iters)
                 # execute program to collect power data
                 os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
-                command = app_exec_cmd % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
+                #command = app_exec_cmd % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
+                command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
                 print command
                 os.system(command)
                 time.sleep(rest_int)
@@ -111,13 +125,15 @@ for core_f in core_frequencies:
                 os.system(kill_pw_cmd)
 
                 # execute program to collect time data
-                command = 'nvprof --profile-child-processes %s/%s %s >> %s/%s 2>&1' % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
+                #command = 'nvprof --profile-child-processes %s/%s %s >> %s/%s 2>&1' % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
+                command = 'nvprof --profile-child-processes %s %s >> %s/%s 2>&1' % (app, exec_arg, LOG_ROOT, perflog) # for win caffe
                 print command
                 os.system(command)
                 time.sleep(rest_int)
 
                 # collect grid and block settings
-                command = 'nvprof --print-gpu-trace --profile-child-processes %s/%s %s  > %s/%s 2>&1' % (APP_ROOT, app, exec_arg, LOG_ROOT, metricslog)
+                #command = 'nvprof --print-gpu-trace --profile-child-processes %s/%s %s  > %s/%s 2>&1' % (APP_ROOT, app, exec_arg, LOG_ROOT, metricslog)
+                command = 'nvprof --print-gpu-trace --profile-child-processes %s %s  > %s/%s 2>&1' % (app, exec_arg, LOG_ROOT, metricslog) # for win caffe
                 print command
                 os.system(command)
                 time.sleep(rest_int)
