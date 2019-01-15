@@ -6,7 +6,7 @@ parser.add_argument('--gpu', type=int, default=0, help='Dry runs before measurin
 parser.add_argument('--iterations', type=int, default=200, help='How many benchmark runs to measure performance')
 args = parser.parse_args()
 
-app_exec_cmd = "python ../main.py -a alexnet --measure alexnet-b128 --gpu %s -b 128 --iterations %s /home/hpcl/data/imagenet/imagenet_hdf5" % \
+app_exec_cmd = "python torch_imagenet/main.py -a alexnet --measure alexnet-b128 --gpu %s -b 128 --iterations %s /home/hpcl/data/imagenet/imagenet_hdf5" % \
                (args.gpu, args.iterations)
 
 os.system(app_exec_cmd)
