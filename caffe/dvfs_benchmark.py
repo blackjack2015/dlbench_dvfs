@@ -110,9 +110,13 @@ for core_f in core_frequencies:
 		    tfile.write(proto)
 		    tfile.close()
                     
-                set_datapath(arg)    
-
-                exec_arg = "time -model tmp/%s.prototxt -gpu %d -iterations %d" % (arg, cuda_dev_id, running_iters)
+                set_datapath(arg)
+                # todo zhtang ============================
+                if app == 'python':
+                    exec_arg = "torch_imagenet/dvfs_run/%s.py --gpu %d --iterations %d " % (arg, cuda_dev_id, running_iters)
+                else:
+                    exec_arg = "time -model tmp/%s.prototxt -gpu %d -iterations %d" % (arg, cuda_dev_id, running_iters)
+                
                 # execute program to collect power data
                 os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
                 command = app_exec_cmd % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
