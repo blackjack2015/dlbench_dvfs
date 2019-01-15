@@ -28,11 +28,11 @@ class Measure:
         self.batch_time = GapMeter()
 
     def add_GPUmonitor(self, delay):
-        #self.GPUmonitor = GPUMonitor(delay)
+        self.GPUmonitor = GPUMonitor(delay)
         # gpu_load
         self.gpu_load = AverageMeter()
         # gpu_load_record
-        # self.gpu_load_record = AverageMeter()
+        self.gpu_load_record = AverageMeter()
         # gpu_speed
         self.gpu_speed = AverageMeter()
 
