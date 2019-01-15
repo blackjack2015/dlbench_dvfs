@@ -114,13 +114,19 @@ for core_f in core_frequencies:
                 # todo zhtang ============================
                 if app == 'python':
                     exec_arg = "torch_imagenet/dvfs_run/%s.py --gpu %d --iterations %d " % (arg, cuda_dev_id, running_iters)
+                    # execute program to collect power data
+                    os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
+                    app_exec_cmd = '%s %s 1>>%s/%s 2>&1'
+                    command = app_exec_cmd % （app, exec_arg, LOG_ROOT, perflog)
+                    #command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
+
                 else:
                     exec_arg = "time -model tmp/%s.prototxt -gpu %d -iterations %d" % (arg, cuda_dev_id, running_iters)
-                
-                # execute program to collect power data
-                os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
-                command = app_exec_cmd % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
-                #command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
+                    # execute program to collect power data
+                    os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
+                    command = app_exec_cmd % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
+                    #command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
+
                 print command
                 os.system(command)
                 time.sleep(rest_int)
