@@ -185,8 +185,8 @@ def main_worker(gpu, ngpus_per_node, args):
         print("Use GPU: {} for training".format(args.gpu))
 
     if args.measure:
-        meas1.add_GPUmonitor(0.05)
-        meas1.tomeasure()
+        # meas1.add_GPUmonitor(0.05)
+        # meas1.tomeasure()
     
         log_path = args.measure
         if not os.path.exists(log_path):
@@ -196,13 +196,6 @@ def main_worker(gpu, ngpus_per_node, args):
         # for batch_sizei in batch_sizes:
         #     for num_workeri in num_workers:
     
-        if args.distributed:
-            if args.multiprocessing_distributed:
-                # For multiprocessing distributed training, rank needs to be the
-                # global rank among all the processes
-                args.rank = args.rank * ngpus_per_node + gpu
-            dist.init_process_group(backend=args.dist_backend, init_method=args.dist_url,
-                                    world_size=args.world_size, rank=args.rank)
         # create model
         if args.pretrained:
             print("=> using pre-trained model '{}'".format(args.arch))
@@ -214,25 +207,9 @@ def main_worker(gpu, ngpus_per_node, args):
                 model = AlexNet()
             else:
                 model = models.__dict__[args.arch]()
+        
         model.train()
-        if args.distributed:
-            # For multiprocessing distributed, DistributedDataParallel constructor
-            # should always set the single device scope, otherwise,
-            # DistributedDataParallel will use all available devices.
-            if args.gpu is not None:
-                torch.cuda.set_device(args.gpu)
-                model.cuda(args.gpu)
-                # When using a single GPU per process and per
-                # DistributedDataParallel, we need to divide the batch size
-                # ourselves based on the total number of GPUs we have
-                args.batch_size = int(args.batch_size / ngpus_per_node)
-                model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[args.gpu])
-            else:
-                model.cuda()
-                # DistributedDataParallel will divide and allocate batch_size to all
-                # available GPUs if device_ids are not set
-                model = torch.nn.parallel.DistributedDataParallel(model)
-        elif args.gpu is not None:
+        if args.gpu is not None:
             torch.cuda.set_device(args.gpu)
             model = model.cuda(args.gpu)
         else:
@@ -298,9 +275,9 @@ def main_worker(gpu, ngpus_per_node, args):
             print('wait %d seconds for collecting unused memory', i)
             time.sleep(1)
         meas1.reset()
-        meas1.gpu_load.reset()
-        meas1.gpu_speed.reset()
-        meas1.GPUmonitor.stop()
+        # meas1.gpu_load.reset()
+        # meas1.gpu_speed.reset()
+        # meas1.GPUmonitor.stop()
         return
 
     if args.distributed:
@@ -508,15 +485,15 @@ def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion,
 
         gpu_load_records = []
         # watch gpu_load
-        meas1.gpu_load.update(meas1.GPUmonitor.GPUs[args.gpu].load)
-        gpu_load_records.append(meas1.gpu_load.val)
+        # meas1.gpu_load.update(meas1.GPUmonitor.GPUs[args.gpu].load)
+        # gpu_load_records.append(meas1.gpu_load.val)
 
         # measure data loading times
         meas1.io_time.update_end(time.time())
 
         # watch gpu_load
-        meas1.gpu_load.update(meas1.GPUmonitor.GPUs[args.gpu].load)
-        gpu_load_records.append(meas1.gpu_load.val)
+        # meas1.gpu_load.update(meas1.GPUmonitor.GPUs[args.gpu].load)
+        # gpu_load_records.append(meas1.gpu_load.val)
 
         # measure data loaded to GPU time
         meas1.h2d_time.update_start(time.time())
@@ -526,8 +503,8 @@ def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion,
         meas1.h2d_time.update_end(time.time())
 
         # watch gpu_load
-        meas1.gpu_load.update(meas1.GPUmonitor.GPUs[args.gpu].load)
-        gpu_load_records.append(meas1.gpu_load.val)
+        # meas1.gpu_load.update(meas1.GPUmonitor.GPUs[args.gpu].load)
+        # gpu_load_records.append(meas1.gpu_load.val)
 
         # compute output
         meas1.gpu_time.update_start(time.time())
@@ -535,8 +512,8 @@ def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion,
         loss = criterion(output, target)
 
         # watch gpu_load
-        meas1.gpu_load.update(meas1.GPUmonitor.GPUs[args.gpu].load)
-        gpu_load_records.append(meas1.gpu_load.val)
+        # meas1.gpu_load.update(meas1.GPUmonitor.GPUs[args.gpu].load)
+        # gpu_load_records.append(meas1.gpu_load.val)
 
         # compute gradient and do SGD step
         optimizer.zero_grad()
@@ -548,19 +525,15 @@ def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion,
         meas1.gpu_speed.update( 1 / ( meas1.gpu_time.gap / batch_size ))
 
         # watch gpu_load
-        meas1.gpu_load.update(meas1.GPUmonitor.GPUs[args.gpu].load)
-        gpu_load_records.append(meas1.gpu_load.val)
+        # meas1.gpu_load.update(meas1.GPUmonitor.GPUs[args.gpu].load)
+        # gpu_load_records.append(meas1.gpu_load.val)
 
         print(' train* ===Epoch: [{0}][{1}/{2}]\t'
           .format(epoch, i, len(train_loader)))
         print('>>> *io_time : [{}] *h2d_time :[{}] gpu_time :[{}] '
                      '  *batch_time :[{}] *gpu_speed :[{}] image/s'
-                     ' **gpu_load :[{},{},{},{},{}]'
                     .format(meas1.io_time.gap, meas1.h2d_time.gap, meas1.gpu_time.gap,
-                    meas1.batch_time.gap, meas1.gpu_speed.val, gpu_load_records[0],
-                    gpu_load_records[1], gpu_load_records[2], gpu_load_records[3],
-                    gpu_load_records[4]
-                     ))
+                    meas1.batch_time.gap, meas1.gpu_speed.val))
         logger1.info('>>> ===========********  measing batch ===========')
         logger1.info(' train* ===Epoch: [{0}][{1}/{2}]\t'
           .format(epoch, i, len(train_loader)))
@@ -569,12 +542,8 @@ def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion,
         meas1.batch_time.update_end(time.time())
         logger1.info('>>> *io_time : [{}] *h2d_time :[{}] gpu_time :[{}] '
                      '  *batch_time :[{}] *gpu_speed :[{}] image/s'
-                     ' **gpu_load :[{},{},{},{},{}]'
                     .format(meas1.io_time.gap, meas1.h2d_time.gap, meas1.gpu_time.gap,
-                    meas1.batch_time.gap, meas1.gpu_speed.val, gpu_load_records[0],
-                    gpu_load_records[1], gpu_load_records[2], gpu_load_records[3],
-                    gpu_load_records[4]
-                     ))
+                    meas1.batch_time.gap, meas1.gpu_speed.val))
         meas1.batch_time.update_start(time.time())
         if i == iterations:
             for indexqueue in train_iter.index_queues:

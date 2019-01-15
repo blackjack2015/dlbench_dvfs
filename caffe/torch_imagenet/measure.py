@@ -6,7 +6,7 @@ import time
 import warnings
 import sys
 import logging
-import GPUtil
+#import GPUtil
 
 
 from threading import Thread
@@ -28,7 +28,7 @@ class Measure:
         self.batch_time = GapMeter()
 
     def add_GPUmonitor(self, delay):
-        self.GPUmonitor = GPUMonitor(delay)
+        #self.GPUmonitor = GPUMonitor(delay)
         # gpu_load
         self.gpu_load = AverageMeter()
         # gpu_load_record
@@ -90,25 +90,25 @@ class AverageMeter(object):
         self.count += n
         self.avg = self.sum / self.count
 
-class GPUMonitor(Thread):
-    def __init__(self, delay):
-        super(GPUMonitor, self).__init__()
-        self.stopped = False
-        self.delay = delay # Time between calls to GPUtil
-        self.start()
-        self.GPUs = GPUtil.getGPUs()
-
-    def getInfo():
-        return [(self.GPUs[i].load, self.GPUs[i].memoryUtil, self.GPUs[i].memoryUsed)
-            for i in range(len(GPUs))]
-
-    def getLoad():
-        return [self.GPUs[i].load for i in range(len(GPUs))]
-
-    def run(self):
-        while not self.stopped:
-            self.GPUs = GPUtil.getGPUs()
-            time.sleep(self.delay)
-
-    def stop(self):
-        self.stopped = True
+# class GPUMonitor(Thread):
+#     def __init__(self, delay):
+#         super(GPUMonitor, self).__init__()
+#         self.stopped = False
+#         self.delay = delay # Time between calls to GPUtil
+#         self.start()
+#         self.GPUs = GPUtil.getGPUs()
+#
+#     def getInfo():
+#         return [(self.GPUs[i].load, self.GPUs[i].memoryUtil, self.GPUs[i].memoryUsed)
+#             for i in range(len(GPUs))]
+#
+#     def getLoad():
+#         return [self.GPUs[i].load for i in range(len(GPUs))]
+#
+#     def run(self):
+#         while not self.stopped:
+#             self.GPUs = GPUtil.getGPUs()
+#             time.sleep(self.delay)
+#
+#     def stop(self):
+#         self.stopped = True
