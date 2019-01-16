@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af25c0af-0523-48ab-aa8e-baa8c8092018" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/caffe/torch_dvfs_run/vgg16.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caffe/torch_dvfs_run/alexnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/torch_dvfs_run/alexnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caffe/torch_dvfs_run/resnet50.py" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/torch_dvfs_run/resnet50.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caffe/dvfs_benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/dvfs_benchmark.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +40,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cfg" value="206" />
-          <entry key="py" value="792" />
+          <entry key="py" value="795" />
           <entry key="sh" value="2" />
           <entry key="txt" value="4" />
         </counts>
@@ -51,18 +48,18 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="212" />
-          <entry key="Python" value="792" />
+          <entry key="Python" value="795" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/caffe/dvfs_benchmark.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="135" column="16" lean-forward="true" selection-start-line="135" selection-start-column="16" selection-end-line="135" selection-end-column="29" />
+            <state relative-caret-position="595">
+              <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -112,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caffe/torch_dvfs_run/resnet50.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+            <state relative-caret-position="551">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -219,11 +216,11 @@
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/__init__.py" />
         <option value="$PROJECT_DIR$/caffe/configs/torch_config/cnn.cfg" />
         <option value="$PROJECT_DIR$/caffe/configs/gpus/v100.cfg" />
-        <option value="$PROJECT_DIR$/caffe/dvfs_benchmark.py" />
         <option value="$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg" />
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/alexnet.py" />
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/vgg16.py" />
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/resnet50.py" />
+        <option value="$PROJECT_DIR$/caffe/dvfs_benchmark.py" />
       </list>
     </option>
   </component>
@@ -582,16 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caffe/dvfs_benchmark.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="135" column="16" lean-forward="true" selection-start-line="135" selection-start-column="16" selection-end-line="135" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -621,8 +608,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/caffe/torch_dvfs_run/resnet50.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+        <state relative-caret-position="551">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caffe/dvfs_benchmark.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
