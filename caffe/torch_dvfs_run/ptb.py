@@ -19,9 +19,9 @@ cfg_file = "configs/torch_config/rnn.cfg"
 cfg = ConfigParser.SafeConfigParser()
 
 cfg.read(cfg_file)
-datapath = cfg.get('an4', 'host143_data_path')
+datapath = cfg.get('lstm', 'host143_data_path')
 
-app_exec_cmd = "python torch_imagenet/main.py -a an4 --measure an4-b%s -b %s  --gpu %s --iterations %s %s" % \
+app_exec_cmd = "python torch_imagenet/main.py -a lstm --measure lstm-b%s -b %s  --gpu %s --iterations %s %s" % \
                (args.batch_size, args.batch_size, args.gpu, args.iterations, datapath)
 print app_exec_cmd
 
