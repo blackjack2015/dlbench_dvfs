@@ -23,7 +23,7 @@ datapath = cfg.get('resnet50', 'host143_data_path')
 
 app_exec_cmd = "python torch_imagenet/main.py -a resnet50 --measure resnet50-b%s -b %s  --gpu %s --iterations %s %s" % \
                (args.batch_size, args.batch_size, args.gpu, args.iterations, datapath)
-
+print app_exec_cmd
 
 os.system(app_exec_cmd)
 

@@ -19,11 +19,10 @@ cfg_file = "configs/torch_config/cnn.cfg"
 cfg = ConfigParser.SafeConfigParser()
 
 cfg.read(cfg_file)
-datapath = cfg.get('alexnet', 'host143_data_path')
+datapath = cfg.get('vgg16', 'host143_data_path')
 
-app_exec_cmd = "python torch_imagenet/main.py -a alexnet --measure alexnet-b%s -b %s  --gpu %s --iterations %s %s" % \
+app_exec_cmd = "python torch_imagenet/main.py -a vgg16 --measure vgg16-b%s -b %s  --gpu %s --iterations %s %s" % \
                (args.batch_size, args.batch_size, args.gpu, args.iterations, datapath)
 print app_exec_cmd
 
 os.system(app_exec_cmd)
-
