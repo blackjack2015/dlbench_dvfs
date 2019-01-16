@@ -92,37 +92,40 @@ for core_f in core_frequencies:
                 # set data path for the network
                 def set_datapath(network):
                     network_path = "networks/%s.prototxt" % network
+                    replacement_list = {
+                        '$TRAIN_PATH': ('%s' % train_path),
+                        '$TEST_PATH': ('%s' % test_path),
+                    }
+                    proto = ''
+                    tfile = open(network_path, "r")
+                    proto = tfile.read()
+                    tfile.close()
+                    for r in replacement_list:
+                        proto = proto.replace(r, replacement_list[r])
+                    tfile = open('tmp/%s.prototxt' % network, "w")
+                    tfile.write(proto)
+                    tfile.close()
 
-		    replacement_list = {
-		        '$TRAIN_PATH': ('%s' % train_path),
-		        '$TEST_PATH': ('%s' % test_path),
-		    }
-
-		    proto = ''
-		    tfile = open(network_path, "r")
-		    proto = tfile.read()
-		    tfile.close()
-
-		    for r in replacement_list:
-		        proto = proto.replace(r, replacement_list[r])
-		    
-		    tfile = open('tmp/%s.prototxt' % network, "w")
-		    tfile.write(proto)
-		    tfile.close()
-                    
-                set_datapath(arg)
                 # todo zhtang ============================
                 if app == 'python':
-                    exec_arg = "torch_imagenet/dvfs_run/%s.py --gpu %d --iterations %d " % (arg, cuda_dev_id, running_iters)
+                    
+                    pythonfile_re = re.compile(r'.*(?=-)')
+                    batch_size_re = re.compile(r'(?<=-b)\d*')
+
+                    pythonfile = pythonfile_re.search(arg)
+                    batch_size = batch_size_re.search(arg)
+                    exec_arg = "torch_dvfs_run/%s.py --batch-size %s --gpu %d --iterations %d " % \
+                               (pythonfile, batch_size, cuda_dev_id, running_iters)
                     # execute program to collect power data
                     os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
                     # app_exec_cmd = '%s %s 1>>%s/%s 2>&1'
                     # command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)
-                    app_exec_cmd = '%s %s'
-                    command = app_exec_cmd % (app, exec_arg)
+                    app_exec_python_cmd = '%s %s'
+                    command = app_exec_python_cmd % (app, exec_arg)
                     #command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
 
                 else:
+                    set_datapath(arg)
                     exec_arg = "time -model tmp/%s.prototxt -gpu %d -iterations %d" % (arg, cuda_dev_id, running_iters)
                     # execute program to collect power data
                     os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))

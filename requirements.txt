@@ -1,4 +1,3 @@
-visdom
 scikit-image
 tqdm
 fire
@@ -9,3 +8,4 @@ cython
 git+https://github.com/pytorch/tnt.git@master
 GPUtil
 pandas
+h5py
