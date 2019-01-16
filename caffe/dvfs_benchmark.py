@@ -5,8 +5,8 @@ import re
 import ConfigParser
 import json
 
-benchmark_cfg = "configs/gtx980_benchmark.cfg"
-dl_cfg = "configs/gtx980_dl.cfg"
+benchmark_cfg = "configs/gpus/v100.cfg"
+dl_cfg = "configs/benchmarks/dl_settings.cfg"
 
 APP_ROOT = 'applications'
 LOG_ROOT = 'logs'
@@ -115,8 +115,8 @@ for core_f in core_frequencies:
                 exec_arg = "time -model tmp/%s.prototxt -gpu %d -iterations %d" % (arg, cuda_dev_id, running_iters)
                 # execute program to collect power data
                 os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
-                #command = app_exec_cmd % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
-                command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
+                command = app_exec_cmd % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
+                #command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
                 print command
                 os.system(command)
                 time.sleep(rest_int)
@@ -124,19 +124,19 @@ for core_f in core_frequencies:
                 # stop record power data
                 os.system(kill_pw_cmd)
 
-                # execute program to collect time data
-                #command = 'nvprof --profile-child-processes %s/%s %s >> %s/%s 2>&1' % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
-                command = 'nvprof --profile-child-processes %s %s >> %s/%s 2>&1' % (app, exec_arg, LOG_ROOT, perflog) # for win caffe
-                print command
-                os.system(command)
-                time.sleep(rest_int)
+                ## execute program to collect time data
+                ##command = 'nvprof --profile-child-processes %s/%s %s >> %s/%s 2>&1' % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
+                #command = 'nvprof --profile-child-processes %s %s >> %s/%s 2>&1' % (app, exec_arg, LOG_ROOT, perflog) # for win caffe
+                #print command
+                #os.system(command)
+                #time.sleep(rest_int)
 
-                # collect grid and block settings
-                #command = 'nvprof --print-gpu-trace --profile-child-processes %s/%s %s  > %s/%s 2>&1' % (APP_ROOT, app, exec_arg, LOG_ROOT, metricslog)
-                command = 'nvprof --print-gpu-trace --profile-child-processes %s %s  > %s/%s 2>&1' % (app, exec_arg, LOG_ROOT, metricslog) # for win caffe
-                print command
-                os.system(command)
-                time.sleep(rest_int)
+                ## collect grid and block settings
+                ##command = 'nvprof --print-gpu-trace --profile-child-processes %s/%s %s  > %s/%s 2>&1' % (APP_ROOT, app, exec_arg, LOG_ROOT, metricslog)
+                #command = 'nvprof --print-gpu-trace --profile-child-processes %s %s  > %s/%s 2>&1' % (app, exec_arg, LOG_ROOT, metricslog) # for win caffe
+                #print command
+                #os.system(command)
+                #time.sleep(rest_int)
 
                 ## execute program to collect metrics data
                 #metCount = 0
