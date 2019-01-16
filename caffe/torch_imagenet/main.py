@@ -272,7 +272,7 @@ def main_worker(gpu, ngpus_per_node, args):
                     args.batch_size, args.workers, model, criterion, optimizer, size_resize, args.iterations)
         del model
         gc.collect()
-        for i in range(8):
+        for i in range(4):
             print('wait %d seconds for collecting unused memory', i)
             time.sleep(1)
         meas1.reset()

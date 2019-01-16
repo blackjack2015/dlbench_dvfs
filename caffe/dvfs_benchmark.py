@@ -108,7 +108,7 @@ for core_f in core_frequencies:
 
                 # todo zhtang ============================
                 if app == 'python':
-                    
+
                     pythonfile_re = re.compile(r'.*(?=-)')
                     batch_size_re = re.compile(r'(?<=-b)\d*')
 
