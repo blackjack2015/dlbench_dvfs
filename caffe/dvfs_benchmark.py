@@ -9,7 +9,7 @@ benchmark_cfg = "configs/gpus/p100.cfg"
 dl_cfg = "configs/benchmarks/dl_settings.cfg"
 
 APP_ROOT = 'applications'
-LOG_ROOT = 'logs/temp_p100'
+LOG_ROOT = 'logs/p100'
 
 # Reading benchmark settings
 cf_bs = ConfigParser.SafeConfigParser()
@@ -120,8 +120,10 @@ for core_f in core_frequencies:
                     os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
                     # app_exec_cmd = '%s %s 1>>%s/%s 2>&1'
                     # command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)
-                    app_exec_python_cmd = '%s %s'
-                    command = app_exec_python_cmd % (app, exec_arg)
+                    app_exec_python_cmd = '%s %s 1>>%s/%s 2>&1'
+
+                    # command = app_exec_python_cmd % (app, exec_arg)
+                    command = app_exec_python_cmd % (app, exec_arg, LOG_ROOT, perflog)
                     #command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
 
                 else:

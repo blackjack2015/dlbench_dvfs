@@ -573,6 +573,8 @@ def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion,
             batch_time_between_30_40 += meas1.batch_time.gap
         if (i == 40) & (stop_in_time):
             stop_iterations = int(run_time / (batch_time_between_30_40 / 10))
+            if stop_iterations < 50 :
+                stop_iterations = 50
             print('==========================================')
             print('==========================================')
             print('==========================================')
