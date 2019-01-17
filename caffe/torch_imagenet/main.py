@@ -208,6 +208,8 @@ def main_worker(gpu, ngpus_per_node, args):
             if args.customize:
                 print("=> self-defined model '{}'".format(args.arch))
                 model = AlexNet()
+            elif args.arch == 'googlenet':
+                model = GoogleNet()
             else:
                 model = models.__dict__[args.arch]()
         
@@ -220,8 +222,6 @@ def main_worker(gpu, ngpus_per_node, args):
             if args.arch.startswith('alexnet') or args.arch.startswith('vgg'):
                 # model.features = torch.nn.DataParallel(model.features)
                 model.cuda()
-            elif args.arch == 'googlenet':
-                model = GoogleNet()
             else:
                 model = torch.nn.DataParallel(model).cuda()
 
