@@ -7,6 +7,7 @@ import json
 parser = argparse.ArgumentParser()
 parser.add_argument('--gpu', type=int, default=0, help='Dry runs before measuring performance')
 parser.add_argument('--iterations', type=int, default=200, help='How many benchmark runs to measure performance')
+parser.add_argument('-t', '--rumtime', type=int, default=30, help='How many benchmark runs to measure performance')
 parser.add_argument('-b', '--batch-size', default=64, type=int,
                     metavar='N',
                     help='mini-batch size (default: 256), this is the total '
@@ -21,8 +22,8 @@ cfg = ConfigParser.SafeConfigParser()
 cfg.read(cfg_file)
 datapath = cfg.get('alexnet', 'host143_data_path')
 
-app_exec_cmd = "python torch_imagenet/main.py -a alexnet --measure alexnet-b%s -b %s  --gpu %s --iterations %s %s" % \
-               (args.batch_size, args.batch_size, args.gpu, args.iterations, datapath)
+app_exec_cmd = "python torch_imagenet/main.py -a alexnet --measure alexnet-b%s -b %s  --gpu %s --iterations %s -t %s %s" % \
+               (args.batch_size, args.batch_size, args.gpu, args.iterations, args.rumtime, datapath)
 print app_exec_cmd
 
 os.system(app_exec_cmd)

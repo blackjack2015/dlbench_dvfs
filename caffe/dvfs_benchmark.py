@@ -5,18 +5,18 @@ import re
 import ConfigParser
 import json
 
-benchmark_cfg = "configs/gpus/v100.cfg"
+benchmark_cfg = "configs/gpus/p100.cfg"
 dl_cfg = "configs/benchmarks/dl_settings.cfg"
 
 APP_ROOT = 'applications'
-LOG_ROOT = 'logs/temp'
+LOG_ROOT = 'logs/temp_p100'
 
 # Reading benchmark settings
 cf_bs = ConfigParser.SafeConfigParser()
 cf_bs.read(benchmark_cfg)
 
 running_iters = cf_bs.getint("profile_control", "iters")
-#running_time = cf_bs.getint("profile_control", "secs")
+running_time = cf_bs.getint("profile_control", "secs")
 nvIns_dev_id = cf_bs.getint("profile_control", "nvIns_device_id")
 cuda_dev_id = cf_bs.getint("profile_control", "cuda_device_id")
 pw_sample_int = cf_bs.getint("profile_control", "power_sample_interval")
@@ -114,8 +114,8 @@ for core_f in core_frequencies:
 
                     pythonfile = pythonfile_re.search(arg).group()
                     batch_size = batch_size_re.search(arg).group()
-                    exec_arg = "torch_dvfs_run/%s.py --batch-size %s --gpu %d --iterations %d " % \
-                               (pythonfile, batch_size, cuda_dev_id, running_iters)
+                    exec_arg = "torch_dvfs_run/%s.py --batch-size %s --gpu %d --iterations %d --rumtime %d " % \
+                               (pythonfile, batch_size, cuda_dev_id, running_iters, running_time)
                     # execute program to collect power data
                     os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
                     # app_exec_cmd = '%s %s 1>>%s/%s 2>&1'

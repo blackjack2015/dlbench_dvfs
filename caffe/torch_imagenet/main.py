@@ -93,6 +93,9 @@ parser.add_argument('--measure', type=str, default=None,
                     help=' if mode of measurement')
 parser.add_argument('--iterations', type=int, default=20,
                     help=' how many iterations in the mode of measurement')
+parser.add_argument('-t', '--run-time', type=int, default=None,
+                    help=' how many seconds in the mode of measurement')
+
 
 best_acc1 = 0
 meas1 = measure.Measure()
@@ -272,8 +275,8 @@ def main_worker(gpu, ngpus_per_node, args):
     
         logger1.info('***batch_size: *[{}]*, num_workers: *[{}]*")'.
                      format(args.batch_size, args.workers))
-        one_measure(args, meas1, logger1,
-                    args.batch_size, args.workers, model, criterion, optimizer, size_resize, args.iterations)
+        one_measure(args, meas1, logger1, args.batch_size, args.workers, model,
+                    criterion, optimizer, size_resize, args.run_time, args.iterations)
         # del model
         # gc.collect()
         for i in range(4):
@@ -460,7 +463,7 @@ def main_worker(gpu, ngpus_per_node, args):
         }, is_best)
     torch.save(model.state_dict(), args.arch + args.optim + args.kind + 'params.pth')
 
-def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion, optimizer, size_resize, iterations):
+def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion, optimizer, size_resize, run_time, iterations=200):
     """
         measure one set of args batch_siez and num_workers
     """
@@ -484,7 +487,12 @@ def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion,
         # train for measuring
 
     train_iter = iter(train_loader)
-
+    stop_in_time = False
+    if run_time:
+        stop_in_time = True
+    batch_time_between_30_40 = 0
+    stop_iterations = iterations
+    
     meas1.io_time.update_start(time.time())
     meas1.batch_time.update_start(time.time())
     i = 0
@@ -559,8 +567,24 @@ def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion,
                     gpu_load_records[1], gpu_load_records[2], gpu_load_records[3],
                     gpu_load_records[4]
                      ))
-        meas1.batch_time.update_start(time.time())
-        if i == iterations:
+
+        
+        if (i > 29) & (i < 40):
+            batch_time_between_30_40 += meas1.batch_time.gap
+        if (i == 40) & (stop_in_time):
+            stop_iterations = int(run_time / (batch_time_between_30_40 / 10))
+            print('==========================================')
+            print('==========================================')
+            print('==========================================')
+            print('==========================================')
+            print('=========******adjust  iterations to  *======================')
+            print('=========****** %d  *************   =========================' % stop_iterations)
+            print('==========================================')
+            print('==========================================')
+            print('==========================================')
+            print('==========================================')
+            
+        if i == stop_iterations:
             # for indexqueue in train_iter.index_queues:
             #     while not indexqueue.empty():
             #         indexqueue.get()
@@ -573,7 +597,7 @@ def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion,
             # del target
             break
         i += 1
-
+        meas1.batch_time.update_start(time.time())
     gc.collect()
     logger1.info('>>>average time  ========= **io_time : [{}] **h2d_time :[{}] '
          '**gpu_time :[{}] **batch_time :[{}] '
