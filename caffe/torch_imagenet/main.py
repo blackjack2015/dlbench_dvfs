@@ -274,8 +274,8 @@ def main_worker(gpu, ngpus_per_node, args):
                      format(args.batch_size, args.workers))
         one_measure(args, meas1, logger1,
                     args.batch_size, args.workers, model, criterion, optimizer, size_resize, args.iterations)
-        del model
-        gc.collect()
+        # del model
+        # gc.collect()
         for i in range(4):
             print('wait %d seconds for collecting unused memory', i)
             time.sleep(1)
@@ -561,16 +561,16 @@ def one_measure(args, meas1, logger1, batch_size, num_workers, model, criterion,
                      ))
         meas1.batch_time.update_start(time.time())
         if i == iterations:
-            for indexqueue in train_iter.index_queues:
-                while not indexqueue.empty():
-                    indexqueue.get()
-            while not train_iter.worker_result_queue.empty():
-                train_iter.worker_result_queue.get()
-            for process in train_iter.workers:
-                process.terminate()
-                process.join()
-            del input
-            del target
+            # for indexqueue in train_iter.index_queues:
+            #     while not indexqueue.empty():
+            #         indexqueue.get()
+            # while not train_iter.worker_result_queue.empty():
+            #     train_iter.worker_result_queue.get()
+            # for process in train_iter.workers:
+            #     process.terminate()
+            #     process.join()
+            # del input
+            # del target
             break
         i += 1
 

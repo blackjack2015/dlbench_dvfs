@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af25c0af-0523-48ab-aa8e-baa8c8092018" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/caffe/configs/gpus/p100.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caffe/configs/gpus/v100.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/configs/gpus/v100.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/caffe/torch_imagenet/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/torch_imagenet/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,7 +27,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cfg" value="25" />
+          <entry key="cfg" value="26" />
+          <entry key="md" value="1" />
           <entry key="prototxt" value="6" />
           <entry key="py" value="35" />
           <entry key="sh" value="9" />
@@ -33,13 +38,15 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Bash" value="6" />
-          <entry key="PLAIN_TEXT" value="37" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="38" />
           <entry key="Python" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cfg" value="221" />
+          <entry key="cfg" value="264" />
+          <entry key="md" value="45" />
           <entry key="py" value="816" />
           <entry key="sh" value="2" />
           <entry key="txt" value="4" />
@@ -47,7 +54,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="227" />
+          <entry key="Markdown" value="45" />
+          <entry key="PLAIN_TEXT" value="270" />
           <entry key="Python" value="816" />
         </counts>
       </usages-collector>
@@ -55,11 +63,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="20" selection-end-column="19" />
+            <state relative-caret-position="171">
+              <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -67,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caffe/torch_dvfs_run/googlenet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="228">
+              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -77,32 +85,44 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caffe/configs/gtx980_dl.cfg">
+        <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/v100.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+            <state relative-caret-position="190">
+              <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/v100.cfg">
+        <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/p100.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+            <state relative-caret-position="228">
+              <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caffe/torch_imagenet/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="656">
-              <caret line="223" column="28" selection-start-line="223" selection-start-column="28" selection-end-line="223" selection-end-column="28" />
+            <state relative-caret-position="202">
+              <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1547726911320" expanded="true" signature="6428:6975" ph="..." />
+                <marker date="1547730108937" expanded="true" signature="6428:6975" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="209">
+                <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="41" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -122,29 +142,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caffe/torch_dvfs_run/resnet50.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caffe/configs/torch_config/cnn.cfg">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="9" selection-start-column="9" selection-end-column="9" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caffe/configs/torch_config/rnn.cfg">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -158,13 +161,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>one_measure</find>
-      <find>iterations</find>
-      <find>net</find>
       <find>GPUtil</find>
       <find>add_GPUmonitor</find>
       <find>GPU</find>
-      <find>log</find>
       <find>meas1</find>
       <find>GapMeter</find>
       <find>GPUMonitor</find>
@@ -188,6 +187,10 @@
       <find>models</find>
       <find>time</find>
       <find>app_exec_python_cmd</find>
+      <find>log</find>
+      <find>one_measure</find>
+      <find>rest_time</find>
+      <find>rest_int</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -206,7 +209,6 @@
         <option value="$PROJECT_DIR$/caffe/torch_imagenet/dvfs_run/resnet50-b256.py" />
         <option value="$PROJECT_DIR$/caffe/torch_imagenet/dvfs_run/alexnet-b64.py" />
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/__init__.py" />
-        <option value="$PROJECT_DIR$/caffe/configs/gpus/v100.cfg" />
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/alexnet.py" />
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/vgg16.py" />
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/resnet50.py" />
@@ -217,12 +219,15 @@
         <option value="$PROJECT_DIR$/caffe/configs/torch_config/cnn.cfg" />
         <option value="$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg" />
         <option value="$PROJECT_DIR$/caffe/configs/gtx980_dl.cfg" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/caffe/torch_imagenet/main.py" />
+        <option value="$PROJECT_DIR$/caffe/configs/gpus/p100.cfg" />
+        <option value="$PROJECT_DIR$/caffe/configs/gpus/v100.cfg" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="1912" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -257,32 +262,6 @@
               <item name="caffe" type="462c0819:PsiDirectoryNode" />
               <item name="configs" type="462c0819:PsiDirectoryNode" />
               <item name="benchmarks" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dlbench_dvfs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dlbench_dvfs" type="462c0819:PsiDirectoryNode" />
-              <item name="caffe" type="462c0819:PsiDirectoryNode" />
-              <item name="configs" type="462c0819:PsiDirectoryNode" />
-              <item name="gpus" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dlbench_dvfs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dlbench_dvfs" type="462c0819:PsiDirectoryNode" />
-              <item name="caffe" type="462c0819:PsiDirectoryNode" />
-              <item name="configs" type="462c0819:PsiDirectoryNode" />
-              <item name="torch_config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dlbench_dvfs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dlbench_dvfs" type="462c0819:PsiDirectoryNode" />
-              <item name="caffe" type="462c0819:PsiDirectoryNode" />
-              <item name="torch_dvfs_run" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dlbench_dvfs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dlbench_dvfs" type="462c0819:PsiDirectoryNode" />
-              <item name="caffe" type="462c0819:PsiDirectoryNode" />
-              <item name="torch_imagenet" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dlbench_dvfs" type="b2602c69:ProjectViewProjectNode" />
@@ -335,7 +314,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21548998" />
@@ -594,13 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/benchmark_settings.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/caffe/configs/torch_config/rnn.cfg">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -611,12 +583,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg">
+    <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/benchmark_settings.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="20" selection-end-column="19" />
+        <state relative-caret-position="133">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/gtx980_benchmark.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/caffe/configs/gtx980_dl.cfg">
       <provider selected="true" editor-type-id="text-editor">
@@ -625,20 +600,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/gtx980_benchmark.cfg">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/v100.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/caffe/torch_dvfs_run/googlenet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="228">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -647,12 +612,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/caffe/torch_imagenet/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="223" column="28" selection-start-line="223" selection-start-column="28" selection-end-line="223" selection-end-column="28" />
+        <state relative-caret-position="202">
+          <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1547726911320" expanded="true" signature="6428:6975" ph="..." />
+            <marker date="1547730108937" expanded="true" signature="6428:6975" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="209">
+            <caret line="11" selection-start-line="11" selection-end-line="11" selection-end-column="41" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/v100.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/p100.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
