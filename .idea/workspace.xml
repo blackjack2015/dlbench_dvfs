@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af25c0af-0523-48ab-aa8e-baa8c8092018" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caffe/configs/gtx980_dl.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/configs/gtx980_dl.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caffe/torch_imagenet/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/torch_imagenet/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +25,7 @@
         <counts>
           <entry key="cfg" value="25" />
           <entry key="prototxt" value="6" />
-          <entry key="py" value="34" />
+          <entry key="py" value="35" />
           <entry key="sh" value="9" />
           <entry key="txt" value="3" />
         </counts>
@@ -36,13 +34,13 @@
         <counts>
           <entry key="Bash" value="6" />
           <entry key="PLAIN_TEXT" value="37" />
-          <entry key="Python" value="34" />
+          <entry key="Python" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cfg" value="221" />
-          <entry key="py" value="807" />
+          <entry key="py" value="815" />
           <entry key="sh" value="2" />
           <entry key="txt" value="4" />
         </counts>
@@ -50,7 +48,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="227" />
-          <entry key="Python" value="807" />
+          <entry key="Python" value="815" />
         </counts>
       </usages-collector>
     </session>
@@ -87,11 +85,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/v100.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+            <state relative-caret-position="456">
+              <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/caffe/torch_imagenet/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="295" column="23" lean-forward="true" selection-start-line="295" selection-start-column="23" selection-end-line="295" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+                <marker date="1547725871441" expanded="true" signature="6428:6975" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -115,18 +126,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="551">
               <caret line="29" selection-start-line="29" selection-end-line="29" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/caffe/torch_dvfs_run/vgg16.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -211,7 +210,6 @@
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/alexnet.py" />
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/vgg16.py" />
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/resnet50.py" />
-        <option value="$PROJECT_DIR$/caffe/torch_imagenet/main.py" />
         <option value="$PROJECT_DIR$/caffe/dvfs_benchmark.py" />
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/lstm.py" />
         <option value="$PROJECT_DIR$/caffe/torch_dvfs_run/an4.py" />
@@ -219,11 +217,12 @@
         <option value="$PROJECT_DIR$/caffe/configs/torch_config/cnn.cfg" />
         <option value="$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg" />
         <option value="$PROJECT_DIR$/caffe/configs/gtx980_dl.cfg" />
+        <option value="$PROJECT_DIR$/caffe/torch_imagenet/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
+    <option name="x" value="1912" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -336,7 +335,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21548998" />
@@ -539,16 +538,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caffe/torch_imagenet/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="21" lean-forward="true" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="25" />
-          <folding>
-            <marker date="1547625362089" expanded="true" signature="6355:6902" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/caffe/torch_dvfs_run/lstm.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -651,8 +640,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/v100.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+        <state relative-caret-position="456">
+          <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caffe/torch_imagenet/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="295" column="23" lean-forward="true" selection-start-line="295" selection-start-column="23" selection-end-line="295" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1547725871441" expanded="true" signature="6428:6975" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -25,11 +25,13 @@ import torchvision.models as models
 
 from datasets import DatasetHDF5  
 from networks.alexnet import AlexNet
+from networks.googlenet import GoogleNet
 from pprint import pformat
 
 model_names = sorted(name for name in models.__dict__
     if name.islower() and not name.startswith("__")
     and callable(models.__dict__[name]))
+model_names.append('googlenet')
 
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
 parser.add_argument('data', metavar='DIR',
@@ -218,6 +220,8 @@ def main_worker(gpu, ngpus_per_node, args):
             if args.arch.startswith('alexnet') or args.arch.startswith('vgg'):
                 # model.features = torch.nn.DataParallel(model.features)
                 model.cuda()
+            elif args.arch == 'googlenet':
+                model = GoogleNet()
             else:
                 model = torch.nn.DataParallel(model).cuda()
 
@@ -299,6 +303,8 @@ def main_worker(gpu, ngpus_per_node, args):
             model = AlexNet()
             model.apply(weights_init)
             print('model initialized')
+        elif args.arch == 'googlenet':
+            model = GoogleNet()
         else:
             model = models.__dict__[args.arch]()
             if args.arch == 'alexnet' :
