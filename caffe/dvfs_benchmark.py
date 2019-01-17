@@ -114,7 +114,7 @@ for core_f in core_frequencies:
 
                     pythonfile = pythonfile_re.search(arg).group()
                     batch_size = batch_size_re.search(arg).group()
-                    exec_arg = "torch_dvfs_run/%s.py --batch-size %s --gpu %d --iterations %d --rumtime %d " % \
+                    exec_arg = "torch_dvfs_run/%s.py --batch-size %s --gpu %d --iterations %d --runtime %d " % \
                                (pythonfile, batch_size, cuda_dev_id, running_iters, running_time)
                     # execute program to collect power data
                     os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
