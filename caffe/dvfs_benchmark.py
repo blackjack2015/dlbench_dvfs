@@ -9,7 +9,7 @@ benchmark_cfg = "configs/gpus/p100.cfg"
 dl_cfg = "configs/benchmarks/dl_settings.cfg"
 
 APP_ROOT = 'applications'
-LOG_ROOT = 'logs/p100'
+LOG_ROOT = 'logs/v100'
 
 # Reading benchmark settings
 cf_bs = ConfigParser.SafeConfigParser()
