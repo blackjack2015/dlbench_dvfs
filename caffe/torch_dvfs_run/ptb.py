@@ -5,13 +5,7 @@ import ConfigParser
 import json
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--gpu', type=int, default=0, help='Dry runs before measuring performance')
-parser.add_argument('--iterations', type=int, default=200, help='How many benchmark runs to measure performance')
-parser.add_argument('-b', '--batch-size', default=64, type=int,
-                    metavar='N',
-                    help='mini-batch size (default: 256), this is the total '
-                         'batch size of all GPUs on the current node when '
-                         'using Data Parallel or Distributed Data Parallel')
+parser.add_argument('--batch_size', type=int, default=20)
 args = parser.parse_args()
 
 cfg_file = "configs/torch_config/rnn.cfg"
@@ -21,8 +15,8 @@ cfg = ConfigParser.SafeConfigParser()
 cfg.read(cfg_file)
 datapath = cfg.get('lstm', 'host143_data_path')
 
-app_exec_cmd = "python torch_imagenet/main.py -a ptb --measure ptb-b%s -b %s  --gpu %s --iterations %s %s" % \
-               (args.batch_size, args.batch_size, args.gpu, args.iterations, datapath)
+app_exec_cmd = "python torch_ptb/torchtrain.py --batch_size %s  % \
+               (args.batch_size)
 print app_exec_cmd
 
 os.system(app_exec_cmd)
