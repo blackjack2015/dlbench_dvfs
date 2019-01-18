@@ -21,7 +21,7 @@ cfg = ConfigParser.SafeConfigParser()
 cfg.read(cfg_file)
 datapath = cfg.get('lstm', 'host143_data_path')
 
-app_exec_cmd = "python torch_imagenet/main.py -a lstm --measure lstm-b%s -b %s  --gpu %s --iterations %s %s" % \
+app_exec_cmd = "python torch_imagenet/main.py -a ptb --measure ptb-b%s -b %s  --gpu %s --iterations %s %s" % \
                (args.batch_size, args.batch_size, args.gpu, args.iterations, datapath)
 print app_exec_cmd
 
