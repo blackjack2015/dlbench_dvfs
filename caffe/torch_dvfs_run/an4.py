@@ -5,6 +5,7 @@ import ConfigParser
 import json
 
 parser = argparse.ArgumentParser(description='DeepSpeech training')
+parser.add_argument('--rnn-type', default='gru', help='Type of the RNN. rnn|gru|lstm are supported')
 parser.add_argument('--train-manifest', metavar='DIR',
                     help='path to train manifest csv', default='data/train_manifest.csv')
 parser.add_argument('--val-manifest', metavar='DIR',
@@ -19,9 +20,6 @@ parser.add_argument('--cuda', dest='cuda', action='store_true', help='Use cuda t
 parser.add_argument('--lr', '--learning-rate', default=3e-4, type=float, help='initial learning rate')
 parser.add_argument('--learning-anneal', default=1.1, type=float, help='Annealing applied to learning rate every epoch')
 parser.add_argument('--checkpoint', dest='checkpoint', action='store_true', help='Enables checkpoint saving of model')
-parser.add_argument('--save-folder', default='models/', help='Location to save epoch models')
-parser.add_argument('--model-path', default='models/deepspeech_final.pth',
-                    help='Location to save best validation model')
 parser.add_argument('--augment', dest='augment', action='store_true', help='Use random tempo and gain perturbations.')
 
 args = parser.parse_args()
@@ -33,8 +31,9 @@ cfg = ConfigParser.SafeConfigParser()
 cfg.read(cfg_file)
 datapath = cfg.get('an4', 'host143_data_path')
 
-app_exec_cmd = "python torch_imagenet/main.py -a an4 --measure an4-b%s -b %s  --gpu %s " % \
-               (args.batch_size, args.batch_size, args.gpu, datapath)
+app_exec_cmd = "python torch_an4/train.py  --rnn-type %s --hidden-size %s hidden-layer %s --train-manifest %s   --val-manifest %s  --epochs %s --num-workers %s -b %s --learning-anneal %s --cuda --augment --checkpoint" % \
+               (args.rnn_type, args.hidden_size, args.hidden_layer, args.train_manifest, args.val_manifest, args.epochs, args.num_workers, args.baych_size,args.learning_anneal,
+                args.cuda, args.cuda, args.augment, args.checkpoint)
 print app_exec_cmd
 
 os.system(app_exec_cmd)
