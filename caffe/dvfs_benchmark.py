@@ -5,7 +5,7 @@ import re
 import ConfigParser
 import json
 
-benchmark_cfg = "configs/gpus/p100.cfg"
+benchmark_cfg = "configs/gpus/v100.cfg"
 dl_cfg = "configs/benchmarks/dl_settings.cfg"
 
 APP_ROOT = 'applications'
