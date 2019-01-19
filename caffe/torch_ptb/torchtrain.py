@@ -105,6 +105,16 @@ def run_epoch_measure(model, data_loader, batch_size, args, run_time, iterations
                 p.data.add_(-lr, p.grad.data)
             if i % (epoch_size // 10) == 10:
                 logging.info("{} perplexity: {:8.2f}".format(i * 1.0 / epoch_size, np.exp(costs / iters)))
+        print('==========================================')
+        print('==========================================')
+        print('==========================================')
+        print('==========================================')
+        print('=========******max iterations in one epoch*==================')
+        print('=========****** %d  *************   =========================' % len(data_loader))
+        print('==========================================')
+        print('==========================================')
+        print('==========================================')
+        print('==========================================')
         
         batch_end_time = time.time()
         batch_time = batch_end_time - batch_start_time
@@ -125,6 +135,8 @@ def run_epoch_measure(model, data_loader, batch_size, args, run_time, iterations
             print('==========================================')
             print('==========================================')
             print('==========================================')
+
+
 
         if i == stop_iterations:
             # for indexqueue in train_iter.index_queues:
