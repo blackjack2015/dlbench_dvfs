@@ -58,7 +58,8 @@ def run_epoch_measure(model, data_loader, batch_size, args, run_time, iterations
     hidden = model.init_hidden()
     costs = 0.0
     iters = 0
-    criterion_measure = nn.CrossEntropyLoss().cuda(args.gpu)
+    criterion_measure = nn.CrossEntropyLoss().cuda()
+    # criterion_measure = nn.CrossEntropyLoss().cuda(args.gpu)
 
     if is_train:
         model.train()
@@ -80,13 +81,16 @@ def run_epoch_measure(model, data_loader, batch_size, args, run_time, iterations
         # if list(x.size())[0] != batch_size:
         #     break
         
-        inputs = Variable(x.transpose(0, 1).contiguous()).cuda(args.gpu, non_blocking=True)
+        inputs = Variable(x.transpose(0, 1).contiguous()).cuda()
+        # inputs = Variable(x.transpose(0, 1).contiguous()).cuda(args.gpu, non_blocking=True)
         model.zero_grad()
         hidden = repackage_hidden(hidden)
-        hidden = hidden.cuda(args.gpu, non_blocking=True)
+        # todo zhtang ===================
+        #hidden = hidden.cuda(args.gpu, non_blocking=True)
+        
         outputs, hidden = model(inputs, hidden)
-        #  targets = Variable(torch.from_numpy(y.astype(np.int64)).transpose(0, 1).contiguous()).cuda()
-        targets = Variable(y.transpose(0, 1).contiguous()).cuda(args.gpu, non_blocking=True)
+        targets = Variable(torch.from_numpy(y.astype(np.int64)).transpose(0, 1).contiguous()).cuda()
+        # targets = Variable(y.transpose(0, 1).contiguous()).cuda(args.gpu, non_blocking=True)
 
         tt = torch.squeeze(targets.view(-1, model.batch_size * model.num_steps))
         loss = criterion_measure(outputs.view(-1, model.vocab_size), tt)
@@ -194,7 +198,7 @@ if __name__ == "__main__":
         torch.cuda.set_device(args.gpu)
         model = model.cuda(args.gpu)
     else:
-        model.cuda()
+        model = model.cuda()
     
     train_set = treader.TrainDataset(train_data, model.batch_size, model.num_steps)
     train_dataloader = data_.DataLoader(train_set, \

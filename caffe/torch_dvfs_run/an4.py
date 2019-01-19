@@ -39,10 +39,10 @@ train_manifest = cfg.get('an4', 'train_manifest')
 val_manifest = cfg.get('an4', 'val_manifest')
 rnn = cfg.get('an4', 'rnn_type')
 
-app_exec_cmd = "python torch_an4/train.py  --rnn-type %s --hidden-size %s hidden-layer %s --train-manifest %s  --val-manifest %s -b %s  " \
-               "--gpu %s --iterations %s -t %s --cuda " % \
-               (rnn, args.hidden_size, args.hidden_layer, train_manifest, val_manifest, args.batch_size,
-                args.gpu, args.iterations, args.runtime)
+app_exec_cmd = "CUDA_VISIBLE_DEVICES=%s python torch_an4/train.py  --rnn-type %s --hidden-size %s hidden-layer %s --train-manifest %s  --val-manifest %s " \
+               " -b %s --iterations %s -t %s --cuda " % \
+               (args.gpu, rnn, args.hidden_size, args.hidden_layer, train_manifest, val_manifest,
+                args.batch_size, args.iterations, args.runtime)
 # args.cuda, args.cuda, args.augment, args.checkpoint
 print app_exec_cmd
 

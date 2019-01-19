@@ -26,9 +26,9 @@ cfg = ConfigParser.SafeConfigParser()
 cfg.read(cfg_file)
 data_path = cfg.get('ptb', 'host143_data_path')
 
-app_exec_cmd = "python torch_ptb/torchtrain.py  --data %s --measure meas -b %s " \
-               "--gpu %s --iterations %s -t %s " % \
-               (data_path, args.batch_size, args.gpu, args.iterations, args.runtime)
+app_exec_cmd = "CUDA_VISIBLE_DEVICES=%s python torch_ptb/torchtrain.py  --data %s --measure meas" \
+               " -b %s --iterations %s -t %s " % \
+               (args.gpu, data_path, args.batch_size, args.iterations, args.runtime)
 
 print app_exec_cmd
 

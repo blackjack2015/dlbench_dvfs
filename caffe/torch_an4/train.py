@@ -162,12 +162,6 @@ if __name__ == '__main__':
         print("Shuffling batches for the following epochs")
         train_sampler.shuffle(start_epoch)
 
-    if args.cuda:
-        model.cuda(args.gpu, non_blocking=True)
-        criterion_measure = nn.CrossEntropyLoss().cuda(args.gpu)
-        if args.distributed:
-            model = torch.nn.parallel.DistributedDataParallel(model,
-                                                              device_ids=(int(args.gpu_rank),) if args.rank else None)
 
     print(model)
     print("Number of parameters: %d" % DeepSpeech.get_param_size(model))
@@ -199,9 +193,11 @@ if __name__ == '__main__':
             # measure data loading time
             data_time.update(time.time() - end)
 
-            if args.cuda:
+            if args.gpu is not None:
                 inputs = inputs.cuda(args.gpu, non_blocking=True)
-
+            else:
+                inputs = inputs.cuda()
+            
             out, output_sizes = model(inputs, input_sizes)
             out = out.transpose(0, 1)  # TxNxH
             # criterion_measure
@@ -298,9 +294,10 @@ if __name__ == '__main__':
                     split_targets.append(targets[offset:offset + size])
                     offset += size
 
-                if args.cuda:
+                if args.gpu is not None:
                     inputs = inputs.cuda(args.gpu, non_blocking=True)
-
+                else:
+                    inputs = inputs.cuda()
                 out, output_sizes = model(inputs, input_sizes)
 
                 decoded_output, _ = decoder.decode(out.data, output_sizes)
