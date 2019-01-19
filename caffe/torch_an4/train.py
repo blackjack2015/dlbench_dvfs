@@ -20,7 +20,7 @@ parser.add_argument('--val-manifest', metavar='DIR',
 parser.add_argument('--sample-rate', default=16000, type=int, help='Sample rate')
 parser.add_argument('-b', '--batch-size', default=20, type=int, help='Batch size for training')
 parser.add_argument('--num-workers', default=4, type=int, help='Number of workers used in data-loading')
-parser.add_argument('--labels-path', default='labels.json', help='Contains all characters for transcription')
+parser.add_argument('--labels-path', default='torch_an4/labels.json', help='Contains all characters for transcription')
 parser.add_argument('--window-size', default=.02, type=float, help='Window size for spectrogram in seconds')
 parser.add_argument('--window-stride', default=.01, type=float, help='Window stride for spectrogram in seconds')
 parser.add_argument('--window', default='hamming', help='Window type for spectrogram generation')

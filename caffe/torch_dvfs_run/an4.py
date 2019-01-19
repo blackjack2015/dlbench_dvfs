@@ -29,8 +29,8 @@ cfg_file = "configs/torch_config/rnn.cfg"
 cfg = ConfigParser.SafeConfigParser()
 
 cfg.read(cfg_file)
-train_manifest = cfg.get('an4', 'train_manifest')
-val_manifest = cfg.get('an4', 'val_manifest')
+train_manifest = cfg.get('an4', 'host143_train_manifest')
+val_manifest = cfg.get('an4', 'host143_val_manifest')
 rnn = cfg.get('an4', 'rnn_type')
 
 app_exec_cmd = "CUDA_VISIBLE_DEVICES=%s python torch_an4/train.py  --rnn-type %s --hidden-size %s --hidden-layers %s --train-manifest %s  --val-manifest %s " \
