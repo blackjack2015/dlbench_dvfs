@@ -238,12 +238,12 @@ if __name__ == '__main__':
             batch_time.update(time.time() - end)
             end = time.time()
 
-            if (i > 29) & (i < 40):
+            if (i > 15) & (i < 26):
                 batch_time_between_30_40 += batch_time.val
-            if (i == 40) & (stop_in_time):
+            if (i == 28) & (stop_in_time):
                 stop_iterations = int(args.run_time / (batch_time_between_30_40 / 10))
-                if stop_iterations < 50:
-                    stop_iterations = 50
+                if stop_iterations < 30:
+                    stop_iterations = 32
                 print('==========================================')
                 print('==========================================')
                 print('==========================================')
