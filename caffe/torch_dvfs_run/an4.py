@@ -6,8 +6,8 @@ import json
 
 parser = argparse.ArgumentParser(description='DeepSpeech training')
 parser.add_argument('--rnn-type', default='gru', help='Type of the RNN. rnn|gru|lstm are supported')
-parser.add_argument('--hidden-size', default=1200, type=int, help='Hidden size of RNNs')
-parser.add_argument('--hidden-layers', default=7, type=int, help='Number of RNN layers')
+parser.add_argument('--hidden-size', default=800, type=int, help='Hidden size of RNNs')
+parser.add_argument('--hidden-layers', default=5, type=int, help='Number of RNN layers')
 parser.add_argument('--cuda', dest='cuda', action='store_true', help='Use cuda to train model')
 
 parser.add_argument('-b', '--batch-size', default=64, type=int,
