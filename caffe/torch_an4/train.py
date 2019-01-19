@@ -4,7 +4,8 @@ import os, sys
 import time
 import torch.distributed as dist
 import torch.utils.data.distributed
-from warpctc_pytorch import CTCLoss
+# todo zhtang =================
+# from warpctc_pytorch import CTCLoss
 import torch.nn as nn
 
 from data.data_loader import AudioDataLoader, SpectrogramDataset, BucketingSampler, DistributedBucketingSampler
@@ -139,7 +140,9 @@ if __name__ == '__main__':
     optimizer = torch.optim.SGD(parameters, lr=args.lr,
                                 momentum=args.momentum, nesterov=True)
     
-    criterion = CTCLoss()
+    # todo zhtang ===========
+    # criterion = CTCLoss()
+    criterion = nn.CrossEntropyLoss()
     decoder = GreedyDecoder(labels)
     train_dataset = SpectrogramDataset(audio_conf=audio_conf, manifest_filepath=args.train_manifest, labels=labels,
                                        normalize=True, augment=args.augment)
@@ -161,7 +164,7 @@ if __name__ == '__main__':
 
     if args.cuda:
         model.cuda(args.gpu, non_blocking=True)
-        criterion_measure = nn.CrossEntropyLoss().cuda(args.gpu)
+        # criterion_measure = nn.CrossEntropyLoss().cuda(args.gpu)
         if args.distributed:
             model = torch.nn.parallel.DistributedDataParallel(model,
                                                               device_ids=(int(args.gpu_rank),) if args.rank else None)
