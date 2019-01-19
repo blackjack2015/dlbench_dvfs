@@ -4,7 +4,7 @@ import os, sys
 import time
 import torch.distributed as dist
 import torch.utils.data.distributed
-# from warpctc_pytorch import CTCLoss
+from warpctc_pytorch import CTCLoss
 import torch.nn as nn
 
 from data.data_loader import AudioDataLoader, SpectrogramDataset, BucketingSampler, DistributedBucketingSampler
@@ -141,8 +141,8 @@ if __name__ == '__main__':
     
     # todo zhtang =======
     
-    # criterion = CTCLoss()
-    criterion = nn.criterion()
+    criterion = CTCLoss()
+    # criterion = nn.criterion()
     decoder = GreedyDecoder(labels)
     train_dataset = SpectrogramDataset(audio_conf=audio_conf, manifest_filepath=args.train_manifest, labels=labels,
                                        normalize=True, augment=args.augment)
@@ -182,9 +182,19 @@ if __name__ == '__main__':
         batch_time_between_30_40 = 0
         stop_iterations = args.iterations
 
+        print('==========================================')
+        print('==========================================')
+        print('==========================================')
+        print('==========================================')
+        print('=========******max iterations in one epoch*==================')
+        print('=========****** %d  *************   =========================' % len(train_loader))
+        print('==========================================')
+        print('==========================================')
+        print('==========================================')
+        print('==========================================')
+        
         batch_time_between_30_40 = 0
         batch_start_time = time.time()
-        
         for i, (data) in enumerate(train_loader, start=start_iter):
             if i == len(train_sampler):
                 break
