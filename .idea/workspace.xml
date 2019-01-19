@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af25c0af-0523-48ab-aa8e-baa8c8092018" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caffe/configs/gpus/v100.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/configs/gpus/v100.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/caffe/dvfs_benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/dvfs_benchmark.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,8 +63,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/caffe/dvfs_benchmark.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+            <state relative-caret-position="418">
+              <caret line="124" column="69" lean-forward="true" selection-start-line="124" selection-start-column="69" selection-end-line="124" selection-end-column="69" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -77,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="627">
+              <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -209,8 +207,8 @@
       <find>run_epoch_measure</find>
       <find>raw_data</find>
       <find>rnn</find>
-      <find>app_exec_python_cmd</find>
       <find>libri_val_manifest</find>
+      <find>app_exec_python_cmd</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -797,13 +795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/v100.cfg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -818,10 +809,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/caffe/dvfs_benchmark.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        <state relative-caret-position="418">
+          <caret line="124" column="69" lean-forward="true" selection-start-line="124" selection-start-column="69" selection-end-line="124" selection-end-column="69" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

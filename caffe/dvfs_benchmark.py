@@ -121,11 +121,11 @@ for core_f in core_frequencies:
                     # app_exec_cmd = '%s %s 1>>%s/%s 2>&1'
                     # command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)
 
-                    app_exec_python_cmd = '%s %s'
-                    command = app_exec_python_cmd % (app, exec_arg)
+                    # app_exec_python_cmd = '%s %s'
+                    # command = app_exec_python_cmd % (app, exec_arg)
                     
-                    # app_exec_python_cmd = '%s %s 1>>%s/%s 2>&1'
-                    # command = app_exec_python_cmd % (app, exec_arg, LOG_ROOT, perflog)
+                    app_exec_python_cmd = '%s %s 1>>%s/%s 2>&1'
+                    command = app_exec_python_cmd % (app, exec_arg, LOG_ROOT, perflog)
                     #command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
 
                 else:
