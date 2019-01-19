@@ -6,10 +6,6 @@ import json
 
 parser = argparse.ArgumentParser(description='DeepSpeech training')
 parser.add_argument('--rnn-type', default='gru', help='Type of the RNN. rnn|gru|lstm are supported')
-parser.add_argument('--train-manifest', metavar='DIR',
-                    help='path to train manifest csv', default='data/train_manifest.csv')
-parser.add_argument('--val-manifest', metavar='DIR',
-                    help='path to validation manifest csv', default='data/val_manifest.csv')
 parser.add_argument('--hidden-size', default=800, type=int, help='Hidden size of RNNs')
 parser.add_argument('--hidden-layers', default=5, type=int, help='Number of RNN layers')
 parser.add_argument('--cuda', dest='cuda', action='store_true', help='Use cuda to train model')
@@ -39,7 +35,7 @@ rnn = cfg.get('an4', 'rnn_type')
 
 app_exec_cmd = "CUDA_VISIBLE_DEVICES=%s python torch_an4/train.py  --rnn-type %s --hidden-size %s hidden-layer %s --train-manifest %s  --val-manifest %s " \
                " -b %s --iterations %s -t %s --cuda " % \
-               (args.gpu, rnn, args.hidden_size, args.hidden_layer, train_manifest, val_manifest,
+               (args.gpu, rnn, args.hidden_size, args.hidden_layers, train_manifest, val_manifest,
                 args.batch_size, args.iterations, args.runtime)
 # args.cuda, args.cuda, args.augment, args.checkpoint
 print app_exec_cmd

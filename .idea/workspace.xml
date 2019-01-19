@@ -84,8 +84,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/caffe/torch_dvfs_run/an4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" column="88" selection-start-line="13" selection-start-column="88" selection-end-line="13" selection-end-column="88" />
+            <state relative-caret-position="475">
+              <caret line="28" column="37" lean-forward="true" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -105,7 +105,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caffe/torch_an4/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
+            <state relative-caret-position="1249">
               <caret line="207" column="17" lean-forward="true" selection-start-line="207" selection-start-column="17" selection-end-line="207" selection-end-column="17" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -151,8 +151,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caffe/torch_ptb/torchtrain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="74" selection-start-line="74" selection-end-line="83" selection-end-column="55" />
+            <state relative-caret-position="133">
+              <caret line="72" column="32" lean-forward="true" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -183,7 +183,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>input_percentages</find>
       <find>batch_start_time</find>
       <find>sys</find>
       <find>stop_iterations</find>
@@ -208,10 +207,11 @@
       <find>raw_data</find>
       <find>CTCLoss</find>
       <find>app_exec_python_cmd</find>
-      <find>run_epoch_measure</find>
       <find>todo</find>
       <find>train_manifest</find>
       <find>criterion</find>
+      <find>rnn</find>
+      <find>run_epoch_measure</find>
       <find>args.gpu</find>
     </findStrings>
   </component>
@@ -779,16 +779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caffe/torch_ptb/torchtrain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="74" selection-start-line="74" selection-end-line="83" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/caffe/configs/torch_config/rnn.cfg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -810,9 +800,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/caffe/torch_ptb/torchtrain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="72" column="32" lean-forward="true" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/caffe/torch_an4/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
+        <state relative-caret-position="1249">
           <caret line="207" column="17" lean-forward="true" selection-start-line="207" selection-start-column="17" selection-end-line="207" selection-end-column="17" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -822,8 +822,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/caffe/torch_dvfs_run/an4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="88" selection-start-line="13" selection-start-column="88" selection-end-line="13" selection-end-column="88" />
+        <state relative-caret-position="475">
+          <caret line="28" column="37" lean-forward="true" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
