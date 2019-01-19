@@ -89,7 +89,7 @@ def run_epoch_measure(model, data_loader, batch_size, args, run_time, iterations
         #hidden = hidden.cuda(args.gpu, non_blocking=True)
         
         outputs, hidden = model(inputs, hidden)
-        targets = Variable(torch.from_numpy(y).transpose(0, 1).contiguous()).cuda()
+        targets = Variable(y.transpose(0, 1).contiguous()).cuda()
         # targets = Variable(y.transpose(0, 1).contiguous()).cuda(args.gpu, non_blocking=True)
 
         tt = torch.squeeze(targets.view(-1, model.batch_size * model.num_steps))
