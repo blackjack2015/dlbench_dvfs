@@ -6,8 +6,9 @@ import time
 import torch.distributed as dist
 import torch.utils.data.distributed
 from tqdm import tqdm
-from warpctc_pytorch import CTCLoss
-
+# todo zhtang =======
+# from warpctc_pytorch import CTCLoss
+import torch.nn as nn
 from data.data_loader import AudioDataLoader, SpectrogramDataset, BucketingSampler, DistributedBucketingSampler
 from data.utils import reduce_tensor
 from decoder import GreedyDecoder
@@ -198,7 +199,9 @@ if __name__ == '__main__':
         parameters = model.parameters()
         optimizer = torch.optim.SGD(parameters, lr=args.lr,
                                     momentum=args.momentum, nesterov=True)
-    criterion = CTCLoss()
+    # todo zhtang ============
+    # criterion = CTCLoss()
+    criterion = nn.criterion()
     decoder = GreedyDecoder(labels)
     train_dataset = SpectrogramDataset(audio_conf=audio_conf, manifest_filepath=args.train_manifest, labels=labels,
                                        normalize=True, augment=args.augment)
