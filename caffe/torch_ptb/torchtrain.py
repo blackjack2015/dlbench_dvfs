@@ -117,8 +117,8 @@ def run_epoch_measure(model, data_loader, batch_size, args, run_time, iterations
             if i % (epoch_size // 10) == 10:
                 logging.info("{} perplexity: {:8.2f}".format(i * 1.0 / epoch_size, np.exp(costs / iters)))
                 
-        print('=========****** the i -th  iterations to  *======================')
-        print('=========****** ---%d---  *************   *======================' % i)
+        # print('=========****** the i -th  iterations to  *======================')
+        # print('=========****** ---%d---  *************   *======================' % i)
         
         batch_end_time = time.time()
         batch_time = batch_end_time - batch_start_time
