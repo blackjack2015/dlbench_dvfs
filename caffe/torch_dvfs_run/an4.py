@@ -6,8 +6,8 @@ import json
 
 parser = argparse.ArgumentParser(description='DeepSpeech training')
 parser.add_argument('--rnn-type', default='gru', help='Type of the RNN. rnn|gru|lstm are supported')
-parser.add_argument('--hidden-size', default=800, type=int, help='Hidden size of RNNs')
-parser.add_argument('--hidden-layers', default=5, type=int, help='Number of RNN layers')
+parser.add_argument('--hidden-size', default=1200, type=int, help='Hidden size of RNNs')
+parser.add_argument('--hidden-layers', default=7, type=int, help='Number of RNN layers')
 parser.add_argument('--cuda', dest='cuda', action='store_true', help='Use cuda to train model')
 
 parser.add_argument('-b', '--batch-size', default=64, type=int,
@@ -29,13 +29,17 @@ cfg_file = "configs/torch_config/rnn.cfg"
 cfg = ConfigParser.SafeConfigParser()
 
 cfg.read(cfg_file)
-train_manifest = cfg.get('an4', 'host143_train_manifest')
-val_manifest = cfg.get('an4', 'host143_val_manifest')
+
+an4_train_manifest = cfg.get('an4', 'host143_an4_train_manifest')
+an4_val_manifest = cfg.get('an4', 'host143_an4_val_manifest')
+libri_train_manifest = cfg.get('an4', 'host143_libri_train_manifest')
+libri_val_manifest = cfg.get('an4', 'host143_libri_val_manifest')
+
 rnn = cfg.get('an4', 'rnn_type')
 
 app_exec_cmd = "CUDA_VISIBLE_DEVICES=%s python torch_an4/train.py  --rnn-type %s --hidden-size %s --hidden-layers %s --train-manifest %s  --val-manifest %s " \
                " -b %s --iterations %s -t %s --cuda " % \
-               (args.gpu, rnn, args.hidden_size, args.hidden_layers, train_manifest, val_manifest,
+               (args.gpu, rnn, args.hidden_size, args.hidden_layers, libri_train_manifest, libri_val_manifest,
                 args.batch_size, args.iterations, args.runtime)
 # args.cuda, args.cuda, args.augment, args.checkpoint
 print app_exec_cmd
