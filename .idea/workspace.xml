@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af25c0af-0523-48ab-aa8e-baa8c8092018" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/caffe/torch_dvfs_run/an4.py" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/torch_dvfs_run/an4.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,7 +45,7 @@
           <entry key="cfg" value="370" />
           <entry key="dummy" value="2" />
           <entry key="md" value="45" />
-          <entry key="py" value="2370" />
+          <entry key="py" value="2371" />
           <entry key="sh" value="2" />
           <entry key="txt" value="4" />
         </counts>
@@ -53,7 +54,7 @@
         <counts>
           <entry key="Markdown" value="45" />
           <entry key="PLAIN_TEXT" value="378" />
-          <entry key="Python" value="2370" />
+          <entry key="Python" value="2371" />
         </counts>
       </usages-collector>
     </session>
@@ -84,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/caffe/torch_dvfs_run/an4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="28" column="37" lean-forward="true" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+            <state relative-caret-position="665">
+              <caret line="35" column="111" selection-start-line="35" selection-start-column="111" selection-end-line="35" selection-end-column="111" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -105,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caffe/torch_an4/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1249">
-              <caret line="207" column="17" lean-forward="true" selection-start-line="207" selection-start-column="17" selection-end-line="207" selection-end-column="17" />
+            <state relative-caret-position="489">
+              <caret line="32" column="62" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -186,7 +187,6 @@
       <find>batch_start_time</find>
       <find>sys</find>
       <find>stop_iterations</find>
-      <find>batch_size</find>
       <find>batch_time</find>
       <find>batch_time_between_30_40</find>
       <find>inputs</find>
@@ -212,6 +212,7 @@
       <find>criterion</find>
       <find>rnn</find>
       <find>run_epoch_measure</find>
+      <find>batch_size</find>
       <find>args.gpu</find>
     </findStrings>
   </component>
@@ -812,8 +813,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/caffe/torch_an4/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1249">
-          <caret line="207" column="17" lean-forward="true" selection-start-line="207" selection-start-column="17" selection-end-line="207" selection-end-column="17" />
+        <state relative-caret-position="489">
+          <caret line="32" column="62" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -822,8 +823,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/caffe/torch_dvfs_run/an4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="28" column="37" lean-forward="true" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+        <state relative-caret-position="665">
+          <caret line="35" column="111" selection-start-line="35" selection-start-column="111" selection-end-line="35" selection-end-column="111" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
