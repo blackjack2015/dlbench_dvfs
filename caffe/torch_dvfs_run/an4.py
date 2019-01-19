@@ -41,7 +41,7 @@ rnn = cfg.get('an4', 'rnn_type')
 
 app_exec_cmd = "python torch_an4/train2.py  --rnn-type %s --hidden-size %s hidden-layer %s --train-manifest %s  --val-manifest %s -b %s  " \
                "--gpu %s --iterations %s -t %s --cuda " % \
-               (args.rnn_type, args.hidden_size, args.hidden_layer, train_manifest, val_manifest, args.baych_size,
+               (rnn, args.hidden_size, args.hidden_layer, train_manifest, val_manifest, args.batch_size,
                 args.gpu, args.iterations, args.runtime)
 # args.cuda, args.cuda, args.augment, args.checkpoint
 print app_exec_cmd

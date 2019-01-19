@@ -28,7 +28,7 @@ data_path = cfg.get('ptb', 'host143_data_path')
 
 app_exec_cmd = "python torch_an4/train2.py  --data %s --measure meas -b %s " \
                "--gpu %s --iterations %s -t %s " % \
-               (data_path, args.baych_size, args.gpu, args.iterations, args.runtime)
+               (data_path, args.batch_size, args.gpu, args.iterations, args.runtime)
 
 print app_exec_cmd
 
