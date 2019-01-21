@@ -9,7 +9,7 @@ layer {
     phase: TRAIN
   }
   data_param {
-    source: "c:/fake_train"
+    source: "/home/hpcl/data/caffe/fake_image_net.lmdb"
     batch_size: 64
     backend: LMDB
   }
@@ -20,6 +20,7 @@ layer {
 	top: "conv1"
 	name: "conv1"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 64
 		kernel_size: 7
@@ -71,6 +72,7 @@ layer {
 	top: "res2a_branch1"
 	name: "res2a_branch1"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 1
@@ -105,6 +107,7 @@ layer {
 	top: "res2a_branch2a"
 	name: "res2a_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 64
 		kernel_size: 1
@@ -146,6 +149,7 @@ layer {
 	top: "res2a_branch2b"
 	name: "res2a_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 64
 		kernel_size: 3
@@ -187,6 +191,7 @@ layer {
 	top: "res2a_branch2c"
 	name: "res2a_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 1
@@ -236,6 +241,7 @@ layer {
 	top: "res2b_branch2a"
 	name: "res2b_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 64
 		kernel_size: 1
@@ -277,6 +283,7 @@ layer {
 	top: "res2b_branch2b"
 	name: "res2b_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 64
 		kernel_size: 3
@@ -318,6 +325,7 @@ layer {
 	top: "res2b_branch2c"
 	name: "res2b_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 1
@@ -367,6 +375,7 @@ layer {
 	top: "res2c_branch2a"
 	name: "res2c_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 64
 		kernel_size: 1
@@ -408,6 +417,7 @@ layer {
 	top: "res2c_branch2b"
 	name: "res2c_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 64
 		kernel_size: 3
@@ -449,6 +459,7 @@ layer {
 	top: "res2c_branch2c"
 	name: "res2c_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 1
@@ -498,6 +509,7 @@ layer {
 	top: "res3a_branch1"
 	name: "res3a_branch1"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 512
 		kernel_size: 1
@@ -532,6 +544,7 @@ layer {
 	top: "res3a_branch2a"
 	name: "res3a_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 128
 		kernel_size: 1
@@ -573,6 +586,7 @@ layer {
 	top: "res3a_branch2b"
 	name: "res3a_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 128
 		kernel_size: 3
@@ -614,6 +628,7 @@ layer {
 	top: "res3a_branch2c"
 	name: "res3a_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 512
 		kernel_size: 1
@@ -663,6 +678,7 @@ layer {
 	top: "res3b_branch2a"
 	name: "res3b_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 128
 		kernel_size: 1
@@ -704,6 +720,7 @@ layer {
 	top: "res3b_branch2b"
 	name: "res3b_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 128
 		kernel_size: 3
@@ -745,6 +762,7 @@ layer {
 	top: "res3b_branch2c"
 	name: "res3b_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 512
 		kernel_size: 1
@@ -794,6 +812,7 @@ layer {
 	top: "res3c_branch2a"
 	name: "res3c_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 128
 		kernel_size: 1
@@ -835,6 +854,7 @@ layer {
 	top: "res3c_branch2b"
 	name: "res3c_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 128
 		kernel_size: 3
@@ -876,6 +896,7 @@ layer {
 	top: "res3c_branch2c"
 	name: "res3c_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 512
 		kernel_size: 1
@@ -925,6 +946,7 @@ layer {
 	top: "res3d_branch2a"
 	name: "res3d_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 128
 		kernel_size: 1
@@ -966,6 +988,7 @@ layer {
 	top: "res3d_branch2b"
 	name: "res3d_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 128
 		kernel_size: 3
@@ -1007,6 +1030,7 @@ layer {
 	top: "res3d_branch2c"
 	name: "res3d_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 512
 		kernel_size: 1
@@ -1056,6 +1080,7 @@ layer {
 	top: "res4a_branch1"
 	name: "res4a_branch1"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 1024
 		kernel_size: 1
@@ -1090,6 +1115,7 @@ layer {
 	top: "res4a_branch2a"
 	name: "res4a_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 1
@@ -1131,6 +1157,7 @@ layer {
 	top: "res4a_branch2b"
 	name: "res4a_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 3
@@ -1172,6 +1199,7 @@ layer {
 	top: "res4a_branch2c"
 	name: "res4a_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 1024
 		kernel_size: 1
@@ -1221,6 +1249,7 @@ layer {
 	top: "res4b_branch2a"
 	name: "res4b_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 1
@@ -1262,6 +1291,7 @@ layer {
 	top: "res4b_branch2b"
 	name: "res4b_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 3
@@ -1303,6 +1333,7 @@ layer {
 	top: "res4b_branch2c"
 	name: "res4b_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 1024
 		kernel_size: 1
@@ -1352,6 +1383,7 @@ layer {
 	top: "res4c_branch2a"
 	name: "res4c_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 1
@@ -1393,6 +1425,7 @@ layer {
 	top: "res4c_branch2b"
 	name: "res4c_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 3
@@ -1434,6 +1467,7 @@ layer {
 	top: "res4c_branch2c"
 	name: "res4c_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 1024
 		kernel_size: 1
@@ -1483,6 +1517,7 @@ layer {
 	top: "res4d_branch2a"
 	name: "res4d_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 1
@@ -1524,6 +1559,7 @@ layer {
 	top: "res4d_branch2b"
 	name: "res4d_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 3
@@ -1565,6 +1601,7 @@ layer {
 	top: "res4d_branch2c"
 	name: "res4d_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 1024
 		kernel_size: 1
@@ -1614,6 +1651,7 @@ layer {
 	top: "res4e_branch2a"
 	name: "res4e_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 1
@@ -1655,6 +1693,7 @@ layer {
 	top: "res4e_branch2b"
 	name: "res4e_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 3
@@ -1696,6 +1735,7 @@ layer {
 	top: "res4e_branch2c"
 	name: "res4e_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 1024
 		kernel_size: 1
@@ -1745,6 +1785,7 @@ layer {
 	top: "res4f_branch2a"
 	name: "res4f_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 1
@@ -1786,6 +1827,7 @@ layer {
 	top: "res4f_branch2b"
 	name: "res4f_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 256
 		kernel_size: 3
@@ -1827,6 +1869,7 @@ layer {
 	top: "res4f_branch2c"
 	name: "res4f_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 1024
 		kernel_size: 1
@@ -1876,6 +1919,7 @@ layer {
 	top: "res5a_branch1"
 	name: "res5a_branch1"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 2048
 		kernel_size: 1
@@ -1910,6 +1954,7 @@ layer {
 	top: "res5a_branch2a"
 	name: "res5a_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 512
 		kernel_size: 1
@@ -1951,6 +1996,7 @@ layer {
 	top: "res5a_branch2b"
 	name: "res5a_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 512
 		kernel_size: 3
@@ -1992,6 +2038,7 @@ layer {
 	top: "res5a_branch2c"
 	name: "res5a_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 2048
 		kernel_size: 1
@@ -2041,6 +2088,7 @@ layer {
 	top: "res5b_branch2a"
 	name: "res5b_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 512
 		kernel_size: 1
@@ -2082,6 +2130,7 @@ layer {
 	top: "res5b_branch2b"
 	name: "res5b_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 512
 		kernel_size: 3
@@ -2123,6 +2172,7 @@ layer {
 	top: "res5b_branch2c"
 	name: "res5b_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 2048
 		kernel_size: 1
@@ -2172,6 +2222,7 @@ layer {
 	top: "res5c_branch2a"
 	name: "res5c_branch2a"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 512
 		kernel_size: 1
@@ -2213,6 +2264,7 @@ layer {
 	top: "res5c_branch2b"
 	name: "res5c_branch2b"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 512
 		kernel_size: 3
@@ -2254,6 +2306,7 @@ layer {
 	top: "res5c_branch2c"
 	name: "res5c_branch2c"
 	type: "Convolution"
+  cudnn_algo: "find"
 	convolution_param {
 		num_output: 2048
 		kernel_size: 1
