@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af25c0af-0523-48ab-aa8e-baa8c8092018" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/caffe/dvfs_benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/dvfs_benchmark.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,7 +45,7 @@
           <entry key="cfg" value="459" />
           <entry key="dummy" value="2" />
           <entry key="md" value="45" />
-          <entry key="py" value="2441" />
+          <entry key="py" value="2445" />
           <entry key="sh" value="2" />
           <entry key="txt" value="4" />
         </counts>
@@ -53,7 +54,7 @@
         <counts>
           <entry key="Markdown" value="45" />
           <entry key="PLAIN_TEXT" value="467" />
-          <entry key="Python" value="2441" />
+          <entry key="Python" value="2445" />
         </counts>
       </usages-collector>
     </session>
@@ -64,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/caffe/dvfs_benchmark.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
-              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -179,7 +180,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sys</find>
       <find>stop_iterations</find>
       <find>batch_time</find>
       <find>batch_time_between_30_40</find>
@@ -209,6 +209,7 @@
       <find>rnn</find>
       <find>libri_val_manifest</find>
       <find>app_exec_python_cmd</find>
+      <find>app_exec_cmd</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -795,6 +796,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/caffe/configs/gpus/p100.cfg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -809,17 +817,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caffe/configs/benchmarks/dl_settings.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/caffe/dvfs_benchmark.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
