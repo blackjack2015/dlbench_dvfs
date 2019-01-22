@@ -89,28 +89,26 @@ for core_f in core_frequencies:
                 os.system(command)
                 time.sleep(rest_int)
 
-                # set data path for the network
-                def set_datapath(network):
-                    network_path = "networks/%s.prototxt" % network
+                ## set data path for the network
+                #def set_datapath(network):
+                #    network_path = "networks/%s.prototxt" % network
 
-		    replacement_list = {
-		        '$TRAIN_PATH': ('%s' % train_path),
-		        '$TEST_PATH': ('%s' % test_path),
-		    }
+		#    replacement_list = {
+		#        '$TRAIN_PATH': ('%s' % train_path),
+		#        '$TEST_PATH': ('%s' % test_path),
+		#    }
 
-		    proto = ''
-		    tfile = open(network_path, "r")
-		    proto = tfile.read()
-		    tfile.close()
+		#    proto = ''
+		#    tfile = open(network_path, "r")
+		#    proto = tfile.read()
+		#    tfile.close()
 
-		    for r in replacement_list:
-		        proto = proto.replace(r, replacement_list[r])
-		    
-		    tfile = open('tmp/%s.prototxt' % network, "w")
-		    tfile.write(proto)
-		    tfile.close()
-                    
-                set_datapath(arg)    
+		#    for r in replacement_list:
+		#        proto = proto.replace(r, replacement_list[r])
+		#    
+		#    tfile = open('tmp/%s.prototxt' % network, "w")
+		#    tfile.write(proto)
+		#    tfile.close()
 
                 exec_arg = "time -model tmp/%s.prototxt -gpu %d -iterations %d" % (arg, cuda_dev_id, running_iters)
                 # execute program to collect power data
