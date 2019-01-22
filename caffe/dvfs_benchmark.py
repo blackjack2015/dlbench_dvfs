@@ -5,11 +5,11 @@ import re
 import ConfigParser
 import json
 
-benchmark_cfg = "configs/gpus/p100.cfg"
+benchmark_cfg = "configs/gpus/v100.cfg"
 dl_cfg = "configs/benchmarks/dl_settings.cfg"
 
 APP_ROOT = 'applications'
-LOG_ROOT = 'logs/p100_ipc_gemm'
+LOG_ROOT = 'logs/v100_auto'
 
 # Reading benchmark settings
 cf_bs = ConfigParser.SafeConfigParser()
