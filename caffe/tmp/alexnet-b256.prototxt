@@ -8,7 +8,7 @@ layer {
     phase: TRAIN
   }
   data_param {
-    source: "/home/hpcl/data/caffe/fake_image_net.lmdb"
+    source: "C:/fake_train"
     batch_size: 256
     backend: LMDB
   }
@@ -17,7 +17,7 @@ layer {
 layer {
   name: "conv1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "data"
   top: "conv1"
   param {
@@ -62,7 +62,7 @@ layer {
 layer {
   name: "conv2"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool1"
   top: "conv2"
   param {
@@ -107,7 +107,7 @@ layer {
 layer {
   name: "conv3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool2"
   top: "conv3"
   param {
@@ -141,7 +141,7 @@ layer {
 layer {
   name: "conv4"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "conv3"
   top: "conv4"
   param {
@@ -175,7 +175,7 @@ layer {
 layer {
   name: "conv5"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "conv4"
   top: "conv5"
   param {

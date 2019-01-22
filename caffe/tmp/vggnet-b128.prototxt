@@ -7,7 +7,7 @@ layer {
   }
   data_param: {
     batch_size: 128
-    source: "/home/hpcl/data/caffe/fake_image_net.lmdb"
+    source: "C:/fake_train"
     backend: LMDB
   }
 
@@ -19,7 +19,7 @@ layer {
   top: "conv1_1"
   name: "conv1_1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 64
     pad: 1
@@ -43,7 +43,7 @@ layer {
   top: "conv1_2"
   name: "conv1_2"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 64
     pad: 1
@@ -78,7 +78,7 @@ layer {
   top: "conv2_1"
   name: "conv2_1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 128
     pad: 1
@@ -102,7 +102,7 @@ layer {
   top: "conv2_2"
   name: "conv2_2"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 128
     pad: 1
@@ -137,7 +137,7 @@ layer {
   top: "conv3_1"
   name: "conv3_1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 256
     pad: 1
@@ -161,7 +161,7 @@ layer {
   top: "conv3_2"
   name: "conv3_2"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 256
     pad: 1
@@ -185,7 +185,7 @@ layer {
   top: "conv3_3"
   name: "conv3_3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 256
     pad: 1
@@ -220,7 +220,7 @@ layer {
   top: "conv4_1"
   name: "conv4_1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 512
     pad: 1
@@ -244,7 +244,7 @@ layer {
   top: "conv4_2"
   name: "conv4_2"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 512
     pad: 1
@@ -268,7 +268,7 @@ layer {
   top: "conv4_3"
   name: "conv4_3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 512
     pad: 1
@@ -303,7 +303,7 @@ layer {
   top: "conv5_1"
   name: "conv5_1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 512
     pad: 1
@@ -327,7 +327,7 @@ layer {
   top: "conv5_2"
   name: "conv5_2"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 512
     pad: 1
@@ -351,7 +351,7 @@ layer {
   top: "conv5_3"
   name: "conv5_3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   convolution_param {
     num_output: 512
     pad: 1

@@ -4,12 +4,45 @@ import time
 import re
 import ConfigParser
 import json
+import argparse
 
-benchmark_cfg = "configs/gpus/gtx1080ti.cfg"
-dl_cfg = "configs/benchmarks/dl_16g.cfg"
+parser = argparse.ArgumentParser()
+parser.add_argument('--dl-setting', type=str, help='benchmark setting of deep learning', default='dl_setting')
+parser.add_argument('--gpu-setting', type=str, help='gpu card', default='gtx1080ti')
+parser.add_argument('--algo', type=str, help='conv algo', default='auto') # auto, find, ipc_gemm, fft_tile, winograd_nonfused
+parser.add_argument('--datapath', type=str, help='datapath for caffe', default='C:/fake_train') # auto, find, ipc_gemm, fft_tile, winograd_nonfused
+
+opt = parser.parse_args()
+print opt
+
+# set path and conv algo for caffe prototxt
+conv_algo = opt.algo
+datapath = opt.datapath
+os.system("python set_path_algo.py --algo %s --datapath %s" % (conv_algo, datapath))
+
+if sys.platform.startswith("win"):
+    # Don't display the Windows GPF dialog if the invoked program dies.
+    # See comp.os.ms-windows.programmer.win32
+    #  How to suppress crash notification dialog?, Jan 14,2004 -
+    #     Raymond Chen's response [1]
+
+    import ctypes
+    SEM_NOGPFAULTERRORBOX = 0x0002 # From MSDN
+    ctypes.windll.kernel32.SetErrorMode(SEM_NOGPFAULTERRORBOX);
+    CREATE_NO_WINDOW = 0x08000000    # From Windows API
+    subprocess_flags = CREATE_NO_WINDOW
+else:
+    subprocess_flags = 0
+
+gpucard = opt.gpu_setting
+benchmark_cfg = "configs/gpus/%s.cfg" % gpucard
+dl_cfg = "configs/benchmarks/%s.cfg" % opt.dl_setting
 
 APP_ROOT = 'applications/'
-LOG_ROOT = 'logs'
+LOG_ROOT = 'logs/%s/%s' % (gpucard, conv_algo)
+
+if not os.path.exists(LOG_ROOT):
+    os.makedirs(LOG_ROOT)
 
 # Reading benchmark settings
 cf_bs = ConfigParser.SafeConfigParser()
@@ -70,8 +103,8 @@ for core_f in core_frequencies:
         for app in benchmark_programs:
 
             args = json.loads(cf_ks.get(app, 'args'))
-            train_path = cf_ks.get(app, 'train_data')
-            test_path = cf_ks.get(app, 'test_data')
+            #train_path = cf_ks.get(app, 'train_data')
+            #test_path = cf_ks.get(app, 'test_data')
 
             #argNo = 0
 
@@ -90,28 +123,28 @@ for core_f in core_frequencies:
                 os.system(command)
                 time.sleep(rest_int)
 
-                # set data path for the network
-                def set_datapath(network):
-                    network_path = "networks/%s.prototxt" % network
+                ## set data path for the network
+                #def set_datapath(network):
+                #    network_path = "networks/%s.prototxt" % network
 
-		    replacement_list = {
-		        '$TRAIN_PATH': ('%s' % train_path),
-		        '$TEST_PATH': ('%s' % test_path),
-		    }
+		#    replacement_list = {
+		#        '$TRAIN_PATH': ('%s' % train_path),
+		#        '$TEST_PATH': ('%s' % test_path),
+		#    }
 
-		    proto = ''
-		    tfile = open(network_path, "r")
-		    proto = tfile.read()
-		    tfile.close()
+		#    proto = ''
+		#    tfile = open(network_path, "r")
+		#    proto = tfile.read()
+		#    tfile.close()
 
-		    for r in replacement_list:
-		        proto = proto.replace(r, replacement_list[r])
-		    
-		    tfile = open('tmp/%s.prototxt' % network, "w")
-		    tfile.write(proto)
-		    tfile.close()
-                    
-                set_datapath(arg)    
+		#    for r in replacement_list:
+		#        proto = proto.replace(r, replacement_list[r])
+		#    
+		#    tfile = open('tmp/%s.prototxt' % network, "w")
+		#    tfile.write(proto)
+		#    tfile.close()
+                #    
+                #set_datapath(arg)    
 
                 exec_arg = "time -model tmp/%s.prototxt -gpu %d -iterations %d" % (arg, cuda_dev_id, running_iters)
                 # execute program to collect power data
@@ -119,7 +152,13 @@ for core_f in core_frequencies:
                 command = app_exec_cmd % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
                 #command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
                 print command
-                os.system(command)
+                #os.system(command)
+                p = subprocess.Popen(command, shell=True)
+                p.wait()
+                #r_stdout = subprocess.Popen(command,
+                #            stdout=subprocess.PIPE,
+                #            stderr=subprocess.PIPE,
+                #            creationflags=subprocess_flags).communicate()[1]
                 time.sleep(rest_int)
 
                 # stop record power data

@@ -9,7 +9,7 @@ layer {
   }
   data_param {
     source: "C:/fake_train"
-    batch_size: 128
+    batch_size: 64
     backend: LMDB
   }
 }

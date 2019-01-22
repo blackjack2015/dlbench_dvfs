@@ -15,7 +15,7 @@ layer {
     mean_value: 123
   }
   data_param {
-    source: "/home/hpcl/data/caffe/fake_image_net.lmdb"
+    source: "C:/fake_train"
     batch_size: 16
     backend: LMDB
   }
@@ -36,7 +36,7 @@ layer {
     mean_value: 123
   }
   data_param {
-    source: "/home/hpcl/data/caffe/fake_image_net.lmdb"
+    source: "C:/fake_train"
     batch_size: 32
     backend: LMDB
   }
@@ -44,7 +44,7 @@ layer {
 layer {
   name: "conv1/7x7_s2"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "data"
   top: "conv1/7x7_s2"
   param {
@@ -89,7 +89,7 @@ layer {
 layer {
   name: "conv2/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool1/3x3_s2"
   top: "conv2/3x3_reduce"
   param {
@@ -121,7 +121,7 @@ layer {
 layer {
   name: "conv2/3x3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "conv2/3x3_reduce"
   top: "conv2/3x3"
   param {
@@ -165,7 +165,7 @@ layer {
 layer {
   name: "inception_3a/1x1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool2/3x3_s2"
   top: "inception_3a/1x1"
   param {
@@ -197,7 +197,7 @@ layer {
 layer {
   name: "inception_3a/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool2/3x3_s2"
   top: "inception_3a/3x3_reduce"
   param {
@@ -229,7 +229,7 @@ layer {
 layer {
   name: "inception_3a/3x3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_3a/3x3_reduce"
   top: "inception_3a/3x3"
   param {
@@ -262,7 +262,7 @@ layer {
 layer {
   name: "inception_3a/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool2/3x3_s2"
   top: "inception_3a/5x5_reduce"
   param {
@@ -294,7 +294,7 @@ layer {
 layer {
   name: "inception_3a/5x5"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_3a/5x5_reduce"
   top: "inception_3a/5x5"
   param {
@@ -339,7 +339,7 @@ layer {
 layer {
   name: "inception_3a/pool_proj"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_3a/pool"
   top: "inception_3a/pool_proj"
   param {
@@ -380,7 +380,7 @@ layer {
 layer {
   name: "inception_3b/1x1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_3a/output"
   top: "inception_3b/1x1"
   param {
@@ -412,7 +412,7 @@ layer {
 layer {
   name: "inception_3b/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_3a/output"
   top: "inception_3b/3x3_reduce"
   param {
@@ -444,7 +444,7 @@ layer {
 layer {
   name: "inception_3b/3x3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_3b/3x3_reduce"
   top: "inception_3b/3x3"
   param {
@@ -477,7 +477,7 @@ layer {
 layer {
   name: "inception_3b/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_3a/output"
   top: "inception_3b/5x5_reduce"
   param {
@@ -509,7 +509,7 @@ layer {
 layer {
   name: "inception_3b/5x5"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_3b/5x5_reduce"
   top: "inception_3b/5x5"
   param {
@@ -554,7 +554,7 @@ layer {
 layer {
   name: "inception_3b/pool_proj"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_3b/pool"
   top: "inception_3b/pool_proj"
   param {
@@ -606,7 +606,7 @@ layer {
 layer {
   name: "inception_4a/1x1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool3/3x3_s2"
   top: "inception_4a/1x1"
   param {
@@ -638,7 +638,7 @@ layer {
 layer {
   name: "inception_4a/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool3/3x3_s2"
   top: "inception_4a/3x3_reduce"
   param {
@@ -670,7 +670,7 @@ layer {
 layer {
   name: "inception_4a/3x3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4a/3x3_reduce"
   top: "inception_4a/3x3"
   param {
@@ -703,7 +703,7 @@ layer {
 layer {
   name: "inception_4a/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool3/3x3_s2"
   top: "inception_4a/5x5_reduce"
   param {
@@ -735,7 +735,7 @@ layer {
 layer {
   name: "inception_4a/5x5"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4a/5x5_reduce"
   top: "inception_4a/5x5"
   param {
@@ -780,7 +780,7 @@ layer {
 layer {
   name: "inception_4a/pool_proj"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4a/pool"
   top: "inception_4a/pool_proj"
   param {
@@ -821,7 +821,7 @@ layer {
 layer {
   name: "inception_4b/1x1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4a/output"
   top: "inception_4b/1x1"
   param {
@@ -853,7 +853,7 @@ layer {
 layer {
   name: "inception_4b/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4a/output"
   top: "inception_4b/3x3_reduce"
   param {
@@ -885,7 +885,7 @@ layer {
 layer {
   name: "inception_4b/3x3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4b/3x3_reduce"
   top: "inception_4b/3x3"
   param {
@@ -918,7 +918,7 @@ layer {
 layer {
   name: "inception_4b/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4a/output"
   top: "inception_4b/5x5_reduce"
   param {
@@ -950,7 +950,7 @@ layer {
 layer {
   name: "inception_4b/5x5"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4b/5x5_reduce"
   top: "inception_4b/5x5"
   param {
@@ -995,7 +995,7 @@ layer {
 layer {
   name: "inception_4b/pool_proj"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4b/pool"
   top: "inception_4b/pool_proj"
   param {
@@ -1036,7 +1036,7 @@ layer {
 layer {
   name: "inception_4c/1x1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4b/output"
   top: "inception_4c/1x1"
   param {
@@ -1068,7 +1068,7 @@ layer {
 layer {
   name: "inception_4c/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4b/output"
   top: "inception_4c/3x3_reduce"
   param {
@@ -1100,7 +1100,7 @@ layer {
 layer {
   name: "inception_4c/3x3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4c/3x3_reduce"
   top: "inception_4c/3x3"
   param {
@@ -1133,7 +1133,7 @@ layer {
 layer {
   name: "inception_4c/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4b/output"
   top: "inception_4c/5x5_reduce"
   param {
@@ -1165,7 +1165,7 @@ layer {
 layer {
   name: "inception_4c/5x5"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4c/5x5_reduce"
   top: "inception_4c/5x5"
   param {
@@ -1210,7 +1210,7 @@ layer {
 layer {
   name: "inception_4c/pool_proj"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4c/pool"
   top: "inception_4c/pool_proj"
   param {
@@ -1251,7 +1251,7 @@ layer {
 layer {
   name: "inception_4d/1x1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4c/output"
   top: "inception_4d/1x1"
   param {
@@ -1283,7 +1283,7 @@ layer {
 layer {
   name: "inception_4d/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4c/output"
   top: "inception_4d/3x3_reduce"
   param {
@@ -1315,7 +1315,7 @@ layer {
 layer {
   name: "inception_4d/3x3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4d/3x3_reduce"
   top: "inception_4d/3x3"
   param {
@@ -1348,7 +1348,7 @@ layer {
 layer {
   name: "inception_4d/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4c/output"
   top: "inception_4d/5x5_reduce"
   param {
@@ -1380,7 +1380,7 @@ layer {
 layer {
   name: "inception_4d/5x5"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4d/5x5_reduce"
   top: "inception_4d/5x5"
   param {
@@ -1425,7 +1425,7 @@ layer {
 layer {
   name: "inception_4d/pool_proj"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4d/pool"
   top: "inception_4d/pool_proj"
   param {
@@ -1466,7 +1466,7 @@ layer {
 layer {
   name: "inception_4e/1x1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4d/output"
   top: "inception_4e/1x1"
   param {
@@ -1498,7 +1498,7 @@ layer {
 layer {
   name: "inception_4e/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4d/output"
   top: "inception_4e/3x3_reduce"
   param {
@@ -1530,7 +1530,7 @@ layer {
 layer {
   name: "inception_4e/3x3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4e/3x3_reduce"
   top: "inception_4e/3x3"
   param {
@@ -1563,7 +1563,7 @@ layer {
 layer {
   name: "inception_4e/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4d/output"
   top: "inception_4e/5x5_reduce"
   param {
@@ -1595,7 +1595,7 @@ layer {
 layer {
   name: "inception_4e/5x5"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4e/5x5_reduce"
   top: "inception_4e/5x5"
   param {
@@ -1640,7 +1640,7 @@ layer {
 layer {
   name: "inception_4e/pool_proj"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_4e/pool"
   top: "inception_4e/pool_proj"
   param {
@@ -1692,7 +1692,7 @@ layer {
 layer {
   name: "inception_5a/1x1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool4/3x3_s2"
   top: "inception_5a/1x1"
   param {
@@ -1724,7 +1724,7 @@ layer {
 layer {
   name: "inception_5a/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool4/3x3_s2"
   top: "inception_5a/3x3_reduce"
   param {
@@ -1756,7 +1756,7 @@ layer {
 layer {
   name: "inception_5a/3x3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_5a/3x3_reduce"
   top: "inception_5a/3x3"
   param {
@@ -1789,7 +1789,7 @@ layer {
 layer {
   name: "inception_5a/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "pool4/3x3_s2"
   top: "inception_5a/5x5_reduce"
   param {
@@ -1821,7 +1821,7 @@ layer {
 layer {
   name: "inception_5a/5x5"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_5a/5x5_reduce"
   top: "inception_5a/5x5"
   param {
@@ -1866,7 +1866,7 @@ layer {
 layer {
   name: "inception_5a/pool_proj"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_5a/pool"
   top: "inception_5a/pool_proj"
   param {
@@ -1907,7 +1907,7 @@ layer {
 layer {
   name: "inception_5b/1x1"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_5a/output"
   top: "inception_5b/1x1"
   param {
@@ -1939,7 +1939,7 @@ layer {
 layer {
   name: "inception_5b/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_5a/output"
   top: "inception_5b/3x3_reduce"
   param {
@@ -1971,7 +1971,7 @@ layer {
 layer {
   name: "inception_5b/3x3"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_5b/3x3_reduce"
   top: "inception_5b/3x3"
   param {
@@ -2004,7 +2004,7 @@ layer {
 layer {
   name: "inception_5b/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_5a/output"
   top: "inception_5b/5x5_reduce"
   param {
@@ -2036,7 +2036,7 @@ layer {
 layer {
   name: "inception_5b/5x5"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_5b/5x5_reduce"
   top: "inception_5b/5x5"
   param {
@@ -2081,7 +2081,7 @@ layer {
 layer {
   name: "inception_5b/pool_proj"
   type: "Convolution"
-  cudnn_algo: "gemm"
+  cudnn_algo: "ipc_gemm"
   bottom: "inception_5b/pool"
   top: "inception_5b/pool_proj"
   param {
