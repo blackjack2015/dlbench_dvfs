@@ -5,11 +5,11 @@ import re
 import ConfigParser
 import json
 
-benchmark_cfg = "configs/gpus/v100.cfg"
+benchmark_cfg = "configs/gpus/p100.cfg"
 dl_cfg = "configs/benchmarks/dl_settings.cfg"
 
 APP_ROOT = 'applications'
-LOG_ROOT = 'logs/v100_new'
+LOG_ROOT = 'logs/p100_ipc_gemm'
 
 # Reading benchmark settings
 cf_bs = ConfigParser.SafeConfigParser()
@@ -129,7 +129,7 @@ for core_f in core_frequencies:
                     #command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
 
                 else:
-                    set_datapath(arg)
+                    # set_datapath(arg)
                     exec_arg = "time -model tmp/%s.prototxt -gpu %d -iterations %d" % (arg, cuda_dev_id, running_iters)
                     # execute program to collect power data
                     os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
