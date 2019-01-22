@@ -5,10 +5,10 @@ import re
 import ConfigParser
 import json
 
-benchmark_cfg = "configs/gpus/v100.cfg"
-dl_cfg = "configs/benchmarks/dl_settings.cfg"
+benchmark_cfg = "configs/gpus/gtx1080ti.cfg"
+dl_cfg = "configs/benchmarks/dl_16g.cfg"
 
-APP_ROOT = 'applications'
+APP_ROOT = 'applications/'
 LOG_ROOT = 'logs'
 
 # Reading benchmark settings
@@ -46,9 +46,10 @@ if 'linux' in sys.platform:
     dvfs_cmd = 'gpu=%d fcore=%s fmem=%s ./adjustClock.sh' % (nvIns_dev_id, '%s', '%s')
     kill_pw_cmd = 'killall nvml_samples'
 elif 'win' in sys.platform:
+    APP_ROOT=''
     pw_sampling_cmd = 'start /B nvml_samples.exe -device=%d -si=%d -output=%s/%s > nul'
     #app_exec_cmd = '%s\\%s %s -device=%d -secs=%d >> %s/%s'
-    app_exec_cmd = '%s %s >> %s/%s 2>&1' # for win caffe
+    app_exec_cmd = '%s%s %s >> %s/%s 2>&1' # for win caffe
     #dvfs_cmd = 'nvidiaInspector.exe -forcepstate:%s,%s -setMemoryClock:%s,1,%s -setGpuClock:%s,1,%s'
     if powerState !=0:
         dvfs_cmd = 'nvidiaInspector.exe -forcepstate:%s,%d -setGpuClock:%s,%d,%s -setMemoryClock:%s,%d,%s' % (nvIns_dev_id, powerState, nvIns_dev_id, freqState, '%s', nvIns_dev_id, freqState, '%s')
