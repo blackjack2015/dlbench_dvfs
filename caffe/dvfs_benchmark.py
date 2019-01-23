@@ -4,12 +4,31 @@ import time
 import re
 import ConfigParser
 import json
+import argparse
 
-benchmark_cfg = "configs/gpus/p100.cfg"
-dl_cfg = "configs/benchmarks/dl_settings.cfg"
+parser = argparse.ArgumentParser()
+parser.add_argument('--dl-setting', type=str, help='benchmark setting of deep learning', default='dl_setting')
+parser.add_argument('--gpu-setting', type=str, help='gpu card', default='gtx1080ti')
+parser.add_argument('--algo', type=str, help='conv algo', default='auto') # auto, find, ipc_gemm, fft_tile, winograd_nonfused
+parser.add_argument('--datapath', type=str, help='datapath for caffe', default='C:/fake_train') # auto, find, ipc_gemm, fft_tile, winograd_nonfused
+
+opt = parser.parse_args()
+print opt
+
+# set path and conv algo for caffe prototxt
+conv_algo = opt.algo
+datapath = opt.datapath
+os.system("python set_path_algo.py --algo %s --datapath %s" % (conv_algo, datapath))
+
+gpucard = opt.gpu_setting
+benchmark_cfg = "configs/gpus/%s.cfg" % gpucard
+dl_cfg = "configs/benchmarks/%s.cfg" % opt.dl_setting
 
 APP_ROOT = 'applications'
-LOG_ROOT = 'logs/p100_ipc_gemm'
+LOG_ROOT = 'logs/%s_%s' % (gpucard, conv_algo)
+
+if not os.path.exists(LOG_ROOT):
+    os.makedirs(LOG_ROOT)
 
 # Reading benchmark settings
 cf_bs = ConfigParser.SafeConfigParser()
