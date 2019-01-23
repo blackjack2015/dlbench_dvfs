@@ -32,10 +32,12 @@ auto_resnet_batch_sizes = ['16', '32']
 auto_vggnet_batch_sizes = ['16', '32', '64', '128']
 auto_googlenet_batch_sizes = ['16', '32', '64', '128']
 #=======================================
-fft_tile_alexnet_batch_sizes = ['128', '256', '512', '1024']
-fft_tile_resnet_batch_sizes = ['16', '32']
-fft_tile_vggnet_batch_sizes = ['16', '32', '64', '128']
-fft_tile_googlenet_batch_sizes = ['16', '32', '64', '128']
+winograd_nonfused_alexnet_batch_sizes = ['128', '256', '512']
+winograd_nonfused_resnet_batch_sizes = ['16', '32']
+winograd_nonfused_vggnet_batch_sizes = ['16']
+winograd_nonfused_googlenet_batch_sizes = ['16', '32', '64']
+winograd_nonfused_batch_sizes_list = [winograd_nonfused_alexnet_batch_sizes, winograd_nonfused_resnet_batch_sizes, 
+                        winograd_nonfused_vggnet_batch_sizes, winograd_nonfused_googlenet_batch_sizes]
 #========================================
 fft_tile_alexnet_batch_sizes = ['128', '256']
 fft_tile_resnet_batch_sizes = [  ]
@@ -202,7 +204,7 @@ def get_energy_respect(gpu=None, algo=None, framework=None, net=None, batch_size
 
 
 def draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
-    gpu, algo, net, batch_sizes, gpu_coreF):
+    gpu, algo, net, batch_sizes, gpu_coreF, gpu_memF):
 
     fig = plt.figure()
     ax1 = fig.add_subplot(1, 1, 1)
@@ -212,13 +214,13 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
     bar_total_width = 100
     bar_n = len(batch_sizes)
     bar_width = bar_total_width / bar_n
-    np.array(p100_coreF)
-    bar_x = np.array(p100_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    np.array(gpu_coreF)
+    bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
     #==============
     max_power = 0
     max_energy = 0
     for i_batch, batch in enumerate(batch_sizes):
-        powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, '715')
+        powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
         bar_i_width += 1
@@ -226,7 +228,7 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
             width=bar_width, label=power_label_name)
 
     for i_batch, batch in enumerate(batch_sizes):
-        energy_respect_coreF = get_energy_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, '715')       
+        energy_respect_coreF = get_energy_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)       
         energy_label_name = '{0}-b{1} Energy'.format(net, batch)
         max_energy = max(energy_respect_coreF) if max_energy < max(energy_respect_coreF) else max_energy
         ax2.plot(np.array(gpu_coreF, np.dtype('float')), energy_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
@@ -252,7 +254,7 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
     plt.show()
 
 def draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
-    gpu, algo, net, batch_sizes, gpu_coreF):
+    gpu, algo, net, batch_sizes, gpu_coreF, gpu_memF):
 
     fig = plt.figure()
     ax1 = fig.add_subplot(1, 1, 1)
@@ -262,13 +264,13 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
     bar_total_width = 100
     bar_n = len(batch_sizes)
     bar_width = bar_total_width / bar_n
-    np.array(p100_coreF)
-    bar_x = np.array(p100_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    np.array(gpu_coreF)
+    bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
     #==============
     max_power = 0
     max_image_perf = 0
     for i_batch, batch in enumerate(batch_sizes):
-        powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, '715')
+        powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
         bar_i_width += 1
@@ -276,7 +278,7 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
             width=bar_width, label=power_label_name)
 
     for i_batch, batch in enumerate(batch_sizes):
-        image_perf_respect_coreF = get_image_perf_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, '715')       
+        image_perf_respect_coreF = get_image_perf_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)       
         max_image_perf = max(image_perf_respect_coreF) if max_image_perf < max(image_perf_respect_coreF) else max_image_perf
 
         energy_label_name = '{0}-b{1} image_per'.format(net, batch)
@@ -302,15 +304,69 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
     # plt.title("config [{0}, {1}], varient {2} ".format('net', 'batch', 'coreF'))
     plt.show()
 
-for i_net, net in enumerate():
-    # power_intervals = [10000, 10000, 10000, 10000]
-    # energy_maxs = [240, 1200, 900, 600]
-    # perf_maxs = [1100, 300, 400, 600]
+
+# auto_alexnet_batch_sizes = ['128', '256', '512', '1024']
+# auto_resnet_batch_sizes = ['16', '32']
+# auto_vggnet_batch_sizes = ['16', '32', '64']
+# auto_googlenet_batch_sizes = ['16', '32', '64', '128']
+# auto_batch_sizes_list = [auto_alexnet_batch_sizes, auto_resnet_batch_sizes, 
+#                         auto_vggnet_batch_sizes, auto_googlenet_batch_sizes]
+
+# for i_net, net in enumerate(nets):
+
+#     draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
+#         'p100', 'winograd_nonfused', net, winograd_nonfused_batch_sizes_list[i_net], p100_coreF, p100_memF[0])
+#     draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
+#         'p100', 'winograd_nonfused', net, winograd_nonfused_batch_sizes_list[i_net], p100_coreF, p100_memF[0])
+
+
+auto_alexnet_batch_sizes = ['128', '256', '512', '1024']
+auto_resnet_batch_sizes = ['16', '32']
+auto_vggnet_batch_sizes = ['16', '32', '64']
+auto_googlenet_batch_sizes = ['16', '32', '64', '128']
+auto_batch_sizes_list = [auto_alexnet_batch_sizes, auto_resnet_batch_sizes, 
+                        auto_vggnet_batch_sizes, auto_googlenet_batch_sizes]
+
+for i_net, net in enumerate(nets):
 
     draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
-        'p100', 'fft_tile', net, fft_tile_batch_sizes_list[i_net], p100_coreF)
+        'v100', 'ipc_gemm', net, auto_batch_sizes_list[i_net], v100_coreF, v100_memF[0])
     draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
-        'p100', 'fft_tile', net, fft_tile_batch_sizes_list[i_net], p100_coreF)
+        'v100', 'ipc_gemm', net, auto_batch_sizes_list[i_net], v100_coreF, v100_memF[0])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
