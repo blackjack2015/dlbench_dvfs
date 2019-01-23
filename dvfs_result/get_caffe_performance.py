@@ -54,5 +54,6 @@ for i, input_file_name in enumerate(file_list):
         if iteration_re.search(data_line):
             out_file.writelines(input_file[i])
 
+
     input_file_f.close()
     out_file.close()

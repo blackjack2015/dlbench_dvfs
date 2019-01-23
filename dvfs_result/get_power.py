@@ -58,17 +58,17 @@ for i, input_file_name in enumerate(file_list):
         meas_from_begin.update(int(data_line[-1]))
 
         if ((int(data_line[-1]) - 5000) > meas_from_begin.avg) & (i>50):
-            print("meas_from_begin.avg*** :  %d \n" % meas_from_begin.avg)
+            # print("meas_from_begin.avg*** :  %d \n" % meas_from_begin.avg)
             index_begin = i
             break
 
-    for i in range(1, len(input_file)):
+    for i in range(2, len(input_file) - 2):
         j = len(input_file) - i
         data_line = input_file[j].split()
         meas_from_end.update(int(data_line[-1]))
 
         if ((int(data_line[-1]) - 5000) > meas_from_end.avg) & (i>50):
-            print("meas_from_end.avg*** :  %d \n" % meas_from_end.avg)
+            # print("meas_from_end.avg*** :  %d \n" % meas_from_end.avg)
             index_end = j
             break
 

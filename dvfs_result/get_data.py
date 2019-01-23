@@ -62,9 +62,9 @@ for i, input_file_name in enumerate(file_list):
             meas_perf.update(float(input_file[i].split()[-2]))
     try:
         speed = 1 / ( (meas_perf.avg / 1000) / (int(file_parameters[2].split('-b')[1])))
+        out_file.writelines(str(meas_perf.avg) + ' ' + str(speed))
     except:
         pass
-    out_file.writelines(str(meas_perf.avg) + ' ' + str(speed))
 
     input_file_f.close()
     out_file.close()
