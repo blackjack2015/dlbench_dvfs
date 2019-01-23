@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="af25c0af-0523-48ab-aa8e-baa8c8092018" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/caffe/configs/gpus/p100.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/configs/gpus/p100.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caffe/configs/gpus/v100.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/configs/gpus/v100.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caffe/dvfs_benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/caffe/dvfs_benchmark.py" afterDir="false" />
-    </list>
+    <list default="true" id="af25c0af-0523-48ab-aa8e-baa8c8092018" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +12,7 @@
     <session id="-1866198931">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.3" value="1" />
@@ -347,7 +343,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21548998" />
