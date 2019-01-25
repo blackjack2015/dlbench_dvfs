@@ -16,9 +16,9 @@ algo = opt.algo
 def set_network(filepath, datapath, algo):
 
     replacement_list = {
-        '$TRAIN_PATH': ('%s' % datapath),
-        '$TEST_PATH': ('%s' % datapath),
-        'type: "Convolution"\n': ('type: \"Convolution\"\n  cudnn_algo: \"%s\"\n' % algo),
+        #'$TRAIN_PATH': ('%s' % datapath),
+        #'$TEST_PATH': ('%s' % datapath),
+        'type: \"Convolution\"\n': ('type: \"Convolution\"\n  cudnn_algo: \"%s\"\n' % algo),
     }
 
     proto = ''
