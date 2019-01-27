@@ -4,7 +4,7 @@ layer {
   type: "DummyData"
   top: "data"
   dummy_data_param {
-      shape: {dim: 128 dim: 3 dim:224 dim:244}
+      shape: {dim: 64 dim: 3 dim:224 dim:244}
   }
 }
 layer {
@@ -12,10 +12,9 @@ layer {
   type: "DummyData"
   top: "label"
   dummy_data_param {
-      shape: {dim: 128}
+      shape: {dim: 64}
   }
 }
-
 
 layer {
   name: "conv1"

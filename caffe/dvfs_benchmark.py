@@ -4,12 +4,45 @@ import time
 import re
 import ConfigParser
 import json
+import argparse
 
-benchmark_cfg = "configs/gpus/v100.cfg"
-dl_cfg = "configs/benchmarks/dl_settings.cfg"
+parser = argparse.ArgumentParser()
+parser.add_argument('--dl-setting', type=str, help='benchmark setting of deep learning', default='dl_setting')
+parser.add_argument('--gpu-setting', type=str, help='gpu card', default='gtx1080ti')
+parser.add_argument('--algo', type=str, help='conv algo', default='auto') # auto, find, ipc_gemm, fft_tile, winograd_nonfused
+parser.add_argument('--datapath', type=str, help='datapath for caffe', default='C:/fake_train') # auto, find, ipc_gemm, fft_tile, winograd_nonfused
+
+opt = parser.parse_args()
+print opt
+
+# set path and conv algo for caffe prototxt
+conv_algo = opt.algo
+datapath = opt.datapath
+os.system("python set_path_algo.py --algo %s --datapath %s" % (conv_algo, datapath))
+
+if sys.platform.startswith("win"):
+    # Don't display the Windows GPF dialog if the invoked program dies.
+    # See comp.os.ms-windows.programmer.win32
+    #  How to suppress crash notification dialog?, Jan 14,2004 -
+    #     Raymond Chen's response [1]
+
+    import ctypes
+    SEM_NOGPFAULTERRORBOX = 0x0002 # From MSDN
+    ctypes.windll.kernel32.SetErrorMode(SEM_NOGPFAULTERRORBOX);
+    CREATE_NO_WINDOW = 0x08000000    # From Windows API
+    subprocess_flags = CREATE_NO_WINDOW
+else:
+    subprocess_flags = 0
+
+gpucard = opt.gpu_setting
+benchmark_cfg = "configs/gpus/%s.cfg" % gpucard
+dl_cfg = "configs/benchmarks/%s.cfg" % opt.dl_setting
 
 APP_ROOT = 'applications'
-LOG_ROOT = 'logs'
+LOG_ROOT = 'logs/%s/%s' % (gpucard, conv_algo)
+
+if not os.path.exists(LOG_ROOT):
+    os.makedirs(LOG_ROOT)
 
 # Reading benchmark settings
 cf_bs = ConfigParser.SafeConfigParser()
@@ -46,9 +79,10 @@ if 'linux' in sys.platform:
     dvfs_cmd = 'gpu=%d fcore=%s fmem=%s ./adjustClock.sh' % (nvIns_dev_id, '%s', '%s')
     kill_pw_cmd = 'killall nvml_samples'
 elif 'win' in sys.platform:
+    APP_ROOT=''
     pw_sampling_cmd = 'start /B nvml_samples.exe -device=%d -si=%d -output=%s/%s > nul'
     #app_exec_cmd = '%s\\%s %s -device=%d -secs=%d >> %s/%s'
-    app_exec_cmd = '%s %s >> %s/%s 2>&1' # for win caffe
+    app_exec_cmd = '%s\\%s %s >> %s/%s 2>&1' # for win caffe
     #dvfs_cmd = 'nvidiaInspector.exe -forcepstate:%s,%s -setMemoryClock:%s,1,%s -setGpuClock:%s,1,%s'
     if powerState !=0:
         dvfs_cmd = 'nvidiaInspector.exe -forcepstate:%s,%d -setGpuClock:%s,%d,%s -setMemoryClock:%s,%d,%s' % (nvIns_dev_id, powerState, nvIns_dev_id, freqState, '%s', nvIns_dev_id, freqState, '%s')
@@ -69,21 +103,22 @@ for core_f in core_frequencies:
         for app in benchmark_programs:
 
             args = json.loads(cf_ks.get(app, 'args'))
-            train_path = cf_ks.get(app, 'train_data')
-            test_path = cf_ks.get(app, 'test_data')
+            #train_path = cf_ks.get(app, 'train_data')
+            #test_path = cf_ks.get(app, 'test_data')
 
             #argNo = 0
 
             for arg in args:
-
+                network, batch_size = arg.split()
+                arg_name = "-".join(arg.split())
                 # arg, number = re.subn('-device=[0-9]*', '-device=%d' % cuda_dev_id, arg)
-                powerlog = 'benchmark_%s_%s_core%d_mem%d_power.log' % (app, arg, core_f, mem_f)
-                perflog = 'benchmark_%s_%s_core%d_mem%d_perf.log' % (app, arg, core_f, mem_f)
-                metricslog = 'benchmark_%s_%s_core%d_mem%d_metrics.log' % (app, arg, core_f, mem_f)
+                powerlog = 'benchmark_%s_%s_core%d_mem%d_power.log' % (app, arg_name, core_f, mem_f)
+                perflog = 'benchmark_%s_%s_core%d_mem%d_perf.log' % (app, arg_name, core_f, mem_f)
+                metricslog = 'benchmark_%s_%s_core%d_mem%d_metrics.log' % (app, arg_name, core_f, mem_f)
 
 
                 # start record power data
-                os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, powerlog))
+                os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg_name, LOG_ROOT, powerlog))
                 command = pw_sampling_cmd % (nvIns_dev_id, pw_sample_int, LOG_ROOT, powerlog)
                 print command
                 os.system(command)
@@ -109,14 +144,24 @@ for core_f in core_frequencies:
 		#    tfile = open('tmp/%s.prototxt' % network, "w")
 		#    tfile.write(proto)
 		#    tfile.close()
-
-                exec_arg = "time -model tmp/%s.prototxt -gpu %d -iterations %d" % (arg, cuda_dev_id, running_iters)
+                #    
+                #set_datapath(arg)    
+                if app == 'caffe':
+                    exec_arg = "time -model tmp/%s-%s.prototxt -gpu %d -iterations %d" % (network, batch_size, cuda_dev_id, running_iters)
+                if app == 'giexec':
+                    exec_arg = "--model=./models/%s/%s.caffemodel --deploy=./models/%s/deploy.prototxt --output=prob --batch=%s --device=%d --iterations=%d" % (network, network, network, batch_size, cuda_dev_id, running_iters / 10)
                 # execute program to collect power data
                 os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
                 command = app_exec_cmd % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)
                 #command = app_exec_cmd % (app, exec_arg, LOG_ROOT, perflog)  # for win caffe
                 print command
-                os.system(command)
+                #os.system(command)
+                p = subprocess.Popen(command, shell=True)
+                p.wait()
+                #r_stdout = subprocess.Popen(command,
+                #            stdout=subprocess.PIPE,
+                #            stderr=subprocess.PIPE,
+                #            creationflags=subprocess_flags).communicate()[1]
                 time.sleep(rest_int)
 
                 # stop record power data
