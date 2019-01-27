@@ -1,20 +1,9 @@
 name: "ResNet-50"
-layer {
-  name: "data"
-  type: "DummyData"
-  top: "data"
-  dummy_data_param {
-      shape: {dim: 32 dim: 3 dim:224 dim:244}
-  }
-}
-layer {
-  name: "data"
-  type: "DummyData"
-  top: "label"
-  dummy_data_param {
-      shape: {dim: 32}
-  }
-}
+input: "data"
+input_dim: 1
+input_dim: 3
+input_dim: 224
+input_dim: 224
 
 layer {
 	bottom: "data"
@@ -24,6 +13,7 @@ layer {
 	convolution_param {
 		num_output: 64
 		kernel_size: 7
+		pad: 3
 		stride: 2
 	}
 }
@@ -2322,11 +2312,9 @@ layer {
 }
 
 layer {
-	name: "loss"
-	type: "SoftmaxWithLoss"
 	bottom: "fc1000"
-    bottom: "label"
-	top: "loss"
+	top: "prob"
+	name: "prob"
+	type: "Softmax"
 }
-
 

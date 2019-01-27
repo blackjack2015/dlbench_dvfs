@@ -1,18 +1,21 @@
 name: "AlexNet"
 layer {
   name: "data"
-  type: "Data"
+  type: "DummyData"
   top: "data"
-  top: "label"
-  include {
-    phase: TRAIN
-  }
-  data_param {
-    source: "$TRAIN_PATH"
-    batch_size: 128
-    backend: LMDB
+  dummy_data_param {
+      shape: {dim: 128 dim: 3 dim:224 dim:244}
   }
 }
+layer {
+  name: "data"
+  type: "DummyData"
+  top: "label"
+  dummy_data_param {
+      shape: {dim: 128}
+  }
+}
+
 
 layer {
   name: "conv1"
