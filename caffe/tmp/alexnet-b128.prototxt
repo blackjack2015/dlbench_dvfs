@@ -1,23 +1,26 @@
 name: "AlexNet"
 layer {
   name: "data"
-  type: "Data"
+  type: "DummyData"
   top: "data"
-  top: "label"
-  include {
-    phase: TRAIN
-  }
-  data_param {
-    source: "C:/fake_train"
-    batch_size: 128
-    backend: LMDB
+  dummy_data_param {
+      shape: {dim: 128 dim: 3 dim:224 dim:244}
   }
 }
+layer {
+  name: "data"
+  type: "DummyData"
+  top: "label"
+  dummy_data_param {
+      shape: {dim: 128}
+  }
+}
+
 
 layer {
   name: "conv1"
   type: "Convolution"
-  cudnn_algo: "ipc_gemm"
+  cudnn_algo: "winograd_nonfused"
   bottom: "data"
   top: "conv1"
   param {
@@ -62,7 +65,7 @@ layer {
 layer {
   name: "conv2"
   type: "Convolution"
-  cudnn_algo: "ipc_gemm"
+  cudnn_algo: "winograd_nonfused"
   bottom: "pool1"
   top: "conv2"
   param {
@@ -107,7 +110,7 @@ layer {
 layer {
   name: "conv3"
   type: "Convolution"
-  cudnn_algo: "ipc_gemm"
+  cudnn_algo: "winograd_nonfused"
   bottom: "pool2"
   top: "conv3"
   param {
@@ -141,7 +144,7 @@ layer {
 layer {
   name: "conv4"
   type: "Convolution"
-  cudnn_algo: "ipc_gemm"
+  cudnn_algo: "winograd_nonfused"
   bottom: "conv3"
   top: "conv4"
   param {
@@ -175,7 +178,7 @@ layer {
 layer {
   name: "conv5"
   type: "Convolution"
-  cudnn_algo: "ipc_gemm"
+  cudnn_algo: "winograd_nonfused"
   bottom: "conv4"
   top: "conv5"
   param {

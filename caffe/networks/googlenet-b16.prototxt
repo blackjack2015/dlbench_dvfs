@@ -1,46 +1,21 @@
 name: "GoogleNet"
 layer {
   name: "data"
-  type: "Data"
+  type: "DummyData"
   top: "data"
-  top: "label"
-  include {
-    phase: TRAIN
-  }
-  transform_param {
-    mirror: true
-    crop_size: 224 
-    mean_value: 104
-    mean_value: 117
-    mean_value: 123
-  }
-  data_param {
-    source: "$TRAIN_PATH"
-    batch_size: 16
-    backend: LMDB
+  dummy_data_param {
+      shape: {dim: 16 dim: 3 dim:224 dim:244}
   }
 }
 layer {
   name: "data"
-  type: "Data"
-  top: "data"
+  type: "DummyData"
   top: "label"
-  include {
-    phase: TEST
-  }
-  transform_param {
-    mirror: false
-    crop_size: 224
-    mean_value: 104
-    mean_value: 117
-    mean_value: 123
-  }
-  data_param {
-    source: "$TEST_PATH"
-    batch_size: 32
-    backend: LMDB
+  dummy_data_param {
+      shape: {dim: 16}
   }
 }
+
 layer {
   name: "conv1/7x7_s2"
   type: "Convolution"

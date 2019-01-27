@@ -1,21 +1,19 @@
 name: "VGG_ILSVRC_16_layers"
 layer {
   name: "data"
-  type: "DummyData"
-  top: "data"
-  dummy_data_param {
-      shape: {dim: 32 dim: 3 dim:224 dim:244}
+  type: "Data"
+  include {
+    phase: TRAIN
   }
-}
-layer {
-  name: "data"
-  type: "DummyData"
-  top: "label"
-  dummy_data_param {
-      shape: {dim: 32}
+  data_param: {
+    batch_size: 32
+    source: "$TRAIN_PATH"
+    backend: LMDB
   }
-}
 
+  top: "data"
+  top: "label"
+}
 layer {
   bottom: "data"
   top: "conv1_1"
