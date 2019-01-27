@@ -1,25 +1,49 @@
 name: "GoogleNet"
 layer {
   name: "data"
-  type: "DummyData"
+  type: "Data"
   top: "data"
-  dummy_data_param {
-      shape: {dim: 64 dim: 3 dim:224 dim:244}
+  top: "label"
+  include {
+    phase: TRAIN
+  }
+  transform_param {
+    mirror: true
+    crop_size: 224 
+    mean_value: 104
+    mean_value: 117
+    mean_value: 123
+  }
+  data_param {
+    source: "$TRAIN_PATH"
+    batch_size: 16
+    backend: LMDB
   }
 }
 layer {
   name: "data"
-  type: "DummyData"
+  type: "Data"
+  top: "data"
   top: "label"
-  dummy_data_param {
-      shape: {dim: 64}
+  include {
+    phase: TEST
+  }
+  transform_param {
+    mirror: false
+    crop_size: 224
+    mean_value: 104
+    mean_value: 117
+    mean_value: 123
+  }
+  data_param {
+    source: "$TEST_PATH"
+    batch_size: 32
+    backend: LMDB
   }
 }
-
 layer {
   name: "conv1/7x7_s2"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "data"
   top: "conv1/7x7_s2"
   param {
@@ -61,10 +85,20 @@ layer {
     stride: 2
   }
 }
+#layer {
+#  name: "pool1/norm1"
+#  type: "LRN"
+#  bottom: "pool1/3x3_s2"
+#  top: "pool1/norm1"
+#  lrn_param {
+#    local_size: 5
+#    alpha: 0.0001
+#    beta: 0.75
+#  }
+#}
 layer {
   name: "conv2/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool1/3x3_s2"
   top: "conv2/3x3_reduce"
   param {
@@ -96,7 +130,6 @@ layer {
 layer {
   name: "conv2/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "conv2/3x3_reduce"
   top: "conv2/3x3"
   param {
@@ -126,6 +159,17 @@ layer {
   bottom: "conv2/3x3"
   top: "conv2/3x3"
 }
+#layer {
+#  name: "conv2/norm2"
+#  type: "LRN"
+#  bottom: "conv2/3x3"
+#  top: "conv2/norm2"
+#  lrn_param {
+#    local_size: 5
+#    alpha: 0.0001
+#   beta: 0.75
+#  }
+#}
 layer {
   name: "pool2/3x3_s2"
   type: "Pooling"
@@ -140,7 +184,6 @@ layer {
 layer {
   name: "inception_3a/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool2/3x3_s2"
   top: "inception_3a/1x1"
   param {
@@ -172,7 +215,6 @@ layer {
 layer {
   name: "inception_3a/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool2/3x3_s2"
   top: "inception_3a/3x3_reduce"
   param {
@@ -204,7 +246,6 @@ layer {
 layer {
   name: "inception_3a/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/3x3_reduce"
   top: "inception_3a/3x3"
   param {
@@ -237,7 +278,6 @@ layer {
 layer {
   name: "inception_3a/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool2/3x3_s2"
   top: "inception_3a/5x5_reduce"
   param {
@@ -269,7 +309,6 @@ layer {
 layer {
   name: "inception_3a/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/5x5_reduce"
   top: "inception_3a/5x5"
   param {
@@ -314,7 +353,6 @@ layer {
 layer {
   name: "inception_3a/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/pool"
   top: "inception_3a/pool_proj"
   param {
@@ -355,7 +393,6 @@ layer {
 layer {
   name: "inception_3b/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/output"
   top: "inception_3b/1x1"
   param {
@@ -387,7 +424,6 @@ layer {
 layer {
   name: "inception_3b/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/output"
   top: "inception_3b/3x3_reduce"
   param {
@@ -419,7 +455,6 @@ layer {
 layer {
   name: "inception_3b/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3b/3x3_reduce"
   top: "inception_3b/3x3"
   param {
@@ -452,7 +487,6 @@ layer {
 layer {
   name: "inception_3b/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/output"
   top: "inception_3b/5x5_reduce"
   param {
@@ -484,7 +518,6 @@ layer {
 layer {
   name: "inception_3b/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3b/5x5_reduce"
   top: "inception_3b/5x5"
   param {
@@ -529,7 +562,6 @@ layer {
 layer {
   name: "inception_3b/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3b/pool"
   top: "inception_3b/pool_proj"
   param {
@@ -581,7 +613,6 @@ layer {
 layer {
   name: "inception_4a/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool3/3x3_s2"
   top: "inception_4a/1x1"
   param {
@@ -613,7 +644,6 @@ layer {
 layer {
   name: "inception_4a/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool3/3x3_s2"
   top: "inception_4a/3x3_reduce"
   param {
@@ -645,7 +675,6 @@ layer {
 layer {
   name: "inception_4a/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/3x3_reduce"
   top: "inception_4a/3x3"
   param {
@@ -678,7 +707,6 @@ layer {
 layer {
   name: "inception_4a/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool3/3x3_s2"
   top: "inception_4a/5x5_reduce"
   param {
@@ -710,7 +738,6 @@ layer {
 layer {
   name: "inception_4a/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/5x5_reduce"
   top: "inception_4a/5x5"
   param {
@@ -755,7 +782,6 @@ layer {
 layer {
   name: "inception_4a/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/pool"
   top: "inception_4a/pool_proj"
   param {
@@ -793,10 +819,145 @@ layer {
   bottom: "inception_4a/pool_proj"
   top: "inception_4a/output"
 }
+#layer {
+#  name: "loss1/ave_pool"
+#  type: "Pooling"
+#  bottom: "inception_4a/output"
+#  top: "loss1/ave_pool"
+#  pooling_param {
+#    pool: AVE
+#    kernel_size: 5
+#    stride: 3
+#  }
+#}
+#layer {
+#  name: "loss1/conv"
+#  type: "Convolution"
+#  bottom: "loss1/ave_pool"
+#  top: "loss1/conv"
+#  param {
+#    lr_mult: 1
+#    decay_mult: 1
+#  }
+#  param {
+#    lr_mult: 2
+#    decay_mult: 0
+#  }
+#  convolution_param {
+#    num_output: 128
+#    kernel_size: 1
+#    weight_filler {
+#      type: "xavier"
+#    }
+#    bias_filler {
+#      type: "constant"
+#      value: 0.2
+#    }
+#  }
+#}
+#layer {
+#  name: "loss1/relu_conv"
+#  type: "ReLU"
+#  bottom: "loss1/conv"
+#  top: "loss1/conv"
+#}
+#layer {
+#  name: "loss1/fc"
+#  type: "InnerProduct"
+#  bottom: "loss1/conv"
+#  top: "loss1/fc"
+#  param {
+#    lr_mult: 1
+#    decay_mult: 1
+#  }
+#  param {
+#    lr_mult: 2
+#    decay_mult: 0
+#  }
+#  inner_product_param {
+#    num_output: 1024
+#    weight_filler {
+#      type: "xavier"
+#    }
+#    bias_filler {
+#      type: "constant"
+#      value: 0.2
+#    }
+#  }
+#}
+#layer {
+#  name: "loss1/relu_fc"
+#  type: "ReLU"
+#  bottom: "loss1/fc"
+#  top: "loss1/fc"
+#}
+#layer {
+#  name: "loss1/drop_fc"
+#  type: "Dropout"
+#  bottom: "loss1/fc"
+#  top: "loss1/fc"
+#  dropout_param {
+#    dropout_ratio: 0.7
+#  }
+#}
+#layer {
+#  name: "loss1/classifier"
+#  type: "InnerProduct"
+#  bottom: "loss1/fc"
+#  top: "loss1/classifier"
+#  param {
+#    lr_mult: 1
+#    decay_mult: 1
+#  }
+#  param {
+#    lr_mult: 2
+#    decay_mult: 0
+#  }
+#  inner_product_param {
+#    num_output: 1000
+#    weight_filler {
+#      type: "xavier"
+#    }
+#    bias_filler {
+#      type: "constant"
+#      value: 0
+#    }
+#  }
+#}
+#layer {
+#  name: "loss1/loss"
+#  type: "SoftmaxWithLoss"
+#  bottom: "loss1/classifier"
+#  bottom: "label"
+#  top: "loss1/loss1"
+#  loss_weight: 0.3
+#}
+#layer {
+#  name: "loss1/top-1"
+#  type: "Accuracy"
+#  bottom: "loss1/classifier"
+#  bottom: "label"
+#  top: "loss1/top-1"
+#  include {
+#    phase: TEST
+#  }
+#}
+#layer {
+#  name: "loss1/top-5"
+#  type: "Accuracy"
+#  bottom: "loss1/classifier"
+#  bottom: "label"
+#  top: "loss1/top-5"
+#  include {
+#    phase: TEST
+#  }
+#  accuracy_param {
+#    top_k: 5
+#  }
+#}
 layer {
   name: "inception_4b/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/output"
   top: "inception_4b/1x1"
   param {
@@ -828,7 +989,6 @@ layer {
 layer {
   name: "inception_4b/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/output"
   top: "inception_4b/3x3_reduce"
   param {
@@ -860,7 +1020,6 @@ layer {
 layer {
   name: "inception_4b/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/3x3_reduce"
   top: "inception_4b/3x3"
   param {
@@ -893,7 +1052,6 @@ layer {
 layer {
   name: "inception_4b/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/output"
   top: "inception_4b/5x5_reduce"
   param {
@@ -925,7 +1083,6 @@ layer {
 layer {
   name: "inception_4b/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/5x5_reduce"
   top: "inception_4b/5x5"
   param {
@@ -970,7 +1127,6 @@ layer {
 layer {
   name: "inception_4b/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/pool"
   top: "inception_4b/pool_proj"
   param {
@@ -1011,7 +1167,6 @@ layer {
 layer {
   name: "inception_4c/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/output"
   top: "inception_4c/1x1"
   param {
@@ -1043,7 +1198,6 @@ layer {
 layer {
   name: "inception_4c/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/output"
   top: "inception_4c/3x3_reduce"
   param {
@@ -1075,7 +1229,6 @@ layer {
 layer {
   name: "inception_4c/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/3x3_reduce"
   top: "inception_4c/3x3"
   param {
@@ -1108,7 +1261,6 @@ layer {
 layer {
   name: "inception_4c/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/output"
   top: "inception_4c/5x5_reduce"
   param {
@@ -1140,7 +1292,6 @@ layer {
 layer {
   name: "inception_4c/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/5x5_reduce"
   top: "inception_4c/5x5"
   param {
@@ -1185,7 +1336,6 @@ layer {
 layer {
   name: "inception_4c/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/pool"
   top: "inception_4c/pool_proj"
   param {
@@ -1226,7 +1376,6 @@ layer {
 layer {
   name: "inception_4d/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/output"
   top: "inception_4d/1x1"
   param {
@@ -1258,7 +1407,6 @@ layer {
 layer {
   name: "inception_4d/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/output"
   top: "inception_4d/3x3_reduce"
   param {
@@ -1290,7 +1438,6 @@ layer {
 layer {
   name: "inception_4d/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/3x3_reduce"
   top: "inception_4d/3x3"
   param {
@@ -1323,7 +1470,6 @@ layer {
 layer {
   name: "inception_4d/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/output"
   top: "inception_4d/5x5_reduce"
   param {
@@ -1355,7 +1501,6 @@ layer {
 layer {
   name: "inception_4d/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/5x5_reduce"
   top: "inception_4d/5x5"
   param {
@@ -1400,7 +1545,6 @@ layer {
 layer {
   name: "inception_4d/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/pool"
   top: "inception_4d/pool_proj"
   param {
@@ -1438,10 +1582,145 @@ layer {
   bottom: "inception_4d/pool_proj"
   top: "inception_4d/output"
 }
+#layer {
+#  name: "loss2/ave_pool"
+#  type: "Pooling"
+#  bottom: "inception_4d/output"
+#  top: "loss2/ave_pool"
+#  pooling_param {
+#    pool: AVE
+#    kernel_size: 5
+#    stride: 3
+#  }
+#}
+#layer {
+#  name: "loss2/conv"
+#  type: "Convolution"
+#  bottom: "loss2/ave_pool"
+#  top: "loss2/conv"
+#  param {
+#    lr_mult: 1
+#    decay_mult: 1
+#  }
+#  param {
+#    lr_mult: 2
+#    decay_mult: 0
+#  }
+#  convolution_param {
+#    num_output: 128
+#    kernel_size: 1
+#    weight_filler {
+#      type: "xavier"
+#    }
+#    bias_filler {
+#      type: "constant"
+#      value: 0.2
+#    }
+#  }
+#}
+#layer {
+#  name: "loss2/relu_conv"
+#  type: "ReLU"
+#  bottom: "loss2/conv"
+#  top: "loss2/conv"
+#}
+#layer {
+#  name: "loss2/fc"
+#  type: "InnerProduct"
+#  bottom: "loss2/conv"
+#  top: "loss2/fc"
+#  param {
+#    lr_mult: 1
+#    decay_mult: 1
+#  }
+#  param {
+#    lr_mult: 2
+#    decay_mult: 0
+#  }
+#  inner_product_param {
+#    num_output: 1024
+#    weight_filler {
+#      type: "xavier"
+#    }
+#    bias_filler {
+#      type: "constant"
+#      value: 0.2
+#    }
+#  }
+#}
+#layer {
+#  name: "loss2/relu_fc"
+#  type: "ReLU"
+#  bottom: "loss2/fc"
+#  top: "loss2/fc"
+#}
+#layer {
+#  name: "loss2/drop_fc"
+#  type: "Dropout"
+#  bottom: "loss2/fc"
+#  top: "loss2/fc"
+#  dropout_param {
+#    dropout_ratio: 0.7
+#  }
+#}
+#layer {
+#  name: "loss2/classifier"
+#  type: "InnerProduct"
+#  bottom: "loss2/fc"
+#  top: "loss2/classifier"
+#  param {
+#    lr_mult: 1
+#    decay_mult: 1
+#  }
+#  param {
+#    lr_mult: 2
+#    decay_mult: 0
+#  }
+#  inner_product_param {
+#    num_output: 1000
+##    weight_filler {
+#      type: "xavier"
+#    }
+#    bias_filler {
+#      type: "constant"
+#      value: 0
+#    }
+#  }
+#}
+#layer {
+#  name: "loss2/loss"
+#  type: "SoftmaxWithLoss"
+#  bottom: "loss2/classifier"
+#  bottom: "label"
+#  top: "loss2/loss1"
+#  loss_weight: 0.3
+#}
+#layer {
+#  name: "loss2/top-1"
+#  type: "Accuracy"
+#  bottom: "loss2/classifier"
+#  bottom: "label"
+#  top: "loss2/top-1"
+#  include {
+#    phase: TEST
+#  }
+#}
+#layer {
+#  name: "loss2/top-5"
+#  type: "Accuracy"
+#  bottom: "loss2/classifier"
+#  bottom: "label"
+#  top: "loss2/top-5"
+#  include {
+#    phase: TEST
+#  }
+#  accuracy_param {
+#    top_k: 5
+#  }
+#}
 layer {
   name: "inception_4e/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/output"
   top: "inception_4e/1x1"
   param {
@@ -1473,7 +1752,6 @@ layer {
 layer {
   name: "inception_4e/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/output"
   top: "inception_4e/3x3_reduce"
   param {
@@ -1505,7 +1783,6 @@ layer {
 layer {
   name: "inception_4e/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4e/3x3_reduce"
   top: "inception_4e/3x3"
   param {
@@ -1538,7 +1815,6 @@ layer {
 layer {
   name: "inception_4e/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/output"
   top: "inception_4e/5x5_reduce"
   param {
@@ -1570,7 +1846,6 @@ layer {
 layer {
   name: "inception_4e/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4e/5x5_reduce"
   top: "inception_4e/5x5"
   param {
@@ -1615,7 +1890,6 @@ layer {
 layer {
   name: "inception_4e/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4e/pool"
   top: "inception_4e/pool_proj"
   param {
@@ -1667,7 +1941,6 @@ layer {
 layer {
   name: "inception_5a/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool4/3x3_s2"
   top: "inception_5a/1x1"
   param {
@@ -1699,7 +1972,6 @@ layer {
 layer {
   name: "inception_5a/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool4/3x3_s2"
   top: "inception_5a/3x3_reduce"
   param {
@@ -1731,7 +2003,6 @@ layer {
 layer {
   name: "inception_5a/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/3x3_reduce"
   top: "inception_5a/3x3"
   param {
@@ -1764,7 +2035,6 @@ layer {
 layer {
   name: "inception_5a/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool4/3x3_s2"
   top: "inception_5a/5x5_reduce"
   param {
@@ -1796,7 +2066,6 @@ layer {
 layer {
   name: "inception_5a/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/5x5_reduce"
   top: "inception_5a/5x5"
   param {
@@ -1841,7 +2110,6 @@ layer {
 layer {
   name: "inception_5a/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/pool"
   top: "inception_5a/pool_proj"
   param {
@@ -1882,7 +2150,6 @@ layer {
 layer {
   name: "inception_5b/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/output"
   top: "inception_5b/1x1"
   param {
@@ -1914,7 +2181,6 @@ layer {
 layer {
   name: "inception_5b/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/output"
   top: "inception_5b/3x3_reduce"
   param {
@@ -1946,7 +2212,6 @@ layer {
 layer {
   name: "inception_5b/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5b/3x3_reduce"
   top: "inception_5b/3x3"
   param {
@@ -1979,7 +2244,6 @@ layer {
 layer {
   name: "inception_5b/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/output"
   top: "inception_5b/5x5_reduce"
   param {
@@ -2011,7 +2275,6 @@ layer {
 layer {
   name: "inception_5b/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5b/5x5_reduce"
   top: "inception_5b/5x5"
   param {
@@ -2056,7 +2319,6 @@ layer {
 layer {
   name: "inception_5b/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5b/pool"
   top: "inception_5b/pool_proj"
   param {
@@ -2105,6 +2367,15 @@ layer {
     stride: 1
   }
 }
+#layer {
+#  name: "pool5/drop_7x7_s1"
+#  type: "Dropout"
+#  bottom: "pool5/7x7_s1"
+#  top: "pool5/7x7_s1"
+#  dropout_param {
+#    dropout_ratio: 0.4
+#  }
+#}
 layer {
   name: "loss3/classifier"
   type: "InnerProduct"

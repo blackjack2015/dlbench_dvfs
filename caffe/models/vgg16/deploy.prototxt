@@ -1,37 +1,19 @@
 name: "VGG_ILSVRC_16_layers"
-layer {
-  name: "data"
-  type: "DummyData"
-  top: "data"
-  dummy_data_param {
-      shape: {dim: 32 dim: 3 dim:224 dim:244}
-  }
-}
-layer {
-  name: "data"
-  type: "DummyData"
-  top: "label"
-  dummy_data_param {
-      shape: {dim: 32}
-  }
-}
+input: "data"
+input_dim: 1
+input_dim: 3
+input_dim: 224
+input_dim: 224
 
 layer {
   bottom: "data"
   top: "conv1_1"
   name: "conv1_1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 64
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -45,17 +27,10 @@ layer {
   top: "conv1_2"
   name: "conv1_2"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 64
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -80,17 +55,10 @@ layer {
   top: "conv2_1"
   name: "conv2_1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 128
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -104,17 +72,10 @@ layer {
   top: "conv2_2"
   name: "conv2_2"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 128
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -139,17 +100,10 @@ layer {
   top: "conv3_1"
   name: "conv3_1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 256
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -163,17 +117,10 @@ layer {
   top: "conv3_2"
   name: "conv3_2"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 256
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -187,17 +134,10 @@ layer {
   top: "conv3_3"
   name: "conv3_3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 256
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -222,17 +162,10 @@ layer {
   top: "conv4_1"
   name: "conv4_1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 512
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -246,17 +179,10 @@ layer {
   top: "conv4_2"
   name: "conv4_2"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 512
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -270,17 +196,10 @@ layer {
   top: "conv4_3"
   name: "conv4_3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 512
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -305,17 +224,10 @@ layer {
   top: "conv5_1"
   name: "conv5_1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 512
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -329,17 +241,10 @@ layer {
   top: "conv5_2"
   name: "conv5_2"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 512
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -353,17 +258,10 @@ layer {
   top: "conv5_3"
   name: "conv5_3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   convolution_param {
     num_output: 512
     pad: 1
     kernel_size: 3
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
   }
 }
 layer {
@@ -391,12 +289,6 @@ layer {
   inner_product_param {
     num_output: 4096
   }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
-  }
 }
 layer {
   bottom: "fc6"
@@ -421,12 +313,6 @@ layer {
   inner_product_param {
     num_output: 4096
   }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
-  }
 }
 layer {
   bottom: "fc7"
@@ -444,25 +330,17 @@ layer {
   }
 }
 layer {
-  name: "fc8"
   bottom: "fc7"
   top: "fc8"
+  name: "fc8"
   type: "InnerProduct"
   inner_product_param {
-    num_output: 10
-  }
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
+    num_output: 1000
   }
 }
 layer {
-  name: "loss"
-  type: "SoftmaxWithLoss"
   bottom: "fc8"
-  bottom: "label"
-  top: "loss/loss"
+  name: "prob"
+  top: "prob"
+  type: "Softmax"
 }
-

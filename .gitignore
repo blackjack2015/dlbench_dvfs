@@ -10,3 +10,5 @@
 *.zip
 null
 ./logs
+./tmp
+*.caffemodel

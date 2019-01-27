@@ -38,7 +38,7 @@ gpucard = opt.gpu_setting
 benchmark_cfg = "configs/gpus/%s.cfg" % gpucard
 dl_cfg = "configs/benchmarks/%s.cfg" % opt.dl_setting
 
-APP_ROOT = 'applications/'
+APP_ROOT = 'applications'
 LOG_ROOT = 'logs/%s/%s' % (gpucard, conv_algo)
 
 if not os.path.exists(LOG_ROOT):
@@ -82,7 +82,7 @@ elif 'win' in sys.platform:
     APP_ROOT=''
     pw_sampling_cmd = 'start /B nvml_samples.exe -device=%d -si=%d -output=%s/%s > nul'
     #app_exec_cmd = '%s\\%s %s -device=%d -secs=%d >> %s/%s'
-    app_exec_cmd = '%s%s %s >> %s/%s 2>&1' # for win caffe
+    app_exec_cmd = '%s\\%s %s >> %s/%s 2>&1' # for win caffe
     #dvfs_cmd = 'nvidiaInspector.exe -forcepstate:%s,%s -setMemoryClock:%s,1,%s -setGpuClock:%s,1,%s'
     if powerState !=0:
         dvfs_cmd = 'nvidiaInspector.exe -forcepstate:%s,%d -setGpuClock:%s,%d,%s -setMemoryClock:%s,%d,%s' % (nvIns_dev_id, powerState, nvIns_dev_id, freqState, '%s', nvIns_dev_id, freqState, '%s')
@@ -109,15 +109,16 @@ for core_f in core_frequencies:
             #argNo = 0
 
             for arg in args:
-
+                network, batch_size = arg.split()
+                arg_name = "-".join(arg.split())
                 # arg, number = re.subn('-device=[0-9]*', '-device=%d' % cuda_dev_id, arg)
-                powerlog = 'benchmark_%s_%s_core%d_mem%d_power.log' % (app, arg, core_f, mem_f)
-                perflog = 'benchmark_%s_%s_core%d_mem%d_perf.log' % (app, arg, core_f, mem_f)
-                metricslog = 'benchmark_%s_%s_core%d_mem%d_metrics.log' % (app, arg, core_f, mem_f)
+                powerlog = 'benchmark_%s_%s_core%d_mem%d_power.log' % (app, arg_name, core_f, mem_f)
+                perflog = 'benchmark_%s_%s_core%d_mem%d_perf.log' % (app, arg_name, core_f, mem_f)
+                metricslog = 'benchmark_%s_%s_core%d_mem%d_metrics.log' % (app, arg_name, core_f, mem_f)
 
 
                 # start record power data
-                os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, powerlog))
+                os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg_name, LOG_ROOT, powerlog))
                 command = pw_sampling_cmd % (nvIns_dev_id, pw_sample_int, LOG_ROOT, powerlog)
                 print command
                 os.system(command)
@@ -145,8 +146,10 @@ for core_f in core_frequencies:
 		#    tfile.close()
                 #    
                 #set_datapath(arg)    
-
-                exec_arg = "time -model tmp/%s.prototxt -gpu %d -iterations %d" % (arg, cuda_dev_id, running_iters)
+                if app == 'caffe':
+                    exec_arg = "time -model tmp/%s-%s.prototxt -gpu %d -iterations %d" % (network, batch_size, cuda_dev_id, running_iters)
+                if app == 'giexec':
+                    exec_arg = "--model=./models/%s/%s.caffemodel --deploy=./models/%s/deploy.prototxt --output=prob --batch=%s --device=%d --iterations=%d" % (network, network, network, batch_size, cuda_dev_id, running_iters / 10)
                 # execute program to collect power data
                 os.system("echo \"app:%s,arg:%s\" > %s/%s" % (app, arg, LOG_ROOT, perflog))
                 command = app_exec_cmd % (APP_ROOT, app, exec_arg, LOG_ROOT, perflog)

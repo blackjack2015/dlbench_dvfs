@@ -1,25 +1,13 @@
 name: "GoogleNet"
 layer {
   name: "data"
-  type: "DummyData"
+  type: "Input"
   top: "data"
-  dummy_data_param {
-      shape: {dim: 32 dim: 3 dim:224 dim:244}
-  }
+  input_param { shape: { dim: 10 dim: 3 dim: 224 dim: 224 } }
 }
-layer {
-  name: "data"
-  type: "DummyData"
-  top: "label"
-  dummy_data_param {
-      shape: {dim: 32}
-  }
-}
-
 layer {
   name: "conv1/7x7_s2"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "data"
   top: "conv1/7x7_s2"
   param {
@@ -37,6 +25,7 @@ layer {
     stride: 2
     weight_filler {
       type: "xavier"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
@@ -62,10 +51,20 @@ layer {
   }
 }
 layer {
+  name: "pool1/norm1"
+  type: "LRN"
+  bottom: "pool1/3x3_s2"
+  top: "pool1/norm1"
+  lrn_param {
+    local_size: 5
+    alpha: 0.0001
+    beta: 0.75
+  }
+}
+layer {
   name: "conv2/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
-  bottom: "pool1/3x3_s2"
+  bottom: "pool1/norm1"
   top: "conv2/3x3_reduce"
   param {
     lr_mult: 1
@@ -80,6 +79,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
@@ -96,7 +96,6 @@ layer {
 layer {
   name: "conv2/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "conv2/3x3_reduce"
   top: "conv2/3x3"
   param {
@@ -113,6 +112,7 @@ layer {
     kernel_size: 3
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -127,9 +127,20 @@ layer {
   top: "conv2/3x3"
 }
 layer {
+  name: "conv2/norm2"
+  type: "LRN"
+  bottom: "conv2/3x3"
+  top: "conv2/norm2"
+  lrn_param {
+    local_size: 5
+    alpha: 0.0001
+    beta: 0.75
+  }
+}
+layer {
   name: "pool2/3x3_s2"
   type: "Pooling"
-  bottom: "conv2/3x3"
+  bottom: "conv2/norm2"
   top: "pool2/3x3_s2"
   pooling_param {
     pool: MAX
@@ -140,7 +151,6 @@ layer {
 layer {
   name: "inception_3a/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool2/3x3_s2"
   top: "inception_3a/1x1"
   param {
@@ -156,6 +166,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -172,7 +183,6 @@ layer {
 layer {
   name: "inception_3a/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool2/3x3_s2"
   top: "inception_3a/3x3_reduce"
   param {
@@ -188,6 +198,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.09
     }
     bias_filler {
       type: "constant"
@@ -204,7 +215,6 @@ layer {
 layer {
   name: "inception_3a/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/3x3_reduce"
   top: "inception_3a/3x3"
   param {
@@ -221,6 +231,7 @@ layer {
     kernel_size: 3
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -237,7 +248,6 @@ layer {
 layer {
   name: "inception_3a/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool2/3x3_s2"
   top: "inception_3a/5x5_reduce"
   param {
@@ -253,6 +263,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.2
     }
     bias_filler {
       type: "constant"
@@ -269,7 +280,6 @@ layer {
 layer {
   name: "inception_3a/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/5x5_reduce"
   top: "inception_3a/5x5"
   param {
@@ -286,6 +296,7 @@ layer {
     kernel_size: 5
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -314,7 +325,6 @@ layer {
 layer {
   name: "inception_3a/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/pool"
   top: "inception_3a/pool_proj"
   param {
@@ -330,6 +340,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
@@ -355,7 +366,6 @@ layer {
 layer {
   name: "inception_3b/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/output"
   top: "inception_3b/1x1"
   param {
@@ -371,6 +381,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -387,7 +398,6 @@ layer {
 layer {
   name: "inception_3b/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/output"
   top: "inception_3b/3x3_reduce"
   param {
@@ -403,6 +413,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.09
     }
     bias_filler {
       type: "constant"
@@ -419,7 +430,6 @@ layer {
 layer {
   name: "inception_3b/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3b/3x3_reduce"
   top: "inception_3b/3x3"
   param {
@@ -436,6 +446,7 @@ layer {
     kernel_size: 3
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -452,7 +463,6 @@ layer {
 layer {
   name: "inception_3b/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3a/output"
   top: "inception_3b/5x5_reduce"
   param {
@@ -468,6 +478,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.2
     }
     bias_filler {
       type: "constant"
@@ -484,7 +495,6 @@ layer {
 layer {
   name: "inception_3b/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3b/5x5_reduce"
   top: "inception_3b/5x5"
   param {
@@ -501,6 +511,7 @@ layer {
     kernel_size: 5
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -529,7 +540,6 @@ layer {
 layer {
   name: "inception_3b/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_3b/pool"
   top: "inception_3b/pool_proj"
   param {
@@ -545,6 +555,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
@@ -581,7 +592,6 @@ layer {
 layer {
   name: "inception_4a/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool3/3x3_s2"
   top: "inception_4a/1x1"
   param {
@@ -597,6 +607,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -613,7 +624,6 @@ layer {
 layer {
   name: "inception_4a/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool3/3x3_s2"
   top: "inception_4a/3x3_reduce"
   param {
@@ -629,6 +639,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.09
     }
     bias_filler {
       type: "constant"
@@ -645,7 +656,6 @@ layer {
 layer {
   name: "inception_4a/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/3x3_reduce"
   top: "inception_4a/3x3"
   param {
@@ -662,6 +672,7 @@ layer {
     kernel_size: 3
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -678,7 +689,6 @@ layer {
 layer {
   name: "inception_4a/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool3/3x3_s2"
   top: "inception_4a/5x5_reduce"
   param {
@@ -694,6 +704,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.2
     }
     bias_filler {
       type: "constant"
@@ -710,7 +721,6 @@ layer {
 layer {
   name: "inception_4a/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/5x5_reduce"
   top: "inception_4a/5x5"
   param {
@@ -727,6 +737,7 @@ layer {
     kernel_size: 5
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -755,7 +766,6 @@ layer {
 layer {
   name: "inception_4a/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/pool"
   top: "inception_4a/pool_proj"
   param {
@@ -771,6 +781,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
@@ -796,7 +807,6 @@ layer {
 layer {
   name: "inception_4b/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/output"
   top: "inception_4b/1x1"
   param {
@@ -812,6 +822,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -828,7 +839,6 @@ layer {
 layer {
   name: "inception_4b/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/output"
   top: "inception_4b/3x3_reduce"
   param {
@@ -844,6 +854,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.09
     }
     bias_filler {
       type: "constant"
@@ -860,7 +871,6 @@ layer {
 layer {
   name: "inception_4b/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/3x3_reduce"
   top: "inception_4b/3x3"
   param {
@@ -877,6 +887,7 @@ layer {
     kernel_size: 3
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -893,7 +904,6 @@ layer {
 layer {
   name: "inception_4b/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4a/output"
   top: "inception_4b/5x5_reduce"
   param {
@@ -909,6 +919,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.2
     }
     bias_filler {
       type: "constant"
@@ -925,7 +936,6 @@ layer {
 layer {
   name: "inception_4b/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/5x5_reduce"
   top: "inception_4b/5x5"
   param {
@@ -942,6 +952,7 @@ layer {
     kernel_size: 5
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -970,7 +981,6 @@ layer {
 layer {
   name: "inception_4b/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/pool"
   top: "inception_4b/pool_proj"
   param {
@@ -986,6 +996,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
@@ -1011,7 +1022,6 @@ layer {
 layer {
   name: "inception_4c/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/output"
   top: "inception_4c/1x1"
   param {
@@ -1027,6 +1037,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1043,7 +1054,6 @@ layer {
 layer {
   name: "inception_4c/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/output"
   top: "inception_4c/3x3_reduce"
   param {
@@ -1059,6 +1069,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.09
     }
     bias_filler {
       type: "constant"
@@ -1075,7 +1086,6 @@ layer {
 layer {
   name: "inception_4c/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/3x3_reduce"
   top: "inception_4c/3x3"
   param {
@@ -1092,6 +1102,7 @@ layer {
     kernel_size: 3
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1108,7 +1119,6 @@ layer {
 layer {
   name: "inception_4c/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4b/output"
   top: "inception_4c/5x5_reduce"
   param {
@@ -1124,6 +1134,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.2
     }
     bias_filler {
       type: "constant"
@@ -1140,7 +1151,6 @@ layer {
 layer {
   name: "inception_4c/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/5x5_reduce"
   top: "inception_4c/5x5"
   param {
@@ -1157,6 +1167,7 @@ layer {
     kernel_size: 5
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1185,7 +1196,6 @@ layer {
 layer {
   name: "inception_4c/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/pool"
   top: "inception_4c/pool_proj"
   param {
@@ -1201,6 +1211,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
@@ -1226,7 +1237,6 @@ layer {
 layer {
   name: "inception_4d/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/output"
   top: "inception_4d/1x1"
   param {
@@ -1242,6 +1252,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1258,7 +1269,6 @@ layer {
 layer {
   name: "inception_4d/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/output"
   top: "inception_4d/3x3_reduce"
   param {
@@ -1274,6 +1284,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.09
     }
     bias_filler {
       type: "constant"
@@ -1290,7 +1301,6 @@ layer {
 layer {
   name: "inception_4d/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/3x3_reduce"
   top: "inception_4d/3x3"
   param {
@@ -1307,6 +1317,7 @@ layer {
     kernel_size: 3
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1323,7 +1334,6 @@ layer {
 layer {
   name: "inception_4d/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4c/output"
   top: "inception_4d/5x5_reduce"
   param {
@@ -1339,6 +1349,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.2
     }
     bias_filler {
       type: "constant"
@@ -1355,7 +1366,6 @@ layer {
 layer {
   name: "inception_4d/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/5x5_reduce"
   top: "inception_4d/5x5"
   param {
@@ -1372,6 +1382,7 @@ layer {
     kernel_size: 5
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1400,7 +1411,6 @@ layer {
 layer {
   name: "inception_4d/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/pool"
   top: "inception_4d/pool_proj"
   param {
@@ -1416,6 +1426,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
@@ -1441,7 +1452,6 @@ layer {
 layer {
   name: "inception_4e/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/output"
   top: "inception_4e/1x1"
   param {
@@ -1457,6 +1467,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1473,7 +1484,6 @@ layer {
 layer {
   name: "inception_4e/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/output"
   top: "inception_4e/3x3_reduce"
   param {
@@ -1489,6 +1499,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.09
     }
     bias_filler {
       type: "constant"
@@ -1505,7 +1516,6 @@ layer {
 layer {
   name: "inception_4e/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4e/3x3_reduce"
   top: "inception_4e/3x3"
   param {
@@ -1522,6 +1532,7 @@ layer {
     kernel_size: 3
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1538,7 +1549,6 @@ layer {
 layer {
   name: "inception_4e/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4d/output"
   top: "inception_4e/5x5_reduce"
   param {
@@ -1554,6 +1564,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.2
     }
     bias_filler {
       type: "constant"
@@ -1570,7 +1581,6 @@ layer {
 layer {
   name: "inception_4e/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4e/5x5_reduce"
   top: "inception_4e/5x5"
   param {
@@ -1587,6 +1597,7 @@ layer {
     kernel_size: 5
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1615,7 +1626,6 @@ layer {
 layer {
   name: "inception_4e/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_4e/pool"
   top: "inception_4e/pool_proj"
   param {
@@ -1631,6 +1641,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
@@ -1667,7 +1678,6 @@ layer {
 layer {
   name: "inception_5a/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool4/3x3_s2"
   top: "inception_5a/1x1"
   param {
@@ -1683,6 +1693,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1699,7 +1710,6 @@ layer {
 layer {
   name: "inception_5a/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool4/3x3_s2"
   top: "inception_5a/3x3_reduce"
   param {
@@ -1715,6 +1725,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.09
     }
     bias_filler {
       type: "constant"
@@ -1731,7 +1742,6 @@ layer {
 layer {
   name: "inception_5a/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/3x3_reduce"
   top: "inception_5a/3x3"
   param {
@@ -1748,6 +1758,7 @@ layer {
     kernel_size: 3
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1764,7 +1775,6 @@ layer {
 layer {
   name: "inception_5a/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "pool4/3x3_s2"
   top: "inception_5a/5x5_reduce"
   param {
@@ -1780,6 +1790,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.2
     }
     bias_filler {
       type: "constant"
@@ -1796,7 +1807,6 @@ layer {
 layer {
   name: "inception_5a/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/5x5_reduce"
   top: "inception_5a/5x5"
   param {
@@ -1813,6 +1823,7 @@ layer {
     kernel_size: 5
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1841,7 +1852,6 @@ layer {
 layer {
   name: "inception_5a/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/pool"
   top: "inception_5a/pool_proj"
   param {
@@ -1857,6 +1867,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
@@ -1882,7 +1893,6 @@ layer {
 layer {
   name: "inception_5b/1x1"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/output"
   top: "inception_5b/1x1"
   param {
@@ -1898,6 +1908,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1914,7 +1925,6 @@ layer {
 layer {
   name: "inception_5b/3x3_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/output"
   top: "inception_5b/3x3_reduce"
   param {
@@ -1930,6 +1940,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.09
     }
     bias_filler {
       type: "constant"
@@ -1946,7 +1957,6 @@ layer {
 layer {
   name: "inception_5b/3x3"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5b/3x3_reduce"
   top: "inception_5b/3x3"
   param {
@@ -1963,6 +1973,7 @@ layer {
     kernel_size: 3
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -1979,7 +1990,6 @@ layer {
 layer {
   name: "inception_5b/5x5_reduce"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5a/output"
   top: "inception_5b/5x5_reduce"
   param {
@@ -1995,6 +2005,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.2
     }
     bias_filler {
       type: "constant"
@@ -2011,7 +2022,6 @@ layer {
 layer {
   name: "inception_5b/5x5"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5b/5x5_reduce"
   top: "inception_5b/5x5"
   param {
@@ -2028,6 +2038,7 @@ layer {
     kernel_size: 5
     weight_filler {
       type: "xavier"
+      std: 0.03
     }
     bias_filler {
       type: "constant"
@@ -2056,7 +2067,6 @@ layer {
 layer {
   name: "inception_5b/pool_proj"
   type: "Convolution"
-  cudnn_algo: "winograd_nonfused"
   bottom: "inception_5b/pool"
   top: "inception_5b/pool_proj"
   param {
@@ -2072,6 +2082,7 @@ layer {
     kernel_size: 1
     weight_filler {
       type: "xavier"
+      std: 0.1
     }
     bias_filler {
       type: "constant"
@@ -2106,6 +2117,15 @@ layer {
   }
 }
 layer {
+  name: "pool5/drop_7x7_s1"
+  type: "Dropout"
+  bottom: "pool5/7x7_s1"
+  top: "pool5/7x7_s1"
+  dropout_param {
+    dropout_ratio: 0.4
+  }
+}
+layer {
   name: "loss3/classifier"
   type: "InnerProduct"
   bottom: "pool5/7x7_s1"
@@ -2130,33 +2150,8 @@ layer {
   }
 }
 layer {
-  name: "loss3/loss3"
-  type: "SoftmaxWithLoss"
+  name: "prob"
+  type: "Softmax"
   bottom: "loss3/classifier"
-  bottom: "label"
-  top: "loss3/loss3"
-  loss_weight: 1
-}
-layer {
-  name: "loss3/top-1"
-  type: "Accuracy"
-  bottom: "loss3/classifier"
-  bottom: "label"
-  top: "loss3/top-1"
-  include {
-    phase: TEST
-  }
-}
-layer {
-  name: "loss3/top-5"
-  type: "Accuracy"
-  bottom: "loss3/classifier"
-  bottom: "label"
-  top: "loss3/top-5"
-  include {
-    phase: TEST
-  }
-  accuracy_param {
-    top_k: 5
-  }
+  top: "prob"
 }
