@@ -11,6 +11,7 @@ parser.add_argument('--dl-setting', type=str, help='benchmark setting of deep le
 parser.add_argument('--gpu-setting', type=str, help='gpu card', default='gtx1080ti')
 parser.add_argument('--algo', type=str, help='conv algo', default='auto') # auto, find, ipc_gemm, fft_tile, winograd_nonfused
 parser.add_argument('--datapath', type=str, help='datapath for caffe', default='C:/fake_train') # auto, find, ipc_gemm, fft_tile, winograd_nonfused
+parser.add_argument('--outlog', type=str, help='path of logs', default=None)
 
 opt = parser.parse_args()
 print(opt)
@@ -25,7 +26,10 @@ benchmark_cfg = "configs/gpus/%s.cfg" % gpucard
 dl_cfg = "configs/benchmarks/%s.cfg" % opt.dl_setting
 
 APP_ROOT = 'applications'
-LOG_ROOT = 'logs/%s_%s' % (gpucard, conv_algo)
+if opt.outlog:
+    LOG_ROOT = 'logs/%s' % (opt.outlog)
+else:
+    LOG_ROOT = 'logs/%s_%s' % (gpucard, conv_algo)
 
 if not os.path.exists(LOG_ROOT):
     os.makedirs(LOG_ROOT)
