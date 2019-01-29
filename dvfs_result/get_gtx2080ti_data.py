@@ -19,13 +19,16 @@ class AverageMeter(object):
         self.avg = self.sum / self.count
 
 parser = argparse.ArgumentParser(description='GPU measure')
-parser.add_argument('-d', '--data-dir', default='p100', type=str,
+parser.add_argument('-d', '--data-dir', default='gtx2080ti', type=str,
                     help='sssss')
 args = parser.parse_args()
 
-# ==============================re 
-core_re = re.compile(r'(?<=core)\d*')
-mem_re = re.compile(r'(?<=mem)\d*')
+# ==============================re
+core_re = re.compile(r'(?<=core)\-?\d*')
+mem_re = re.compile(r'(?<=mem)\-?\d*')
+
+base_coreF = 1950
+base_memF = 6800
 
 data_dir = args.data_dir + '_extract'
 file_list = os.listdir(data_dir)
@@ -41,9 +44,18 @@ for i, input_file_name in enumerate(file_list):
     if not ((file_parameters[-2] == 'perf') & (file_parameters[1] == 'caffe')):
         continue
 
+    coreF = base_coreF + int(core_re.search(file_parameters[3]).group())
+    memF = base_memF + int(mem_re.search(file_parameters[4]).group())
+    # print(core_re.search(file_parameters[3]).group())
+    # print(int(core_re.search(file_parameters[3]).group()))
+    # print(coreF)
+    # print(mem_re.search(file_parameters[4]).group())
+    # print(int(mem_re.search(file_parameters[4]).group()))
+    # print(memF)
+
     out_file_name = file_parameters[1] + '_' + file_parameters[2].split('-b')[0] + '_' + \
-                    file_parameters[2].split('-b')[1] + '_' + core_re.search(file_parameters[3]).group() + '_' + \
-                    mem_re.search(file_parameters[4]).group() + '_perf' + '.log'
+                    file_parameters[2].split('-b')[1] + '_' + str(coreF) + '_' + \
+                    str(memF) + '_perf' + '.log'
 
     out_file_path = os.path.join(out_dir, out_file_name)
     out_file = open(out_file_path, 'w')
@@ -75,9 +87,12 @@ for i, input_file_name in enumerate(file_list):
     if file_parameters[-2] != 'power':
         continue
 
+    coreF = base_coreF + int(core_re.search(file_parameters[3]).group())
+    memF = base_memF +  int(mem_re.search(file_parameters[4]).group())
+
     out_file_name = file_parameters[1] + '_' + file_parameters[2].split('-b')[0] + '_' + \
-                    file_parameters[2].split('-b')[1] + '_' + core_re.search(file_parameters[3]).group() + '_' + \
-                    mem_re.search(file_parameters[4]).group() + '_power' + '.log'
+                    file_parameters[2].split('-b')[1] + '_' + str(coreF) + '_' + \
+                    str(memF) + '_power' + '.log'
 
     out_file_path = os.path.join(out_dir, out_file_name)
     out_file = open(out_file_path, 'w')
