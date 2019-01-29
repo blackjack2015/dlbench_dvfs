@@ -1,7 +1,7 @@
 datapath=/home/hpcl/data/caffe/fake_image_net.lmdb
 
 
-python dvfs_benchmark.py --gpu-setting p100_f810 --dl-setting dl_setting_p100_f810_winograd --algo winograd_nonfused --datapath $datapath
+# python dvfs_benchmark.py --gpu-setting p100_f810 --dl-setting dl_setting_p100_f810_winograd --algo winograd_nonfused --datapath $datapath
 
 
 python dvfs_benchmark.py --gpu-setting v100_f510 --dl-setting dl_setting_v100_f510_ipc_gemm --algo ipc_gemm --datapath $datapath
