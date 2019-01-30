@@ -54,7 +54,7 @@ winograd_nonfused_batch_sizes_list = [winograd_nonfused_alexnet_batch_sizes, win
                         winograd_nonfused_vggnet_batch_sizes, winograd_nonfused_googlenet_batch_sizes]
 winograd_nets = ['alexnet', 'resnet', 'vggnet', 'googlenet']
 #========================================
-fft_tile_alexnet_batch_sizes = ['128', '256']
+fft_tile_alexnet_batch_sizes = ['128']
 fft_tile_resnet_batch_sizes = [  ]
 fft_tile_vggnet_batch_sizes = [  ]
 fft_tile_googlenet_batch_sizes = ['16', '32']
@@ -99,14 +99,16 @@ font_labels = {'family' : 'Times New Roman',
 'size' : 26,
 }
 
-fig_x = 12
-fig_y = 8
+fig_x = 16
+fig_y = 9
 y_axis_interval = 10
 y_max_ratio = 1.1
 
 #======================================
 # bar_colors = ['lightcoral', 'burlywood', 'y', 'yellowgreen',
 #             'lightgreen', 'lightseagreen', 'lightskyblue', 'mediumpurple']
+bar_total_width = 70
+
 bar_colors = ['#0A64A4', '#24577B', '#03406A', '#3E94D1']
 hatches = ['-', '+', 'x', '\\', '|', '/', 'O', '.']
 
@@ -258,11 +260,15 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
     #==============
     ax2 = ax1.twinx()
     bar_i_width = 0
-    bar_total_width = 100
+
     bar_n = len(batch_sizes)
     bar_width = bar_total_width / bar_n
     np.array(gpu_coreF)
-    bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    # bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+
+    line_x = np.array([100, 200, 300, 400, 500, 600, 700], np.dtype('int32'))
+    bar_x = line_x - (bar_total_width - bar_width) / 2
+
     #==============
     max_power = 0
     max_energy = 0
@@ -270,15 +276,15 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        bar_i_width += 1
         ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
             width=bar_width, label=power_label_name)
+        bar_i_width += 1
 
     for i_batch, batch in enumerate(batch_sizes):
         energy_respect_coreF = get_energy_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)       
         energy_label_name = '{0}-b{1} Energy'.format(net, batch)
         max_energy = max(energy_respect_coreF) if max_energy < max(energy_respect_coreF) else max_energy
-        ax2.plot(np.array(gpu_coreF, np.dtype('float')), energy_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
+        ax2.plot(line_x, energy_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
             linewidth=2, label=energy_label_name)
     
     # y1_intervals = int(max_power/12)
@@ -288,9 +294,9 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
 
     box = ax1.get_position()
     ax1.set_position([box.x0, box.y0, box.width, box.height * 0.8])
-    ax1.legend(loc='upper left', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+    ax1.legend(loc='upper', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, prop=font_legend)
 
-    ax2.legend(loc='upper left', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+    ax2.legend(loc='upper', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, prop=font_legend)
 
     ax1.set_yticks(np.linspace(0, max_power * y_max_ratio, num=y_axis_interval))
     ax2.set_yticks(np.linspace(0, max_energy * y_max_ratio, num=y_axis_interval))
@@ -302,7 +308,7 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
 
     ax1.set_xlabel("%s (Hz)" % 'coreF', size=size_labels)
     ax1.set_ylabel("%s (J)" % 'power', size=size_labels)
-    ax1.set_xticks([int(coreF) for coreF in gpu_coreF])
+    ax1.set_xticks(line_x)
     ax1.set_xticklabels([int(coreF) for coreF in gpu_coreF], size=size_ticks)
 
     # plt.xticks([int(coreF) for coreF in gpu_coreF], size=ticks_size)
@@ -322,11 +328,15 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_memfrequency(
     #==============
     ax2 = ax1.twinx()
     bar_i_width = 0
-    bar_total_width = 100
+
     bar_n = len(batch_sizes)
     bar_width = bar_total_width / bar_n
-    np.array(gpu_memF)
-    bar_x = np.array(gpu_memF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    np.array(gpu_coreF)
+    # bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+
+    line_x = np.array([100, 200, 300, 400, 500, 600, 700], np.dtype('int32'))
+    bar_x = line_x - (bar_total_width - bar_width) / 2
+
     #==============
     max_power = 0
     max_energy = 0
@@ -334,15 +344,15 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_memfrequency(
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        bar_i_width += 1
         ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
             width=bar_width, label=power_label_name)
+        bar_i_width += 1
 
     for i_batch, batch in enumerate(batch_sizes):
         energy_respect_coreF = get_energy_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)       
         energy_label_name = '{0}-b{1} Energy'.format(net, batch)
         max_energy = max(energy_respect_coreF) if max_energy < max(energy_respect_coreF) else max_energy
-        ax2.plot(np.array(gpu_memF, np.dtype('float')), energy_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
+        ax2.plot(line_x, energy_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
             linewidth=2, label=energy_label_name)
     
     # y1_intervals = int(max_power/12)
@@ -366,7 +376,7 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_memfrequency(
 
     ax1.set_xlabel("%s (Hz)" % 'memF', size=size_labels)
     ax1.set_ylabel("%s (J)" % 'power', size=size_labels)
-    ax1.set_xticks([int(coreF) for coreF in gpu_coreF])
+    ax1.set_xticks(line_x)
     ax1.set_xticklabels([int(coreF) for coreF in gpu_coreF], size=size_ticks)
     # plt.xticks([int(coreF) for coreF in gpu_memF])
     # plt.title("config [{0}, {1}], varient {2} ".format('net', 'batch', 'coreF'))
@@ -386,11 +396,16 @@ def draw_power_energy_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
     #==============
     ax2 = ax1.twinx()
     bar_i_width = 0
-    bar_total_width = 100
+
     bar_n = len(batch_sizes)
     bar_width = bar_total_width / bar_n
     np.array(gpu_coreF)
-    bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    # bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+
+    line_x = np.array([100, 200, 300, 400, 500, 600, 700], np.dtype('int32'))
+    bar_x = line_x - (bar_total_width - bar_width) / 2
+
+    #==============
     #==============
     max_power = 0
     max_energy = 0
@@ -400,11 +415,10 @@ def draw_power_energy_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
         powers_respect_coreF_ration = np.array(powers_respect_coreF, np.dtype('float')) / float(base_power)
 
         max_power = np.max(powers_respect_coreF_ration) if max_power < np.max(powers_respect_coreF_ration) else max_power
-
-        bar_i_width += 1
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF_ration, color=bar_colors[i_batch],
             width=bar_width, label=power_label_name)
+        bar_i_width += 1
 
     for i_batch, batch in enumerate(batch_sizes):
         base_energy = get_energy(gpu, algo, 'caffe', net, batch, gpu_coreF[0], gpu_memF)
@@ -413,7 +427,7 @@ def draw_power_energy_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
 
         max_energy = np.max(energy_respect_coreF_ration) if max_energy < np.max(energy_respect_coreF_ration) else max_energy
         energy_label_name = '{0}-b{1} Energy'.format(net, batch)
-        ax2.plot(np.array(gpu_coreF, np.dtype('float')), energy_respect_coreF_ration, color=plot_colors[i_batch], marker=markers[i_batch],
+        ax2.plot(line_x, energy_respect_coreF_ration, color=plot_colors[i_batch], marker=markers[i_batch],
             linewidth=2, label=energy_label_name)
     
     # y1_intervals = float(max_power/12)
@@ -436,7 +450,7 @@ def draw_power_energy_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
 
     ax1.set_xlabel("%s (Hz)" % 'coreF', size=size_labels)
     ax1.set_ylabel("%s (J)" % 'power', size=size_labels)
-    ax1.set_xticks([int(coreF) for coreF in gpu_coreF])
+    ax1.set_xticks(line_x)
     ax1.set_xticklabels([int(coreF) for coreF in gpu_coreF], size=size_ticks)
     # plt.xticks([int(coreF) for coreF in gpu_coreF])
     # plt.title("config [{0}, {1}], varient {2} ".format('net', 'batch', 'coreF'))
@@ -450,11 +464,16 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
     #==============
     ax2 = ax1.twinx()
     bar_i_width = 0
-    bar_total_width = 100
+
     bar_n = len(batch_sizes)
     bar_width = bar_total_width / bar_n
     np.array(gpu_coreF)
-    bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    # bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+
+    line_x = np.array([100, 200, 300, 400, 500, 600, 700], np.dtype('int32'))
+    bar_x = line_x - (bar_total_width - bar_width) / 2
+
+    #==============
     #==============
     max_power = 0
     max_image_perf = 0
@@ -462,16 +481,16 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        bar_i_width += 1
         ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
             width=bar_width, label=power_label_name)
+        bar_i_width += 1
 
     for i_batch, batch in enumerate(batch_sizes):
         image_perf_respect_coreF = get_image_perf_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)       
         max_image_perf = max(image_perf_respect_coreF) if max_image_perf < max(image_perf_respect_coreF) else max_image_perf
 
         energy_label_name = '{0}-b{1} image_per'.format(net, batch)
-        ax2.plot(np.array(gpu_coreF, np.dtype('float')), image_perf_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
+        ax2.plot(line_x, image_perf_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
             linewidth=2, label=energy_label_name)
     
     # y1_intervals = int(max_power/12)
@@ -493,7 +512,7 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
     ax2.set_ylabel("%s (image/s)" % 'perf', size=size_labels)
     ax1.set_xlabel("%s (Hz)" % 'coreF', size=size_labels)
     ax1.set_ylabel("%s (J)" % 'power', size=size_labels)
-    ax1.set_xticks([int(coreF) for coreF in gpu_coreF])
+    ax1.set_xticks(line_x)
     ax1.set_xticklabels([int(coreF) for coreF in gpu_coreF], size=size_ticks)
     # plt.xticks([int(coreF) for coreF in gpu_coreF])
     # plt.title("config [{0}, {1}], varient {2} ".format('net', 'batch', 'coreF'))
@@ -512,11 +531,16 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_memfrequency(
     #==============
     ax2 = ax1.twinx()
     bar_i_width = 0
-    bar_total_width = 100
+
     bar_n = len(batch_sizes)
     bar_width = bar_total_width / bar_n
-    np.array(gpu_memF)
-    bar_x = np.array(gpu_memF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    np.array(gpu_coreF)
+    # bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+
+    line_x = np.array([100, 200, 300, 400, 500, 600, 700], np.dtype('int32'))
+    bar_x = line_x - (bar_total_width - bar_width) / 2
+
+    #==============
     #==============
     max_power = 0
     max_image_perf = 0
@@ -524,16 +548,16 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_memfrequency(
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        bar_i_width += 1
         ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
             width=bar_width, label=power_label_name)
+        bar_i_width += 1
 
     for i_batch, batch in enumerate(batch_sizes):
         image_perf_respect_coreF = get_image_perf_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)       
         max_image_perf = max(image_perf_respect_coreF) if max_image_perf < max(image_perf_respect_coreF) else max_image_perf
 
         energy_label_name = '{0}-b{1} image_per'.format(net, batch)
-        ax2.plot(np.array(gpu_memF, np.dtype('float')), image_perf_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
+        ax2.plot(line_x, image_perf_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
             linewidth=2, label=energy_label_name)
     
     # y1_intervals = int(max_power/12)
@@ -557,7 +581,7 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_memfrequency(
 
     ax1.set_xlabel("%s (Hz)" % 'memF', size=size_labels)
     ax1.set_ylabel("%s (J)" % 'power', size=size_labels)
-    ax1.set_xticks([int(coreF) for coreF in gpu_coreF])
+    ax1.set_xticks(line_x)
     ax1.set_xticklabels([int(coreF) for coreF in gpu_coreF], size=size_ticks)
     # plt.xticks([int(coreF) for coreF in gpu_memF])
     # plt.title("config [{0}, {1}], varient {2} ".format('net', 'batch', 'coreF'))
@@ -576,11 +600,16 @@ def draw_power_perf_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
     #==============
     ax2 = ax1.twinx()
     bar_i_width = 0
-    bar_total_width = 100
+
     bar_n = len(batch_sizes)
     bar_width = bar_total_width / bar_n
     np.array(gpu_coreF)
-    bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    # bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+
+    line_x = np.array([100, 200, 300, 400, 500, 600, 700], np.dtype('int32'))
+    bar_x = line_x - (bar_total_width - bar_width) / 2
+
+    #==============
     #==============
     max_power = 0
     max_image_perf = 0
@@ -592,12 +621,11 @@ def draw_power_perf_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
 
 
         max_power = np.max(powers_respect_coreF_ration) if max_power < np.max(powers_respect_coreF_ration) else max_power
-
-        bar_i_width += 1
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF_ration, color=bar_colors[i_batch],
             width=bar_width, label=power_label_name)
-    
+        bar_i_width += 1
+
     for i_batch, batch in enumerate(batch_sizes):
         base_image_perf = get_image_perf(gpu, algo, 'caffe', net, batch, gpu_coreF[0], gpu_memF)
         image_perf_respect_coreF = get_image_perf_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)       
@@ -606,7 +634,7 @@ def draw_power_perf_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
         max_image_perf = np.max(image_perf_respect_coreF_ration) if max_image_perf < np.max(image_perf_respect_coreF_ration) else max_image_perf
 
         energy_label_name = '{0}-b{1} image_per'.format(net, batch)
-        ax2.plot(np.array(gpu_coreF, np.dtype('float')), image_perf_respect_coreF_ration, color=plot_colors[i_batch], marker=markers[i_batch],
+        ax2.plot(line_x, image_perf_respect_coreF_ration, color=plot_colors[i_batch], marker=markers[i_batch],
             linewidth=2, label=energy_label_name)
     
     # y1_intervals = float(max_power/12)
@@ -630,7 +658,7 @@ def draw_power_perf_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
 
     ax1.set_xlabel("%s (Hz)" % 'coreF', size=size_labels)
     ax1.set_ylabel("%s (J)" % 'power', size=size_labels)
-    ax1.set_xticks([int(coreF) for coreF in gpu_coreF])
+    ax1.set_xticks(line_x)
     ax1.set_xticklabels([int(coreF) for coreF in gpu_coreF], size=size_ticks)
     # plt.xticks([int(coreF) for coreF in gpu_coreF])
     # plt.title("config [{0}, {1}], varient {2} ".format('net', 'batch', 'coreF'))
@@ -677,11 +705,11 @@ ipc_gemm_batch_sizes_list = [ipc_gemm_alexnet_batch_sizes, ipc_gemm_resnet_batch
 #     draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
 #         'v100', 'auto', net, auto_batch_sizes_list[i_net], v100_coreF, v100_memF[0])
 
-# for i_net, net in enumerate(nets):
-#     draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
-#         'v100', 'ipc_gemm', net, ipc_gemm_batch_sizes_list[i_net], v100_coreF, v100_memF[0],  save=True)
-#     draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
-#         'v100', 'ipc_gemm', net, ipc_gemm_batch_sizes_list[i_net], v100_coreF, v100_memF[0], save=True)
+for i_net, net in enumerate(nets):
+    draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
+        'v100', 'ipc_gemm', net, ipc_gemm_batch_sizes_list[i_net], v100_coreF, v100_memF[0])
+    draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
+        'v100', 'ipc_gemm', net, ipc_gemm_batch_sizes_list[i_net], v100_coreF, v100_memF[0])
 
 # draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
 #     'v100', 'winograd', 'alexnet', winograd_nonfused_alexnet_batch_sizes, v100_coreF, v100_memF[0], save=True)
@@ -762,9 +790,9 @@ gtx2080ti_ipc_gemm_batch_sizes_list = [gtx2080ti_ipc_gemm_alexnet_batch_sizes, g
 # for i_net, net in enumerate(nets):
 
 #     draw_power_perf_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
-#         'gtx2080ti', 'auto', net, auto_batch_sizes_list[i_net], gtx2080ti_coreF, gtx2080ti_memF[1])
+#         'gtx2080ti', 'auto', net, gtx2080ti_ipc_gemm_batch_sizes_list[i_net], gtx2080ti_coreF, gtx2080ti_memF[1])
 #     draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
-#         'gtx2080ti', 'auto', net, auto_batch_sizes_list[i_net], gtx2080ti_coreF, gtx2080ti_memF[1])
+#         'gtx2080ti', 'auto', net, gtx2080ti_ipc_gemm_batch_sizes_list[i_net], gtx2080ti_coreF, gtx2080ti_memF[1])
 
 # for i_net, net in enumerate(nets):
 
@@ -837,11 +865,16 @@ def draw_power_energy_fix_gpu_net_batch_config_algos_varient_frequency(
     #==============
     ax2 = ax1.twinx()
     bar_i_width = 0
-    bar_total_width = 100
-    bar_n = len(algos)
+
+    bar_n = len(batch_sizes)
     bar_width = bar_total_width / bar_n
     np.array(gpu_coreF)
-    bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    # bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+
+    line_x = np.array([100, 200, 300, 400, 500, 600, 700], np.dtype('int32'))
+    bar_x = line_x - (bar_total_width - bar_width) / 2
+
+    #==============
     #==============
     max_power = 0
     max_energy = 0
@@ -849,15 +882,15 @@ def draw_power_energy_fix_gpu_net_batch_config_algos_varient_frequency(
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch_size, gpu_coreF, gpu_memF)
         power_label_name = '{2} {0}-b{1} Power'.format(net, batch_size, algo)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        bar_i_width += 1
         ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_algo],
             width=bar_width, label=power_label_name)
+        bar_i_width += 1
 
     for i_algo, algo in enumerate(algos):
         energy_respect_coreF = get_energy_respect(gpu, algo, 'caffe', net, batch_size, gpu_coreF, gpu_memF)       
         energy_label_name = '{2} {0}-b{1} Energy'.format(net, batch_size, algo)
         max_energy = max(energy_respect_coreF) if max_energy < max(energy_respect_coreF) else max_energy
-        ax2.plot(np.array(gpu_coreF, np.dtype('float')), energy_respect_coreF, color=plot_colors[i_algo], marker=markers[i_algo],
+        ax2.plot(line_x, energy_respect_coreF, color=plot_colors[i_algo], marker=markers[i_algo],
             linewidth=2, label=energy_label_name)
     
     # y1_intervals = int(max_power/12)
@@ -881,7 +914,7 @@ def draw_power_energy_fix_gpu_net_batch_config_algos_varient_frequency(
 
     ax1.set_xlabel("%s (Hz)" % 'coreF', size=size_labels)
     ax1.set_ylabel("%s (J)" % 'power', size=size_labels)
-    ax1.set_xticks([int(coreF) for coreF in gpu_coreF])
+    ax1.set_xticks(line_x)
     ax1.set_xticklabels([int(coreF) for coreF in gpu_coreF], size=size_ticks)
     # plt.xticks([int(coreF) for coreF in gpu_coreF], size=ticks_size)
     # plt.title("config [{0}, {1}], varient {2} ".format('net', 'batch', 'coreF'))
@@ -901,11 +934,16 @@ def draw_power_perf_fix_gpu_net_batch_config_algos_varient_frequency(
     #==============
     ax2 = ax1.twinx()
     bar_i_width = 0
-    bar_total_width = 100
-    bar_n = len(algos)
+
+    bar_n = len(batch_sizes)
     bar_width = bar_total_width / bar_n
     np.array(gpu_coreF)
-    bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    # bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+
+    line_x = np.array([100, 200, 300, 400, 500, 600, 700], np.dtype('int32'))
+    bar_x = line_x - (bar_total_width - bar_width) / 2
+
+    #==============
     #==============
     max_power = 0
     max_image_perf = 0
@@ -913,16 +951,16 @@ def draw_power_perf_fix_gpu_net_batch_config_algos_varient_frequency(
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch_size, gpu_coreF, gpu_memF)
         power_label_name = '{2} {0}-b{1} Power'.format(net, batch_size, algo)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        bar_i_width += 1
         ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_algo],
             width=bar_width, label=power_label_name)
+        bar_i_width += 1
 
     for i_algo, algo in enumerate(algos):
         image_perf_respect_coreF = get_image_perf_respect(gpu, algo, 'caffe', net, batch_size, gpu_coreF, gpu_memF)       
         max_image_perf = max(image_perf_respect_coreF) if max_image_perf < max(image_perf_respect_coreF) else max_image_perf
 
         energy_label_name = '{2} {0}-b{1} image_perf'.format(net, batch_size, algo)
-        ax2.plot(np.array(gpu_coreF, np.dtype('float')), image_perf_respect_coreF, color=plot_colors[i_algo], marker=markers[i_algo],
+        ax2.plot(line_x, image_perf_respect_coreF, color=plot_colors[i_algo], marker=markers[i_algo],
             linewidth=2, label=energy_label_name)
     
     # y1_intervals = int(max_power/12)
@@ -946,7 +984,7 @@ def draw_power_perf_fix_gpu_net_batch_config_algos_varient_frequency(
 
     ax1.set_xlabel("%s (Hz)" % 'coreF', size=size_labels)
     ax1.set_ylabel("%s (J)" % 'power', size=size_labels)
-    ax1.set_xticks([int(coreF) for coreF in gpu_coreF])
+    ax1.set_xticks(line_x)
     ax1.set_xticklabels([int(coreF) for coreF in gpu_coreF], size=size_ticks)
     # plt.xticks([int(coreF) for coreF in gpu_coreF], size=ticks_size)
     # plt.title("config [{0}, {1}], varient {2} ".format('net', 'batch', 'coreF'))

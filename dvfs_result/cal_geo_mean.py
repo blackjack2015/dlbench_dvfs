@@ -156,6 +156,7 @@ y_max_ratio = 1.1
 #======================================
 # bar_colors = ['lightcoral', 'burlywood', 'y', 'yellowgreen',
 #             'lightgreen', 'lightseagreen', 'lightskyblue', 'mediumpurple']
+bar_total_width = 70
 bar_colors = ['#0A64A4', '#24577B', '#03406A', '#3E94D1']
 hatches = ['-', '+', 'x', '\\', '|', '/', 'O', '.']
 
@@ -246,18 +247,22 @@ def draw_power_energy_fix_gpu_config_algos_varient_frequency(
     
     i_gpu = gpu_index[gpu]
     gpu_coreF = gpu_coreFs[i_gpu]
+    
 
+    #==============
     fig = plt.figure(figsize=(fig_x, fig_y))
     ax1 = fig.add_subplot(1, 1, 1)
-    #==============
     ax2 = ax1.twinx()
     bar_i_width = 0
-    bar_total_width = 100
-    bar_n = len(algos)
 
+    bar_n = len(algos)
     bar_width = bar_total_width / bar_n
-    np.array(gpu_coreF)
-    bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    if gpu == 'gtx2080ti':
+        line_x = np.array([100, 200, 300, 400, 500, 600], np.dtype('int32'))        
+    else:
+        line_x = np.array([100, 200, 300, 400, 500, 600, 700], np.dtype('int32'))
+    bar_x = line_x - (bar_total_width - bar_width) / 2
+
     #==============
     max_power = 0
     max_energy = 0
@@ -269,10 +274,9 @@ def draw_power_energy_fix_gpu_config_algos_varient_frequency(
         power_label_name = '{0} Power'.format(algo)
 
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        bar_i_width += 1
         ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_algo],
             width=bar_width, label=power_label_name)
-
+        bar_i_width += 1
 
 
     for algo in algos:
@@ -280,7 +284,7 @@ def draw_power_energy_fix_gpu_config_algos_varient_frequency(
         energy_respect_coreF = get_gpu_algo_geo_mean_energy(gpu, algo)
         energy_label_name = '{0} Energy'.format(algo)
         max_energy = max(energy_respect_coreF) if max_energy < max(energy_respect_coreF) else max_energy
-        ax2.plot(np.array(gpu_coreF, np.dtype('float')), energy_respect_coreF, color=plot_colors[i_algo], marker=markers[i_algo],
+        ax2.plot(line_x, energy_respect_coreF, color=plot_colors[i_algo], marker=markers[i_algo],
             linewidth=2, label=energy_label_name)
     
     # y1_intervals = int(max_power/12)
@@ -304,7 +308,7 @@ def draw_power_energy_fix_gpu_config_algos_varient_frequency(
 
     ax1.set_xlabel("%s (Hz)" % 'coreF', size=size_labels)
     ax1.set_ylabel("%s (J)" % 'power', size=size_labels)
-    ax1.set_xticks([int(coreF) for coreF in gpu_coreF])
+    ax1.set_xticks(line_x)
     ax1.set_xticklabels([int(coreF) for coreF in gpu_coreF], size=size_ticks)
 
     # plt.xticks([int(coreF) for coreF in gpu_coreF], size=ticks_size)
@@ -324,17 +328,20 @@ def draw_power_perf_fix_gpu_config_algos_varient_frequency(
     i_gpu = gpu_index[gpu]
     gpu_coreF = gpu_coreFs[i_gpu]
 
+    #==============
     fig = plt.figure(figsize=(fig_x, fig_y))
     ax1 = fig.add_subplot(1, 1, 1)
-    #==============
     ax2 = ax1.twinx()
     bar_i_width = 0
-    bar_total_width = 100
-    bar_n = len(algos)
 
+    bar_n = len(algos)
     bar_width = bar_total_width / bar_n
-    np.array(gpu_coreF)
-    bar_x = np.array(gpu_coreF, np.dtype('int32')) - (bar_total_width - bar_width) / 2
+    if gpu == 'gtx2080ti':
+        line_x = np.array([100, 200, 300, 400, 500, 600], np.dtype('int32'))        
+    else:
+        line_x = np.array([100, 200, 300, 400, 500, 600, 700], np.dtype('int32'))
+    bar_x = line_x - (bar_total_width - bar_width) / 2
+
     #==============
     max_power = 0
     max_image_perf = 0
@@ -346,9 +353,9 @@ def draw_power_perf_fix_gpu_config_algos_varient_frequency(
         power_label_name = '{0} Power'.format(algo)
 
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        bar_i_width += 1
         ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_algo],
             width=bar_width, label=power_label_name)
+        bar_i_width += 1
 
     for algo in algos:
         i_algo = algo_index[algo]
@@ -357,7 +364,7 @@ def draw_power_perf_fix_gpu_config_algos_varient_frequency(
         max_image_perf = max(image_perf_respect_coreF) if max_image_perf < max(image_perf_respect_coreF) else max_image_perf
 
         energy_label_name = '{0} image_per'.format(algo)
-        ax2.plot(np.array(gpu_coreF, np.dtype('float')), image_perf_respect_coreF, color=plot_colors[i_algo], marker=markers[i_algo],
+        ax2.plot(line_x, image_perf_respect_coreF, color=plot_colors[i_algo], marker=markers[i_algo],
             linewidth=2, label=energy_label_name)
     
     # y1_intervals = int(max_power/12)
@@ -379,7 +386,7 @@ def draw_power_perf_fix_gpu_config_algos_varient_frequency(
     ax2.set_ylabel("%s (image/s)" % 'perf', size=size_labels)
     ax1.set_xlabel("%s (Hz)" % 'coreF', size=size_labels)
     ax1.set_ylabel("%s (J)" % 'power', size=size_labels)
-    ax1.set_xticks([int(coreF) for coreF in gpu_coreF])
+    ax1.set_xticks(line_x)
     ax1.set_xticklabels([int(coreF) for coreF in gpu_coreF], size=size_ticks)
     # plt.xticks([int(coreF) for coreF in gpu_coreF])
     # plt.title("config [{0}, {1}], varient {2} ".format('net', 'batch', 'coreF'))
