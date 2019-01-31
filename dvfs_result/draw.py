@@ -88,7 +88,7 @@ size_labels = 26
 
 font_legend = {'family' : 'Times New Roman',
 'weight' : 'normal',
-'size' : 15,
+'size' : 14,
 }
 font_ticks = {'family' : 'Times New Roman',
 'weight' : 'normal',
@@ -99,7 +99,7 @@ font_labels = {'family' : 'Times New Roman',
 'size' : 26,
 }
 
-fig_x = 16
+fig_x = 15
 fig_y = 9
 y_axis_interval = 10
 y_max_ratio = 1.1
@@ -270,22 +270,24 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
     bar_x = line_x - (bar_total_width - bar_width) / 2
 
     #==============
+    bars = []
+    lines = []
     max_power = 0
     max_energy = 0
     for i_batch, batch in enumerate(batch_sizes):
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
-            width=bar_width, label=power_label_name)
+        bars.append(ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
+            width=bar_width, label=power_label_name))
         bar_i_width += 1
 
     for i_batch, batch in enumerate(batch_sizes):
         energy_respect_coreF = get_energy_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)       
         energy_label_name = '{0}-b{1} Energy'.format(net, batch)
         max_energy = max(energy_respect_coreF) if max_energy < max(energy_respect_coreF) else max_energy
-        ax2.plot(line_x, energy_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
-            linewidth=2, label=energy_label_name)
+        lines.append(ax2.plot(line_x, energy_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
+            linewidth=2, label=energy_label_name))
     
     # y1_intervals = int(max_power/12)
     # y1_loc = plticker.MultipleLocator(base=y1_intervals)
@@ -294,9 +296,18 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_frequency(
 
     box = ax1.get_position()
     ax1.set_position([box.x0, box.y0, box.width, box.height * 0.8])
-    ax1.legend(loc='upper', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, prop=font_legend)
+    #ax1.legend(loc='upper center', bbox_to_anchor=(0., 0, 0.9, 0.1), ncol=4, prop=font_legend)
+    #ax2.legend(loc='upper center', bbox_to_anchor=(0., 0, 0.92, 0.1), ncol=4, prop=font_legend)
+    bars = list(bars)
+    lines = sum(lines, [])
+    legend_elements = []
+    for i in range(len(bars)):
+        legend_elements.append(bars[i])
+        legend_elements.append(lines[i])
 
-    ax2.legend(loc='upper', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, prop=font_legend)
+    print legend_elements
+    ax1.legend(handles=legend_elements, loc='upper center', bbox_to_anchor=(0.5, 1.14), ncol=len(bars), prop=font_legend)
+    #ax2.legend(loc='upper center', ncol=4, prop=font_legend)
 
     ax1.set_yticks(np.linspace(0, max_power * y_max_ratio, num=y_axis_interval))
     ax2.set_yticks(np.linspace(0, max_energy * y_max_ratio, num=y_axis_interval))
@@ -340,20 +351,22 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_memfrequency(
     #==============
     max_power = 0
     max_energy = 0
+    bars = []
+    lines = []
     for i_batch, batch in enumerate(batch_sizes):
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
-            width=bar_width, label=power_label_name)
+        bars.append(ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
+            width=bar_width, label=power_label_name))
         bar_i_width += 1
 
     for i_batch, batch in enumerate(batch_sizes):
         energy_respect_coreF = get_energy_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)       
         energy_label_name = '{0}-b{1} Energy'.format(net, batch)
         max_energy = max(energy_respect_coreF) if max_energy < max(energy_respect_coreF) else max_energy
-        ax2.plot(line_x, energy_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
-            linewidth=2, label=energy_label_name)
+        lines.append(ax2.plot(line_x, energy_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
+            linewidth=2, label=energy_label_name))
     
     # y1_intervals = int(max_power/12)
     # y1_loc = plticker.MultipleLocator(base=y1_intervals)
@@ -362,8 +375,17 @@ def draw_power_energy_fix_gpu_algo_net_config_batch_varient_memfrequency(
 
     box = ax1.get_position()
     ax1.set_position([box.x0, box.y0, box.width, box.height * 0.8])
-    ax1.legend(loc='upper left', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
-    ax2.legend(loc='upper left', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+
+    bars = list(bars)
+    lines = sum(lines, [])
+    legend_elements = []
+    for i in range(len(bars)):
+        legend_elements.append(bars[i])
+        legend_elements.append(lines[i])
+
+    ax1.legend(handles=legend_elements, loc='upper center', bbox_to_anchor=(0.5, 1.14), ncol=len(bars), prop=font_legend)
+    #ax1.legend(loc='upper left', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+    #ax2.legend(loc='upper left', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
 
     ax1.set_yticks(np.linspace(0, max_power * y_max_ratio, num=y_axis_interval))
     ax2.set_yticks(np.linspace(0, max_energy * y_max_ratio, num=y_axis_interval))
@@ -409,6 +431,8 @@ def draw_power_energy_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
     #==============
     max_power = 0
     max_energy = 0
+    bars = []
+    lines = []
     for i_batch, batch in enumerate(batch_sizes):
         base_power = get_power(gpu, algo, 'caffe', net, batch, gpu_coreF[0], gpu_memF)
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
@@ -416,8 +440,8 @@ def draw_power_energy_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
 
         max_power = np.max(powers_respect_coreF_ration) if max_power < np.max(powers_respect_coreF_ration) else max_power
         power_label_name = '{0}-b{1} Power'.format(net, batch)
-        ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF_ration, color=bar_colors[i_batch],
-            width=bar_width, label=power_label_name)
+        bars.append(ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF_ration, color=bar_colors[i_batch],
+            width=bar_width, label=power_label_name))
         bar_i_width += 1
 
     for i_batch, batch in enumerate(batch_sizes):
@@ -427,8 +451,8 @@ def draw_power_energy_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
 
         max_energy = np.max(energy_respect_coreF_ration) if max_energy < np.max(energy_respect_coreF_ration) else max_energy
         energy_label_name = '{0}-b{1} Energy'.format(net, batch)
-        ax2.plot(line_x, energy_respect_coreF_ration, color=plot_colors[i_batch], marker=markers[i_batch],
-            linewidth=2, label=energy_label_name)
+        lines.append(ax2.plot(line_x, energy_respect_coreF_ration, color=plot_colors[i_batch], marker=markers[i_batch],
+            linewidth=2, label=energy_label_name))
     
     # y1_intervals = float(max_power/12)
     # y1_loc = plticker.MultipleLocator(base=y1_intervals)
@@ -437,8 +461,17 @@ def draw_power_energy_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
 
     box = ax1.get_position()
     ax1.set_position([box.x0, box.y0, box.width, box.height * 0.8])
-    ax1.legend(loc='upper left', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
-    ax2.legend(loc='upper left', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+
+    bars = list(bars)
+    lines = sum(lines, [])
+    legend_elements = []
+    for i in range(len(bars)):
+        legend_elements.append(bars[i])
+        legend_elements.append(lines[i])
+
+    ax1.legend(handles=legend_elements, loc='upper center', bbox_to_anchor=(0.5, 1.14), ncol=len(bars), prop=font_legend)
+    #ax1.legend(loc='upper left', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+    #ax2.legend(loc='upper left', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
     
     ax1.set_yticks(np.linspace(0, max_power * y_max_ratio, num=y_axis_interval))
     ax2.set_yticks(np.linspace(0, energy_respect_coreF * y_max_ratio, num=y_axis_interval))
@@ -477,12 +510,14 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
     #==============
     max_power = 0
     max_image_perf = 0
+    bars = []
+    lines = []
     for i_batch, batch in enumerate(batch_sizes):
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
-            width=bar_width, label=power_label_name)
+        bars.append(ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
+            width=bar_width, label=power_label_name))
         bar_i_width += 1
 
     for i_batch, batch in enumerate(batch_sizes):
@@ -490,8 +525,8 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
         max_image_perf = max(image_perf_respect_coreF) if max_image_perf < max(image_perf_respect_coreF) else max_image_perf
 
         energy_label_name = '{0}-b{1} image_per'.format(net, batch)
-        ax2.plot(line_x, image_perf_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
-            linewidth=2, label=energy_label_name)
+        lines.append(ax2.plot(line_x, image_perf_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
+            linewidth=2, label=energy_label_name))
     
     # y1_intervals = int(max_power/12)
     # y1_loc = plticker.MultipleLocator(base=y1_intervals)
@@ -500,8 +535,17 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_frequency(
 
     box = ax1.get_position()
     ax1.set_position([box.x0, box.y0, box.width, box.height * 0.8])
-    ax1.legend(loc='upper left', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
-    ax2.legend(loc='upper left', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+
+    bars = list(bars)
+    lines = sum(lines, [])
+    legend_elements = []
+    for i in range(len(bars)):
+        legend_elements.append(bars[i])
+        legend_elements.append(lines[i])
+
+    ax1.legend(handles=legend_elements, loc='upper center', bbox_to_anchor=(0.5, 1.14), ncol=len(bars), prop=font_legend)
+    #ax1.legend(loc='upper left', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+    #ax2.legend(loc='upper left', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
     
     ax1.set_yticks(np.linspace(0, max_power * y_max_ratio, num=y_axis_interval))
     ax2.set_yticks(np.linspace(0, max_image_perf * y_max_ratio, num=y_axis_interval))
@@ -544,12 +588,14 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_memfrequency(
     #==============
     max_power = 0
     max_image_perf = 0
+    bars = []
+    lines = []
     for i_batch, batch in enumerate(batch_sizes):
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
         power_label_name = '{0}-b{1} Power'.format(net, batch)
         max_power = max(powers_respect_coreF) if max_power < max(powers_respect_coreF) else max_power
-        ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
-            width=bar_width, label=power_label_name)
+        bars.append(ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF, color=bar_colors[i_batch],
+            width=bar_width, label=power_label_name))
         bar_i_width += 1
 
     for i_batch, batch in enumerate(batch_sizes):
@@ -557,8 +603,8 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_memfrequency(
         max_image_perf = max(image_perf_respect_coreF) if max_image_perf < max(image_perf_respect_coreF) else max_image_perf
 
         energy_label_name = '{0}-b{1} image_per'.format(net, batch)
-        ax2.plot(line_x, image_perf_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
-            linewidth=2, label=energy_label_name)
+        bars.append(ax2.plot(line_x, image_perf_respect_coreF, color=plot_colors[i_batch], marker=markers[i_batch],
+            linewidth=2, label=energy_label_name))
     
     # y1_intervals = int(max_power/12)
     # y1_loc = plticker.MultipleLocator(base=y1_intervals)
@@ -567,10 +613,19 @@ def draw_power_perf_fix_gpu_algo_net_config_batch_varient_memfrequency(
 
     box = ax1.get_position()
     ax1.set_position([box.x0, box.y0, box.width, box.height * 0.8])
-    ax1.legend(loc='upper left', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
 
-    ax2.legend(loc='upper left', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+    bars = list(bars)
+    lines = sum(lines, [])
+    legend_elements = []
+    for i in range(len(bars)):
+        legend_elements.append(bars[i])
+        legend_elements.append(lines[i])
+
+    ax1.legend(handles=legend_elements, loc='upper center', bbox_to_anchor=(0.5, 1.14), ncol=len(bars), prop=font_legend)
+    #ax1.legend(loc='upper left', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+    #ax2.legend(loc='upper left', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
     # ax2.set_ylim([0, max_image_perf*1.1])
+
     ax2.set_ylabel("%s (image/s)" % 'perf', size=size_labels)
 
     ax1.set_yticks(np.linspace(0, max_power * y_max_ratio, num=y_axis_interval))
@@ -614,6 +669,8 @@ def draw_power_perf_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
     max_power = 0
     max_image_perf = 0
 
+    bars = []
+    lines = []
     for i_batch, batch in enumerate(batch_sizes):
         base_power = get_power(gpu, algo, 'caffe', net, batch, gpu_coreF[0], gpu_memF)
         powers_respect_coreF = get_power_respect(gpu, algo, 'caffe', net, batch, gpu_coreF, gpu_memF)
@@ -622,8 +679,8 @@ def draw_power_perf_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
 
         max_power = np.max(powers_respect_coreF_ration) if max_power < np.max(powers_respect_coreF_ration) else max_power
         power_label_name = '{0}-b{1} Power'.format(net, batch)
-        ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF_ration, color=bar_colors[i_batch],
-            width=bar_width, label=power_label_name)
+        bars.append(ax1.bar(bar_x + bar_i_width * bar_width, powers_respect_coreF_ration, color=bar_colors[i_batch],
+            width=bar_width, label=power_label_name))
         bar_i_width += 1
 
     for i_batch, batch in enumerate(batch_sizes):
@@ -634,8 +691,8 @@ def draw_power_perf_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
         max_image_perf = np.max(image_perf_respect_coreF_ration) if max_image_perf < np.max(image_perf_respect_coreF_ration) else max_image_perf
 
         energy_label_name = '{0}-b{1} image_per'.format(net, batch)
-        ax2.plot(line_x, image_perf_respect_coreF_ration, color=plot_colors[i_batch], marker=markers[i_batch],
-            linewidth=2, label=energy_label_name)
+        lines.append(ax2.plot(line_x, image_perf_respect_coreF_ration, color=plot_colors[i_batch], marker=markers[i_batch],
+            linewidth=2, label=energy_label_name))
     
     # y1_intervals = float(max_power/12)
     # y1_loc = plticker.MultipleLocator(base=y1_intervals)
@@ -644,9 +701,20 @@ def draw_power_perf_ratio_fix_gpu_algo_net_config_batch_varient_frequency(
 
     box = ax1.get_position()
     ax1.set_position([box.x0, box.y0, box.width, box.height * 0.8])
-    ax1.legend(loc='upper left', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
 
-    ax2.legend(loc='upper left', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+    bars = list(bars)
+    lines = sum(lines, [])
+    legend_elements = []
+    for i in range(len(bars)):
+        legend_elements.append(bars[i])
+        legend_elements.append(lines[i])
+
+    ax1.legend(handles=legend_elements, loc='upper center', bbox_to_anchor=(0.5, 1.14), ncol=len(bars), prop=font_legend)
+
+
+    #ax1.legend(loc='upper left', bbox_to_anchor=(0., 0.98, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
+
+    #ax2.legend(loc='upper left', bbox_to_anchor=(0., 1.05, 0.8, 0.1), ncol=4, mode="expand", borderaxespad=0., prop=font_legend)
     # ax2.set_ylim([0, max_image_perf*1.1])
     ax2.set_ylabel("%s (image/s)" % 'perf', size=size_labels)
     
